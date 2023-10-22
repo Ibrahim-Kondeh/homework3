@@ -1,6 +1,6 @@
 <?php
 require_once("util-db.php");
-require_once("model.php"); // Assuming your model functions are in model.php
+require_once("model.matches.php"); // Assuming your model functions are in model.php
 
 $pageTitle = "Matches";
 include "view-header.php";
