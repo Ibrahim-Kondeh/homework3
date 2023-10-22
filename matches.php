@@ -10,7 +10,7 @@ tit<!doctype html>
         <h1>Matches</h1>
 
         <?php
-        foreach ($competition as $competition => $matches) {
+        foreach ($match as $match => $matches) {
         ?>
             <div class="card my-4">
                 <div class="card-header">
