@@ -10,7 +10,7 @@
         <h1>Matches</h1>
 
         <?php
-        foreach ($match as $competition => $matches) {
+        foreach ($matches as $competition => $matches) {
         ?>
             <div class="card my-4">
                 <div class="card-header">
