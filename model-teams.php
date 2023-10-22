@@ -3,9 +3,7 @@ function selectTeams() {
     try {
         $conn = get_db_connection();
         $stmt = $conn->prepare("
-            SELECT p.player_name, p.date_of_birth, p.nationality, p.position, t.team_name
-            FROM player AS p
-            JOIN teams AS t ON p.team_id = t.team_id
+            SELECT team_id, team_name, coach_name, founded_year, home_stadium from teams
         ");
         $stmt->execute();
         $result = $stmt->get_result();
