@@ -55,7 +55,7 @@
                     <td><?php echo $team['coach_name']; ?></td>
                     <td><?php echo $team['founded_year']; ?></td>
                     <td><?php echo $team['home_stadium']; ?></td>
-                    <td><a href="players.php?id=<?php echo $team['team_id']; ?>">Players</a></td>
+                    <td><a href="players-by-team.php?id=<?php echo $team['team_id']; ?>">Players</a></td>
                 </tr>
             <?php
             }
