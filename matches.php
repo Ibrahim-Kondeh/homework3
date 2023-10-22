@@ -1,4 +1,4 @@
-<!doctype html>
+tit<!doctype html>
 <html lang="en">
 
 <head>
@@ -10,7 +10,7 @@
         <h1>Matches</h1>
 
         <?php
-        foreach ($matches as $competition => $matches) {
+        foreach ($competition as $competition => $matches) {
         ?>
             <div class="card my-4">
                 <div class="card-header">
