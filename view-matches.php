@@ -10,32 +10,15 @@
         <h1>Matches</h1>
 
         <?php
-        foreach ($competitions as $competition) {
-            $matchesData = getMatchesByCompetition($competition['competition_id']);
+        foreach ($matchesData as $match) {
         ?>
             <div class="card my-4">
                 <div class="card-header">
-                    <?php echo $competition['competition_name']; ?>
+                    <?php echo "(" . $match['team1_name'] . " vs " . $match['team2_name'] . ")"; ?>
                 </div>
                 <div class="card-body">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>Match</th>
-                                <th>Date</th>
-                                <th>Score</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($matchesData as $match) { ?>
-                                <tr>
-                                    <td>(<?php echo $match['team1_name']; ?> vs <?php echo $match['team2_name']; ?>)</td>
-                                    <td><?php echo $match['match_date']; ?></td>
-                                    <td><?php echo $match['score_team1']; ?> : <?php echo $match['score_team2']; ?></td>
-                                </tr>
-                            <?php } ?>
-                        </tbody>
-                    </table>
+                    <p>Date: <?php echo $match['match_date']; ?></p>
+                    <p>Score: <?php echo $match['score_team1'] . " : " . $match['score_team2']; ?></p>
                 </div>
             </div>
         <?php
