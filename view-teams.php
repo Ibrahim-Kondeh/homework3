@@ -7,15 +7,15 @@
     <title>Teams</title>
     <style>
         .table-hover tbody tr:hover {
-            background-color: #f5f5f5;
+            background-color: #ff9999; /* Red color for hover */
         }
 
         .table-hover tbody tr:nth-of-type(odd) {
-            background-color: #ff9999; /* Red color for odd rows */
+            background-color: #ffffff; /* White color for odd rows */
         }
 
         .table-hover tbody tr:nth-of-type(even) {
-            background-color: #ffffff; /* White color for even rows */
+            background-color: #ff9999; /* Red color for even rows */
         }
     </style>
 </head>
