@@ -8,7 +8,7 @@ function getMatchesByCompetition($competitionId) {
                                FROM matches m 
                                JOIN teams t1 ON m.team1_id = t1.team_id 
                                JOIN teams t2 ON m.team2_id = t2.team_id 
-                               WHERE m.competition_id = ?");
+                               WHERE m.competition_id = 1");
         $stmt->bind_param("i", $competitionId);
         $stmt->execute();
         $result = $stmt->get_result();
