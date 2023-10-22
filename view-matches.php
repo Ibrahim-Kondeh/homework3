@@ -14,11 +14,12 @@
         ?>
             <div class="card my-4">
                 <div class="card-header">
-                    <?php echo "(" . $match['team1_name'] . " vs " . $match['team2_name'] . ")"; ?>
+                    <?php echo "Match ID: " . $match['match_id']; ?>
                 </div>
                 <div class="card-body">
                     <p>Date: <?php echo $match['match_date']; ?></p>
-                    <p>Score: <?php echo $match['score_team1'] . " : " . $match['score_team2']; ?></p>
+                    <p>Team 1: <?php echo $match['team1_name']; ?>, Score: <?php echo $match['score_team1']; ?></p>
+                    <p>Team 2: <?php echo $match['team2_name']; ?>, Score: <?php echo $match['score_team2']; ?></p>
                 </div>
             </div>
         <?php
