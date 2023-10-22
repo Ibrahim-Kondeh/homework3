@@ -43,6 +43,7 @@
                     <th>Name</th>
                     <th>Date of Birth</th>
                      <th>Nationality</th>th>
+                     <th>Team</th>
                     <th>Position</th>
                 </tr>
             </thead>
@@ -55,6 +56,7 @@
                         <td><?php echo $player['date_of_birth']; ?></td>
                         <td><?php echo $player['nationality']; ?></td>
                         <td><?php echo $player['position']; ?></td>
+                         <td><?php echo $player['team_name']; ?></td>
                     </tr>
                 <?php
                 }
