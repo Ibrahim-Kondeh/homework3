@@ -1,18 +1,49 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $pageTitle; ?></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><?=$pageTitle?></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        /* Custom CSS to style the teams table */
+        .team-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .team-table th, .team-table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .team-table th {
+            background-color: #f2f2f2;
+        }
+
+        /* Custom CSS to style the horizontal navbar */
+        .navbar {
+            background-color: #4CAF50;
+        }
+
+        .navbar-brand, .nav-link {
+            color: white;
+            padding: 15px 20px;
+        }
+
+        .navbar-toggler-icon {
+            background-color: white;
+        }
+    </style>
 </head>
 
-<body style="background-color: #333; color: white; font-family: Arial, sans-serif; margin: 0; padding: 0;">
-
-    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 20px;">
-        <nav class="navbar" style="display: flex; justify-content: space-between; align-items: center;">
-            <div class="navbar-brand">Home</div>
-            <ul class="navbar-nav" style="list-style: none; display: flex; gap: 20px;">
+<body>
+    <nav class="navbar">
+        <a class="navbar-brand">Sports League</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" href="teams.php">Teams</a>
                 </li>
@@ -20,17 +51,33 @@
                     <a class="nav-link" href="players.php">Players</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="matches.php">Fixtures</a>
+                    <a class="nav-link" href="matches.php">Matches</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="competitions.php">Competitions</a>
                 </li>
             </ul>
-        </nav>
-    </div>
+        </div>
+    </nav>
 
-    <!-- I might add other contents here -->
+    <!-- Teams Table -->
+    <table class="team-table">
+        <thead>
+            <tr>
+                <th>Team Name</th>
+                <th>Country</th>
+                <th>Coach</th>
+                <th>Founded Year</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Team data rows will go here -->
+        </tbody>
+    </table>
 
+    <!-- Rest of your HTML content goes here -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-ZOsT2UQzY3FN8LkFDrF4D72KlSb0P9ABqT1ggK5biQOp6iUAZjA8M2reF5FOSta0" crossorigin="anonymous"></script>
 </body>
 
 </html>
