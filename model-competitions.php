@@ -1,13 +1,15 @@
 <?php
-require_once("util-db.php");
-
 function getAllCompetitions() {
-    global $mysqli;
-    $query = "SELECT competition_name, satart_date, end_date FROM competition";
-    $result = $mysqli->query($query);
-    if (!$result) {
-        die("Error: " . $mysqli->error);
+    try {
+        $conn = get_db_connection();
+        $stmt = $conn->prepare("SELECT competition_name, satart_date, end_date FROM competition");
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $conn->close();
+        return $result;
+    } catch (Exception $e) {
+        $conn->close();
+        throw $e;
     }
-    return $result;
 }
 ?>
