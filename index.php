@@ -8,7 +8,7 @@ include "view-header.php";
     <!-- Table content and other page elements go here -->
 
     <div class="card">
-        <h2>League Logos</h2>
+        <h2>The Beautiful Game</h2>
         <div>
             <img src="premier-league-logo.png" alt="Premier League Logo">
         </div>
