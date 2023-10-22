@@ -57,10 +57,7 @@
         <a href="competitions.php">Competitions</a>
     </div>
 
-    <h1>Teams</h1>
-    <table class="team-table">
-        <!-- Table content goes here -->
-    </table>
+  
 
 </body>
 
