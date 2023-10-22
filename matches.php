@@ -1,6 +1,6 @@
 <?php
 require_once("util-db.php");
-require_once("model-matches.php");
+require_once("model-matches-by-competition.php");
 
 $pageTitle = "Matches";
 include "view-header.php";
