@@ -13,6 +13,9 @@
 <div class="navbar">
     <a href="index.php">Home</a>
     <a href="teams.php">Teams</a>
+     <a href="players.php">Players</a>
+     <a href="matches.php">Fixtures</a>
+     <a href="competitions.php">Competitions</a>
     <!-- Add more links for other pages if needed -->
 </div>
 
