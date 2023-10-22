@@ -29,7 +29,7 @@
                 <tr style="background-color: <?php echo $rowNumber % 2 == 0 ? '#ffffff' : '#ff9999'; ?>">
                     <td><?php echo $team['team_id']; ?></td>
                     <td><?php echo $team['team_name']; ?></td>
-                    <td><?php echo $team['coach_name']); ?></td>
+                    <td><?php echo $team['coach_name']; ?></td>
                     <td><?php echo $team['founded_year']; ?></td>
                     <td><?php echo $team['home_stadium']; ?></td>
                     <td><a href="players.php?id=<?php echo $team['team_id']; ?>">Players</a></td>
