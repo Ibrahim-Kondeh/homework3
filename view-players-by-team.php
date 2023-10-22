@@ -43,8 +43,8 @@
                     <th>Name</th>
                     <th>Date of Birth</th>
                      <th>Nationality</th>th>
-                     <th>Team</th>
                     <th>Position</th>
+                       <th>Team</th>
                 </tr>
             </thead>
             <tbody>
