@@ -1,6 +1,6 @@
 <?php
 require_once("util-db.php");
-require_once("model-player-by-team.php");
+require_once("model-players-by-team.php");
 $pageTitle = "Team Rooster";
 include "view-header.php";
 $teams = selectPlayersByTeam($_GET['id']);
