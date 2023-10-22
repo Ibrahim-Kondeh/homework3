@@ -23,59 +23,45 @@
             background-color: #f2f2f2;
         }
 
-        /* Custom CSS to style the horizontal navbar */
-        .navbar {
-            background-color: #4CAF50;
-        }
-
-        .navbar-brand, .nav-link {
-            color: white;
-            padding: 15px 20px;
-        }
-
-        .navbar-toggler-icon {
-            background-color: white;
+        /* Custom CSS for table row highlighting */
+        .highlight-row:hover {
+            background-color: #ff0000;
         }
     </style>
 </head>
 
 <body>
-    <nav class="navbar">
-        <a class="navbar-brand">Home</a>
-        <div class="collapse navbar-collapse">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="teams.php">Teams</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="players.php">Players</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="matches.php">Matches</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="competitions.php">Competitions</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- Teams Table -->
+    <h1>Teams</h1>
     <table class="team-table">
         <thead>
             <tr>
+                <th>ID</th>
                 <th>Team Name</th>
-                <th>Country</th>
                 <th>Coach</th>
                 <th>Founded Year</th>
+                <th>Home Stadium</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
-            <!-- Team data rows will go here -->
+            <?php
+            $rowNumber = 0;
+            while ($team = $teams->fetch_assoc()) {
+                $rowNumber++;
+            ?>
+                <tr class="highlight-row">
+                    <td><?php echo $team['team_id']; ?></td>
+                    <td><?php echo $team['team_name']; ?></td>
+                    <td><?php echo $team['coach_name']; ?></td>
+                    <td><?php echo $team['founded_year']; ?></td>
+                    <td><?php echo $team['home_stadium']; ?></td>
+                    <td><a href="players.php?id=<?php echo $team['team_id']; ?>">Players</a></td>
+                </tr>
+            <?php
+            }
+            ?>
         </tbody>
     </table>
-
-    <!-- Rest of your HTML content goes here -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-ZOsT2UQzY3FN8LkFDrF4D72KlSb0P9ABqT1ggK5biQOp6iUAZjA8M2reF5FOSta0" crossorigin="anonymous"></script>
 </body>
