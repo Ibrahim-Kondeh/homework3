@@ -12,14 +12,14 @@
             <!-- ... (table headers remain the same) ... -->
             <tbody>
                 <?php
-                while ($players = $players->fetch_assoc()) {
+                while ($player = $players->fetch_assoc()) { // Use a different variable name, like $player
                 ?>
                     <tr class="highlight-row">
-                        <td><?php echo $players['player_name']; ?></td>
-                        <td><?php echo $players['date_of_birth']; ?></td>
-                        <td><?php echo $players['nationality']; ?></td>
-                        <td><?php echo $players['position']; ?></td>
-                        <td><?php echo $players['team_name']; ?></td>
+                        <td><?php echo $player['player_name']; ?></td>
+                        <td><?php echo $player['date_of_birth']; ?></td>
+                        <td><?php echo $player['nationality']; ?></td>
+                        <td><?php echo $player['position']; ?></td>
+                        <td><?php echo $player['team_name']; ?></td>
                     </tr>
                 <?php
                 }
