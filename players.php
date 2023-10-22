@@ -1,10 +1,13 @@
 <?php
 require_once("util-db.php");
-require_once("model-players.php");
+require_once("model-matches.php");
 
-$pageTitle = "Players";
+$pageTitle = "Matches";
 include "view-header.php";
-$player = selectPlayers();
-include "view-players.php";
+
+$competitionId = isset($_GET['id']) ? $_GET['id'] : null;
+$matchesData = selectMatchesByCompetition($competitionId);
+include "view-matches.php";
+
 include "view-footer.php";
 ?>
