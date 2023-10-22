@@ -5,15 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $pageTitle; ?></title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
 </head>
 
-<body>
+<body style="background-color: #333; color: white; font-family: Arial, sans-serif; margin: 0; padding: 0;">
 
-    <div class="container">
-        <nav class="navbar">
+    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 20px;">
+        <nav class="navbar" style="display: flex; justify-content: space-between; align-items: center;">
             <div class="navbar-brand">Home</div>
-            <ul class="navbar-nav">
+            <ul class="navbar-nav" style="list-style: none; display: flex; gap: 20px;">
                 <li class="nav-item">
                     <a class="nav-link" href="teams.php">Teams</a>
                 </li>
