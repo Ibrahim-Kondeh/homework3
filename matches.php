@@ -3,7 +3,7 @@ require_once("util-db.php");
 require_once("model-matches.php");
 
 // Assuming you have $competitionId from somewhere, for example, $_GET['id']
-$competitionId = $_GET['id'];
+$competitionId = $_GET['competition_id'];
 $matchesData = getMatchesByCompetition($competitionId);
 
 $pageTitle = "Matches";
