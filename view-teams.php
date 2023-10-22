@@ -31,26 +31,6 @@
 </head>
 
 <body>
-    <nav class="navbar">
-        <a class="navbar-brand">Sports League</a>
-        <div class="collapse navbar-collapse">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="teams.php">Teams</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="players.php">Players</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="matches.php">Matches</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="competitions.php">Competitions</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
     <h1>Teams</h1>
     <table class="team-table">
         <thead>
