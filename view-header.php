@@ -41,7 +41,7 @@
 
 <body>
     <nav class="navbar">
-        <a class="navbar-brand">Sports League</a>
+        <a class="navbar-brand">Home</a>
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav">
                 <li class="nav-item">
