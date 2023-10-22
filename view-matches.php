@@ -11,20 +11,31 @@
 
         <?php
         foreach ($competitions as $competition) {
-            $matchesData = getMatchesByCompetition($competition['competition_name']);
+            $matchesData = getMatchesByCompetition($competition['competition_id']);
         ?>
             <div class="card my-4">
                 <div class="card-header">
                     <?php echo $competition['competition_name']; ?>
                 </div>
                 <div class="card-body">
-                    <ul class="list-group">
-                        <?php foreach ($matches as $match => $result) { ?>
-                            <li class="list-group-item">
-                                <?php echo $match; ?> - <?php echo $result; ?>
-                            </li>
-                        <?php } ?>
-                    </ul>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Match</th>
+                                <th>Date</th>
+                                <th>Score</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($matchesData as $match) { ?>
+                                <tr>
+                                    <td>(<?php echo $match['team1_name']; ?> vs <?php echo $match['team2_name']; ?>)</td>
+                                    <td><?php echo $match['match_date']; ?></td>
+                                    <td><?php echo $match['score_team1']; ?> : <?php echo $match['score_team2']; ?></td>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         <?php
