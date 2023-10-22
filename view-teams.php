@@ -5,19 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Teams</title>
-    <style>
-        .table-hover tbody tr:hover {
-            background-color: #ff9999; /* Red color for hover */
-        }
-
-        .table-hover tbody tr:nth-of-type(odd) {
-            background-color: #ffffff; /* White color for odd rows */
-        }
-
-        .table-hover tbody tr:nth-of-type(even) {
-            background-color: #ff9999; /* Red color for even rows */
-        }
-    </style>
 </head>
 
 <body>
@@ -35,12 +22,14 @@
         </thead>
         <tbody>
             <?php
+            $rowNumber = 0;
             while ($team = $teams->fetch_assoc()) {
+                $rowNumber++;
             ?>
-                <tr>
+                <tr style="background-color: <?php echo $rowNumber % 2 == 0 ? '#ffffff' : '#ff9999'; ?>">
                     <td><?php echo $team['team_id']; ?></td>
                     <td><?php echo $team['team_name']; ?></td>
-                    <td><?php echo $team['coach_name']; ?></td>
+                    <td><?php echo $team['coach_name']); ?></td>
                     <td><?php echo $team['founded_year']; ?></td>
                     <td><?php echo $team['home_stadium']; ?></td>
                     <td><a href="players.php?id=<?php echo $team['team_id']; ?>">Players</a></td>
