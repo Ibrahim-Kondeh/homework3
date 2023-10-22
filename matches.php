@@ -10,7 +10,6 @@
         <h1>Matches</h1>
 
         <?php
-   
         foreach ($matchesData as $competition => $matches) {
         ?>
             <div class="card my-4">
@@ -19,9 +18,10 @@
                 </div>
                 <div class="card-body">
                     <ul class="list-group">
-                        <?php foreach ($match as $matches => $result) { ?>
+                        <?php foreach ($matches as $match) { ?>
                             <li class="list-group-item">
-                                <?php echo $match; ?> - <?php echo $result; ?>
+                                (<?php echo $match['team1_name']; ?> vs <?php echo $match['team2_name']; ?>) - 
+                                <?php echo $match['score_team1']; ?> : <?php echo $match['score_team2']; ?>
                             </li>
                         <?php } ?>
                     </ul>
