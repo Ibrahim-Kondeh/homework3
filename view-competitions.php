@@ -28,7 +28,7 @@ tition<!doctype html>
     <td><?php echo $competition['satart_date']; ?></td>
     <td><?php echo $competition['end_date']; ?></td>
     <td>
-        <a href="matches-by-competition.php?competition_name=<?php echo $competition['competition_name']; ?>" class="btn btn-primary view-matches-btn">View Matches</a>
+        <a href="matches-by-competitions.php?competition_name=<?php echo $competition['competition_name']; ?>" class="btn btn-primary view-matches-btn">View Matches</a>
     </td>
 </tr>
 
