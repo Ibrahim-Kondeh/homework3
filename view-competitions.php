@@ -23,7 +23,7 @@
                 ?>
                     <tr class="highlight-row">
                         <td><?php echo $competition['competition_name']; ?></td>
-                        <td><?php echo $competition['start_date']; ?></td>
+                        <td><?php echo $competition['satart_date']; ?></td>
                         <td><?php echo $competition['end_date']; ?></td>
                         <td>
                             <a href="matches.php?competition=<?php echo urlencode($competition['competition_name']); ?>" class="btn btn-primary view-matches-btn">View Matches</a>
