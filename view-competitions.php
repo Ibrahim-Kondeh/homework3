@@ -21,14 +21,19 @@ tition<!doctype html>
                 <?php
                 while ($competition = $competitions->fetch_assoc()) {
                 ?>
-                    <tr class="highlight-row">
-                        <td><?php echo $competition['competition_name']; ?></td>
-                        <td><?php echo $competition['satart_date']; ?></td>
-                        <td><?php echo $competition['end_date']; ?></td>
-                        <td>
-                            <a href="matches-by-competition.php?competition=<?php echo urlencode($competition['competition_name']); ?>" class="btn btn-primary view-matches-btn">View Matches</a>
-                        </td>
-                    </tr>
+<!-- ... (previous HTML code) ... -->
+
+<tr class="highlight-row">
+    <td><?php echo $competition['competition_name']; ?></td>
+    <td><?php echo $competition['satart_date']; ?></td>
+    <td><?php echo $competition['end_date']; ?></td>
+    <td>
+        <a href="matches-by-competition.php?competition_name=<?php echo $competition['competition_name']; ?>" class="btn btn-primary view-matches-btn">View Matches</a>
+    </td>
+</tr>
+
+<!-- ... (remaining HTML code) ... -->
+
                 <?php
                 }
                 ?>
