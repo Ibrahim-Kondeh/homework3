@@ -1,8 +1,19 @@
-tition<!doctype html>
+<!doctype html>
 <html lang="en">
 
 <head>
     <!-- ... (head content remains the same) ... -->
+    <style>
+        .btn-custom {
+            background-color: #ff9900; /* Custom background color */
+            color: white; /* Text color */
+            border: none; /* Remove border */
+        }
+
+        .btn-custom:hover {
+            background-color: #e68a00; /* Custom background color on hover */
+        }
+    </style>
 </head>
 
 <body>
@@ -21,19 +32,14 @@ tition<!doctype html>
                 <?php
                 while ($competition = $competitions->fetch_assoc()) {
                 ?>
-<!-- ... (previous HTML code) ... -->
-
-<tr class="highlight-row">
-    <td><?php echo $competition['competition_name']; ?></td>
-    <td><?php echo $competition['satart_date']; ?></td>
-    <td><?php echo $competition['end_date']; ?></td>
-    <td>
-        <a href="matches-by-competitions.php?competition_name=<?php echo $competition['competition_name']; ?>" class="btn btn-primary view-matches-btn">View Matches</a>
-    </td>
-</tr>
-
-<!-- ... (remaining HTML code) ... -->
-
+                    <tr class="highlight-row">
+                        <td><?php echo $competition['competition_name']; ?></td>
+                        <td><?php echo $competition['satart_date']; ?></td>
+                        <td><?php echo $competition['end_date']; ?></td>
+                        <td>
+                            <a href="matches-by-competitions.php?competition_name=<?php echo $competition['competition_name']; ?>" class="btn btn-lg btn-custom">View Matches</a>
+                        </td>
+                    </tr>
                 <?php
                 }
                 ?>
