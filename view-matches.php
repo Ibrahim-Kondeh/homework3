@@ -14,15 +14,26 @@ include "view-header.php";
                 <?php echo htmlspecialchars($competition); ?>
             </div>
             <div class="card-body">
-                <ul class="list-group">
-                    <?php foreach ($matches as $match) { ?>
-                        <li class="list-group-item">
-                            <?php echo htmlspecialchars($match['team1_name']) . " vs " . htmlspecialchars($match['team2_name']); ?><br>
-                            Date: <?php echo htmlspecialchars($match['match_date']); ?><br>
-                            Score: <?php echo htmlspecialchars($match['score_team1']) . " : " . htmlspecialchars($match['score_team2']); ?>
-                        </li>
-                    <?php } ?>
-                </ul>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Team 1</th>
+                            <th>Team 2</th>
+                            <th>Date</th>
+                            <th>Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($matches as $match) { ?>
+                            <tr>
+                                <td><?php echo htmlspecialchars($match['team1_name']); ?></td>
+                                <td><?php echo htmlspecialchars($match['team2_name']); ?></td>
+                                <td><?php echo htmlspecialchars($match['match_date']); ?></td>
+                                <td><?php echo htmlspecialchars($match['score_team1']) . " : " . htmlspecialchars($match['score_team2']); ?></td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
             </div>
         </div>
     <?php
