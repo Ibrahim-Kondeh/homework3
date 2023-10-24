@@ -9,7 +9,7 @@ if(isset($_GET['competition_name'])) {
     $matches = getMatchesByCompetition($competitionName);
     
     include "view-header.php";
-    include "view-matches-by-competition.php";
+    include "view-matches-by-competitions.php";
     include "view-footer.php";
 } else {
     echo "Competition name not provided.";
