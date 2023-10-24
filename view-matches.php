@@ -8,19 +8,24 @@ include "view-header.php";
 
     <?php
     foreach ($matchesData as $competition => $matches) {
-        echo "<h2>" . htmlspecialchars($competition) . "</h2>";
-        echo "<table class='table'>";
-        echo "<thead><tr><th>Teams</th><th>Date</th></tr></thead>";
-        echo "<tbody>";
-
-        foreach ($matches as $match) {
-            echo "<tr>";
-            echo "<td>" . htmlspecialchars($match['team1_name']) . " vs " . htmlspecialchars($match['team2_name']) . "</td>";
-            echo "<td>" . htmlspecialchars($match['match_date']) . "</td>";
-            echo "</tr>";
-        }
-
-        echo "</tbody></table>";
+    ?>
+        <div class="card my-4">
+            <div class="card-header">
+                <?php echo htmlspecialchars($competition); ?>
+            </div>
+            <div class="card-body">
+                <ul class="list-group">
+                    <?php foreach ($matches as $match) { ?>
+                        <li class="list-group-item">
+                            <?php echo htmlspecialchars($match['team1_name']) . " vs " . htmlspecialchars($match['team2_name']); ?><br>
+                            Date: <?php echo htmlspecialchars($match['match_date']); ?><br>
+                            Score: <?php echo htmlspecialchars($match['score_team1']) . " : " . htmlspecialchars($match['score_team2']); ?>
+                        </li>
+                    <?php } ?>
+                </ul>
+            </div>
+        </div>
+    <?php
     }
     ?>
 </div>
