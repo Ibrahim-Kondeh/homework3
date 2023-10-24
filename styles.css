@@ -35,12 +35,18 @@ body {
 }
 
 .card {
-    width: 200px;
+    width: 400px; /* Updated width for larger cards */
+    max-width: 100%; /* Ensure the card doesn't exceed the container width */
     background-color: rgba(0, 0, 0, 0.5);
     padding: 20px;
     margin-top: 20px;
     border-radius: 10px;
     text-align: center;
+    transition: transform 0.3s; /* Add smooth transition for hover effect */
+}
+
+.card:hover {
+    transform: scale(1.05); /* Scale the card slightly on hover */
 }
 
 .card img {
