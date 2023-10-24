@@ -3,17 +3,7 @@
 
 <head>
     <!-- ... (head content remains the same) ... -->
-    <style>
-        .competition-table th,
-        .competition-table td {
-            padding: 16px; /* Increase padding for larger details */
-            font-size: 18px; /* Increase font size for larger details */
-        }
-
-        .view-matches-btn {
-            font-size: 24px; /* Increase font size for the button */
-        }
-    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 
 <body>
@@ -37,7 +27,7 @@
                         <td><?php echo $competition['satart_date']; ?></td>
                         <td><?php echo $competition['end_date']; ?></td>
                         <td>
-                            <a class="btn btn-primary" href="matches-by-competitions.php?competition_name=<?php echo $competition['competition_name']; ?>" role="button">View Matches</a>
+                            <a class="btn btn-primary" href="matches-by-competitions.php?competition_name=<?php echo $competition['competition_name']; ?>">View Matches</a>
                         </td>
                     </tr>
                 <?php
