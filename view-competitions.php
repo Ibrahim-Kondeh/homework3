@@ -3,17 +3,6 @@
 
 <head>
     <!-- ... (head content remains the same) ... -->
-    <style>
-        .btn-custom {
-            background-color: #ff9900; /* Custom background color */
-            color: white; /* Text color */
-            border: none; /* Remove border */
-        }
-
-        .btn-custom:hover {
-            background-color: #e68a00; /* Custom background color on hover */
-        }
-    </style>
 </head>
 
 <body>
@@ -37,7 +26,7 @@
                         <td><?php echo $competition['satart_date']; ?></td>
                         <td><?php echo $competition['end_date']; ?></td>
                         <td>
-                            <a href="matches-by-competitions.php?competition_name=<?php echo $competition['competition_name']; ?>" class="btn btn-lg btn-custom">View Matches</a>
+                            <a href="matches-by-competitions.php?competition_name=<?php echo $competition['competition_name']; ?>" class="btn btn-primary btn-lg">View Matches</a>
                         </td>
                     </tr>
                 <?php
@@ -48,6 +37,7 @@
     </div>
 
     <!-- ... (footer content remains the same) ... -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-ZOsT2UQzY3FN8LkFDrF4D72KlSb0P9ABqT1ggK5biQOp6iUAZjA8M2reF5FOSta0" crossorigin="anonymous"></script>
 </body>
 
 </html>
