@@ -1,4 +1,4 @@
-<!doctype html>
+tition<!doctype html>
 <html lang="en">
 
 <head>
@@ -26,7 +26,7 @@
                         <td><?php echo $competition['satart_date']; ?></td>
                         <td><?php echo $competition['end_date']; ?></td>
                         <td>
-                            <a href="matches.php?competition=<?php echo urlencode($competition['competition_name']); ?>" class="btn btn-primary view-matches-btn">View Matches</a>
+                            <a href="matches-by-competition.php?competition=<?php echo urlencode($competition['competition_name']); ?>" class="btn btn-primary view-matches-btn">View Matches</a>
                         </td>
                     </tr>
                 <?php
