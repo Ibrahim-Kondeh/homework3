@@ -1,6 +1,6 @@
 <?php
 require_once("util-db.php");
-require_once("model-matches-by-competition.php");
+require_once("model-matches-by-competitions.php");
 
 $pageTitle = "Matches by Competition";
 
