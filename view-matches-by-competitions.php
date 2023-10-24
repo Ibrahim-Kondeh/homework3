@@ -1,30 +1,38 @@
-<?php
-$pageTitle = "Matches by Competition";
-include "view-header.php";
-?>
+<!doctype html>
+<html lang="en">
 
-<div class="container">
-    <h1>Matches by Competition</h1>
+<head>
+ 
+</head>
 
-    <?php
-    foreach ($matchesData as $competition => $matches) {
-        echo "<h2>" . htmlspecialchars($competition) . "</h2>";
-        echo "<table class='table'>";
-        echo "<thead><tr><th>Teams</th><th>Date</th><th>Score</th></tr></thead>";
-        echo "<tbody>";
+<body>
+    <h1>Matches</h1>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Match ID</th>
+                    <th>Match Date</th>
+                    <th>Home Team</th>
+                    <th>Away Team</th>
+                    <th>Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                while ($match = $matches->fetch_assoc()) {
+                    echo "<tr>";
+                    echo "<td>{$match['match_id']}</td>";
+                    echo "<td>{$match['match_date']}</td>";
+                    echo "<td>{$match['team1_name']}</td>";
+                    echo "<td>{$match['team2_name']}</td>";
+                    echo "<td>{$match['score_team1']} - {$match['score_team2']}</td>";
+                    echo "</tr>";
+                }
+                ?>
+            </tbody>
+        </table>
+    </div>
+</body>
 
-        foreach ($matches as $match) {
-            $score = htmlspecialchars($match['score_team1']) . " : " . htmlspecialchars($match['score_team2']);
-            echo "<tr>";
-            echo "<td>" . htmlspecialchars($match['team1_name']) . " vs " . htmlspecialchars($match['team2_name']) . "</td>";
-            echo "<td>" . htmlspecialchars($match['match_date']) . "</td>";
-            echo "<td>" . $score . "</td>";
-            echo "</tr>";
-        }
-
-        echo "</tbody></table>";
-    }
-    ?>
-</div>
-
-<?php include "view-footer.php"; ?>
+</html>
