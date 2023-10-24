@@ -67,7 +67,7 @@ include "view-header.php";
                     <?php foreach ($matches as $match) { ?>
                         <tr>
                             <td><?php echo htmlspecialchars($match['team1_name']); ?></td>
-                            <td><?php echo htmlspecialchars($match['ateam2_name']); ?></td>
+                            <td><?php echo htmlspecialchars($match['team2_name']); ?></td>
                             <td><?php echo htmlspecialchars($match['match_date']); ?></td>
                             <td><?php echo htmlspecialchars($match['score_team1']) . " : " . htmlspecialchars($match['score_team2']); ?></td>
                         </tr>
