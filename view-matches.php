@@ -1,6 +1,6 @@
 <?php
 $pageTitle = "Matches";
-include "view-header.php";
+
 ?>
 
 <style>
