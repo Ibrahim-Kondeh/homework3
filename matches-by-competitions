@@ -1,17 +1,17 @@
 <?php
 require_once("util-db.php");
+require_once("model-matches-by-competition.php");
 
 $pageTitle = "Matches by Competition";
-include "view-header.php";
 
-// Check if 'competition' parameter is set in the URL
-if(isset($_GET['competition'])) {
-    $competitionName = $_GET['competition'];
-    $matchesData = getMatchesByCompetition($competitionName);
+if(isset($_GET['competition_name'])) {
+    $competitionName = $_GET['competition_name'];
+    $matches = getMatchesByCompetition($competitionName);
+    
+    include "view-header.php";
     include "view-matches-by-competition.php";
+    include "view-footer.php";
 } else {
-    echo "Competition not provided.";
+    echo "Competition name not provided.";
 }
-
-include "view-footer.php";
 ?>
