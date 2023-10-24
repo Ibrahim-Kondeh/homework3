@@ -37,7 +37,7 @@
                         <td><?php echo $competition['satart_date']; ?></td>
                         <td><?php echo $competition['end_date']; ?></td>
                         <td>
-                            <a href="matches-by-competitions.php?competition_name=<?php echo $competition['competition_name']; ?>" class="btn btn-primary btn-lg view-matches-btn">View Matches</a>
+                            <a class="btn btn-primary" href="matches-by-competitions.php?competition_name=<?php echo $competition['competition_name']; ?>" role="button">View Matches</a>
                         </td>
                     </tr>
                 <?php
