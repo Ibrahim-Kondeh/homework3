@@ -34,7 +34,7 @@
         <label for="tStadium<?php echo $team['team_id'];?>" class="form-label">Home Stadium</label>
         <input type="text" class="form-control" id="tStadium<?php echo $team['team_id'];?>" name="tStadium" value="<?php echo $team['home_stadium'];?>">
     </div>
-   <input type="hidden"  name="tId" value="<?php echo $team['team_id'];?>">
+   <input type="hidden"  name="teamId" value="<?php echo $team['team_id'];?>">
   <input type="hidden" name="actionType" value="Edit">
     <button type="submit" class="btn btn-primary">Edit Team</button>
 </form>
