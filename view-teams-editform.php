@@ -20,7 +20,7 @@
 <form method="post" action ="">
     <div class="mb-3">
         <label for="tName<?php echo $team['team_id'];?>" class="form-label">Team Name</label>
-        <input type="text" class="form-control" id="tName<?php echo $team['team_id'];?>" name="tName" value ="<?php echo $team['team_Name'];?>"> 
+        <input type="text" class="form-control" id="tName<?php echo $team['team_id'];?>" name="tName" value ="<?php echo $team['team_name'];?>"> 
     </div>
     <div class="mb-3">
         <label for="tcName<?php echo $team['team_id'];?>" class="form-label">Coach Name</label>
