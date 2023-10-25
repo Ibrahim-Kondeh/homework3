@@ -16,7 +16,13 @@ if (isset($_POST['actionType'])) {
                 $successMessage = "Failed to add team. Please try again.";
             }
             break;
-        // Add more cases if you have other actions
+       case "Delete":
+            if (deleteTeams($_POST['teamId'])) {
+                $successMessage = "Team deleted successfully!";
+            } else {
+                $successMessage = "Failed to delete team. Please try again.";
+            }
+            break;
     }
 }
 
