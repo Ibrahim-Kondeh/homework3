@@ -8,40 +8,41 @@
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="editTeamModal<?php echo $teams['team_id'];?>" tabindex="-1" aria-labelledby="editTeamModalLabel<?php echo $teams['team_id'];?>" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="editTeamModalLabel<?php echo $teams['team_id'];?>">Edit Team</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-
-        
-<form method="post" action ="">
-    <div class="mb-3">
-        <label for="tName<?php echo $teams['team_id'];?>" class="form-label">Team Name</label>
-        <input type="text" class="form-control" id="tName<?php echo $teams['team_id'];?>" name="tName" value ="<?php echo $teams['team_Name'];?>">
+<div class="modal fade" id="editTeamModal<?php echo $teams['team_id']; ?>" tabindex="-1"
+    aria-labelledby="editTeamModalLabel<?php echo $teams['team_id']; ?>" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="editTeamModalLabel<?php echo $teams['team_id']; ?>">Edit Team</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="">
+                    <div class="mb-3">
+                        <label for="tName" class="form-label">Team Name</label>
+                        <input type="text" class="form-control" id="tName" name="tName"
+                            value="<?php echo $teams['team_name']; ?>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="tcName" class="form-label">Coach Name</label>
+                        <input type="text" class="form-control" id="tcName" name="tcName"
+                            value="<?php echo $teams['coach_name']; ?>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="tFyear" class="form-label">Founded Year</label>
+                        <input type="number" class="form-control" id="tFyear" name="tFyear"
+                            value="<?php echo $teams['founded_year']; ?>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="tStadium" class="form-label">Home Stadium</label>
+                        <input type="text" class="form-control" id="tStadium" name="tStadium"
+                            value="<?php echo $teams['home_stadium']; ?>">
+                    </div>
+                    <input type="hidden" name="teamId" value="<?php echo $teams['team_id']; ?>">
+                    <input type="hidden" name="actionType" value="Edit">
+                    <button type="submit" class="btn btn-primary">Update Team</button>
+                </form>
+            </div>
+        </div>
     </div>
-    <div class="mb-3">
-        <label for="tcName<?php echo $teams['team_id'];?>" class="form-label">Coach Name</label>
-        <input type="text" class="form-control" id="tcName<?php echo $teams['team_id'];?>" name="tcName" value = "<?php echo $teams['coach_name'];?>">
-    </div>
-    <div class="mb-3">
-        <label for="tFyear<?php echo $teams['team_id'];?>" class="form-label">Founded Year</label>
-        <input type="number" class="form-control" id="tFyear<?php echo $teams['team_id'];?>" name="tFyear" value="<?php echo $teams['founded_year'];?>">
-    </div>
-    <div class="mb-3">
-        <label for="tStadium<?php echo $teams['team_id'];?>" class="form-label">Home Stadium</label>
-        <input type="text" class="form-control" id="tStadium<?php echo $teams['team_id'];?>" name="tStadium" value="<?php echo $teams['home_stadium'];?>">
-    </div>
-   <input type="hidden"  name="teamId" value="<?php echo $teams['team_id'];?>">
-  <input type="hidden" name="actionType" value="Edit">
-    <button type="submit" class="btn btn-primary">Add Team</button>
-</form>
-
-    
-      </div>
-    </div>
-  </div>
 </div>
