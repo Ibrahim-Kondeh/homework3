@@ -36,7 +36,7 @@
                                 </td>
                                 <td>
                                     <a href="players-by-team.php?id=<?php echo $team['team_id']; ?>" class="btn btn-secondary btn-sm">
-                                        <i class="bi bi-person"></i> Players
+                                        <i class="bi bi-person"></i>
                                     </a>
                                 </td>
                             </tr>
@@ -48,6 +48,15 @@
             </div>
         </div>
     </div>
+
+    <!-- Add Team Button at the top right corner -->
+    <div class="fixed-top-button">
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newTeamModal">
+            <i class="bi bi-plus-circle"></i> Add Team
+        </button>
+    </div>
+
+    <!-- Modal and notifications remain the same as before -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-ZOsT2UQzY3FN8LkFDrF4D72KlSb0P9ABqT1ggK5biQOp6iUAZjA8M2reF5FOSta0" crossorigin="anonymous"></script>
 </body>
