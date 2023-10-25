@@ -1,18 +1,17 @@
 <?php
 require_once("util-db.php");
-require_once("matches-by-competitions.php");
+require_once("model-matches-by-competitions.php");
 
-$pageTitle = "Team Roster";
-include "view-header.php";
+$pageTitle = "Matches by Competition";
 
-// Check if 'id' parameter is set in the URL
-if(isset($_GET['id'])) {
-    $teamId = $_GET['id'];
-    $players = selectMatchesByTeam($teamId); // Corrected variable name
-    include "view-players-by-team.php";
+if(isset($_GET['competition_name'])) {
+    $competitionName = $_GET['competition_name'];
+    $matches = getMatchesByCompetition($competitionName);
+    
+    include "view-header.php";
+    include "view-matches-by-competitions.php";
+    include "view-footer.php";
 } else {
-    echo "Team ID not provided.";
+    echo "Competition name not provided.";
 }
-
-include "view-footer.php";
-?>
+?> 
