@@ -78,7 +78,7 @@
                                 
 
                                  <td>
-                                    <form method="post" action="view-teams.php">
+                                    <form method="post" action="">
             <input type="hidden" name="teamId" value="<?php echo $team['team_id']; ?>">
             <button type="submit" class="btn btn-danger btn-sm" name="deleteTeam" onclick="return confirm('Are you sure you want to delete this team?');">
                 <i class="bi bi-trash3"></i> Delete
