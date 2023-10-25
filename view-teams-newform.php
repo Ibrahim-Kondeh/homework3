@@ -35,6 +35,7 @@
         <label for="tStadium" class="form-label">Home Stadium</label>
         <input type="text" class="form-control" id="tStadium" name="tStadium" required>
     </div>
+  <input type="hidden" name="actionType" value="Add">
     <button type="submit" class="btn btn-primary">Add Team</button>
 </form>
 
