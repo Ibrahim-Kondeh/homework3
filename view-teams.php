@@ -64,7 +64,7 @@
                     <tbody>
                         <?php
                          $rowNumber = 0;
-                        while ($teams = $teams->fetch_assoc()) {
+                        while ($team = $teams->fetch_assoc()) {
                          
                         ?>
                             <tr class="highlight-row">
