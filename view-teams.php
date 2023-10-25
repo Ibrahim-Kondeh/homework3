@@ -64,15 +64,15 @@
                     <tbody>
                         <?php
                   
-                        while ($team = $teams->fetch_assoc()) {
+                        while ($teams = $teams->fetch_assoc()) {
                          
                         ?>
                             <tr class="highlight-row">
-                                <td><?php echo $team['team_id']; ?></td>
-                                <td><?php echo $team['team_name']; ?></td>
-                                <td><?php echo $team['coach_name']; ?></td>
-                                <td><?php echo $team['founded_year']; ?></td>
-                                <td><?php echo $team['home_stadium']; ?></td>
+                                <td><?php echo $teams['team_id']; ?></td>
+                                <td><?php echo $teams['team_name']; ?></td>
+                                <td><?php echo $teams['coach_name']; ?></td>
+                                <td><?php echo $teams['founded_year']; ?></td>
+                                <td><?php echo $teams['home_stadium']; ?></td>
 
 
                                 
