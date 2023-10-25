@@ -75,12 +75,12 @@
                                 <td><?php echo $team['home_stadium']; ?></td>
                                 <td>
                                     <a href="edit-team.php?id=<?php echo $team['team_id']; ?>" class="btn btn-primary btn-sm">
-                                        <i class="bi bi-pencil-square"></i>
+                        <i class="bi bi-pencil-square"></i> Edit
                                     </a>
                                 </td>
                                 <td>
-                                    <a href="delete-team.php?id=<?php echo $team['team_id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this team?');">
-                                        <i class="bi bi-trash-fill"></i>
+                        <a href="delete-team.php?id=<?php echo $team['team_id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this team?');">
+                        <i class="bi bi-trash"></i> Delete
                                     </a>
                                 </td>
                                 <td>
