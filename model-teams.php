@@ -27,7 +27,7 @@ function insertTeams($tName, $tcName, $tFyear, $tStadium) {
     }
 }
 
-function updateTeams($teamId, $tName, $tcName, $tFyear, $tStadium) {
+function updateTeams($teamId, $tName, $tcName, $tFyear, $tStadium, $teamId) {
     try {
         $conn = get_db_connection();
         $stmt = $conn->prepare("UPDATE `teams` SET `team_name` = ?, `coach_name` = ?, `founded_year` = ?, `home_stadium` = ? WHERE `team_id` = ?");
