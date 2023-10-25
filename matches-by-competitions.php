@@ -14,4 +14,4 @@ if(isset($_GET['competition_name'])) {
 } else {
     echo "Competition name not provided.";
 }
-?>
+?> 
