@@ -75,7 +75,7 @@
                                 <td><?php echo $team['home_stadium']; ?></td>
 
 
-                                
+                                <td> <?php include "view-teams-editform.php"; ?></td>
 
                                 <td>
     <form method="post" action="">
