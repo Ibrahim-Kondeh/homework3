@@ -1,3 +1,6 @@
+<?php
+
+
 function getAllMatchesGroupedByCompetition() {
     try {
         $conn = get_db_connection();
@@ -17,7 +20,7 @@ function getAllMatchesGroupedByCompetition() {
         $conn->close();
         return $matchesData;
     } catch (Exception $e) {
-        // Handle the exception or log the error if needed
         throw $e;
     }
 }
+?>
