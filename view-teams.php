@@ -34,14 +34,6 @@
             top: 10px;
             right: 10px;
         }
-
-        .notification {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 1000;
-        }
     </style>
 </head>
 
@@ -76,17 +68,17 @@
                                 <td><?php echo $team['founded_year']; ?></td>
                                 <td><?php echo $team['home_stadium']; ?></td>
                                 <td>
-                                    <a href="edit-team.php?id=<?php echo $team['team_id']; ?>" class="btn btn-primary">
-                                        <i class="bi bi-pencil-square"></i> Edit
+                                    <a href="edit-team.php?id=<?php echo $team['team_id']; ?>" class="btn btn-primary btn-sm">
+                                        <i class="bi bi-pencil-square"></i>
                                     </a>
                                 </td>
                                 <td>
-                                    <a href="delete-team.php?id=<?php echo $team['team_id']; ?>" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this team?');">
-                                        <i class="bi bi-trash-fill"></i> Delete
+                                    <a href="delete-team.php?id=<?php echo $team['team_id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this team?');">
+                                        <i class="bi bi-trash-fill"></i>
                                     </a>
                                 </td>
                                 <td>
-                                    <a href="players-by-team.php?id=<?php echo $team['team_id']; ?>" class="btn btn-primary">
+                                    <a href="players-by-team.php?id=<?php echo $team['team_id']; ?>" class="btn btn-secondary btn-sm">
                                         <i class="bi bi-person"></i> Players
                                     </a>
                                 </td>
@@ -104,9 +96,18 @@
         </div>
     </div>
 
-   
+    <!-- Add button at the top right corner -->
+    <div class="fixed-top-button">
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newTeamModal">
+            <i class="bi bi-plus"></i>
+        </button>
+    </div>
 
-    
+    <!-- Notification -->
+    <div class="notification alert alert-success" role="alert">
+        A new team has been added! <i class="bi bi-emoji-smile"></i>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-ZOsT2UQzY3FN8LkFDrF4D72KlSb0P9ABqT1ggK5biQOp6iUAZjA8M2reF5FOSta0" crossorigin="anonymous"></script>
 </body>
 
