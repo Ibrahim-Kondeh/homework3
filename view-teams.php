@@ -11,7 +11,18 @@
             <div class="col-md-9">
                 <h1>Teams</h1>
                 <table class="team-table">
-                    <!-- ... (table headers remain the same) ... -->
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Team Name</th>
+                            <th>Coach</th>
+                            <th>Founded Year</th>
+                            <th>Home Stadium</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
                     <tbody>
                         <?php
                         $rowNumber = 0;
@@ -26,19 +37,15 @@
                                 <td><?php echo $team['home_stadium']; ?></td>
                                 <td>
                                     <a href="edit-team.php?id=<?php echo $team['team_id']; ?>" class="btn btn-primary btn-sm">
-                                        <i class="bi bi-pencil"></i>
+                                        <i class="bi bi-pencil-fill"></i> Edit
                                     </a>
                                 </td>
                                 <td>
-                                    <a href="delete-team.php?id=<?php echo $team['team_id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this team?');">
-                                        <i class="bi bi-trash"></i>
+                                    <a href="delete-team.php?id=<?php echo $team['team_id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this team?')">
+                                        <i class="bi bi-trash-fill"></i> Delete
                                     </a>
                                 </td>
-                                <td>
-                                    <a href="players-by-team.php?id=<?php echo $team['team_id']; ?>" class="btn btn-secondary btn-sm">
-                                        <i class="bi bi-person"></i>
-                                    </a>
-                                </td>
+                                <td><a href="players-by-team.php?id=<?php echo $team['team_id']; ?>" class="btn btn-info btn-sm">Players</a></td>
                             </tr>
                         <?php
                         }
@@ -46,19 +53,14 @@
                     </tbody>
                 </table>
             </div>
+            <div class="col-md-3">
+                <!-- Include the form within the modal -->
+                <?php include "view-teams-newform.php"; ?>
+            </div>
         </div>
     </div>
 
-    <!-- Add Team Button at the top right corner -->
-    <div class="fixed-top-button">
-        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newTeamModal">
-            <i class="bi bi-plus-circle"></i> Add Team
-        </button>
-    </div>
-
-    <!-- Modal and notifications remain the same as before -->
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-ZOsT2UQzY3FN8LkFDrF4D72KlSb0P9ABqT1ggK5biQOp6iUAZjA8M2reF5FOSta0" crossorigin="anonymous"></script>
+    <!-- ... (rest of the body content remains the same) ... -->
 </body>
 
 </html>
