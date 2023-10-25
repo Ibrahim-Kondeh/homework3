@@ -36,7 +36,7 @@
     </div>
    <input type="hidden"  name="teamId" value="<?php echo $team['team_id'];?>">
   <input type="hidden" name="actionType" value="Edit">
-    <button type="submit" class="btn btn-primary">Edit Team</button>
+    <button type="submit" class="btn btn-primary">Save</button>
 </form>
 
     
