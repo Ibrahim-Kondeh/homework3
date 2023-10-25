@@ -63,9 +63,9 @@
                     </thead>
                     <tbody>
                         <?php
-                        $rowNumber = 0;
+                  
                         while ($team = $teams->fetch_assoc()) {
-                            $rowNumber++;
+                         
                         ?>
                             <tr class="highlight-row">
                                 <td><?php echo $team['team_id']; ?></td>
