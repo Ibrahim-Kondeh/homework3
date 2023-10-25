@@ -87,6 +87,16 @@
                                     </button>
                                 </form>
                             </td>
+
+                            <td> <form method="post" action="">
+                                    <input type="hidden" name="teamId" value="<?php echo $team['team_id']; ?>">
+                                    <input type="hidden" name="actionType" value="">
+                                    
+            
+                                   
+                                    </button>
+                                </form>
+                            </td>
                             <td>
                                 <a href="players-by-team.php?id=<?php echo $team['team_id']; ?>"
                                     class="btn btn-secondary btn-sm">
