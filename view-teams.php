@@ -15,7 +15,7 @@
         }
 
         .team-table th, .team-table td {
-            padding: 10px;
+            padding: 15px;
             border: 1px solid #ddd;
             text-align: left;
         }
@@ -26,7 +26,7 @@
 
         /* Custom CSS for table row highlighting */
         .highlight-row:hover {
-            background-color: #ff0000;
+            background-color: #00ffd5;
         }
 
         .fixed-top-button {
@@ -34,6 +34,12 @@
             top: 10px;
             right: 10px;
         }
+        
+      .btn-sm {
+           padding: 10px 15px;
+          margin: 5px;
+        }
+        
     </style>
 </head>
 
