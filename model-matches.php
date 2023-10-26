@@ -1,5 +1,5 @@
 <?php
-
+require_once("util-db.php");
 
 function getAllMatchesGroupedByCompetition() {
     try {
@@ -19,6 +19,48 @@ function getAllMatchesGroupedByCompetition() {
 
         $conn->close();
         return $matchesData;
+    } catch (Exception $e) {
+        throw $e;
+    }
+}
+
+function addMatch($team1Id, $team2Id, $matchDate, $scoreTeam1, $scoreTeam2, $competitionId) {
+    try {
+        $conn = get_db_connection();
+        $stmt = $conn->prepare("INSERT INTO matches (team1_id, team2_id, match_date, score_team1, score_team2, competition_id) VALUES (?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("iissii", $team1Id, $team2Id, $matchDate, $scoreTeam1, $scoreTeam2, $competitionId);
+        $success = $stmt->execute();
+        $stmt->close();
+        $conn->close();
+        return $success;
+    } catch (Exception $e) {
+        throw $e;
+    }
+}
+
+function editMatch($matchId, $team1Id, $team2Id, $matchDate, $scoreTeam1, $scoreTeam2, $competitionId) {
+    try {
+        $conn = get_db_connection();
+        $stmt = $conn->prepare("UPDATE matches SET team1_id = ?, team2_id = ?, match_date = ?, score_team1 = ?, score_team2 = ?, competition_id = ? WHERE match_id = ?");
+        $stmt->bind_param("iissiii", $team1Id, $team2Id, $matchDate, $scoreTeam1, $scoreTeam2, $competitionId, $matchId);
+        $success = $stmt->execute();
+        $stmt->close();
+        $conn->close();
+        return $success;
+    } catch (Exception $e) {
+        throw $e;
+    }
+}
+
+function deleteMatch($matchId) {
+    try {
+        $conn = get_db_connection();
+        $stmt = $conn->prepare("DELETE FROM matches WHERE match_id = ?");
+        $stmt->bind_param("i", $matchId);
+        $success = $stmt->execute();
+        $stmt->close();
+        $conn->close();
+        return $success;
     } catch (Exception $e) {
         throw $e;
     }
