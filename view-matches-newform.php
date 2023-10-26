@@ -5,16 +5,18 @@
                 <h1 class="modal-title fs-5" id="addMatchModalLabel">Add Match</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="mb-3">
-    <label for="competition" class="form-label">Competition Name</label>
-    <!-- Dropdown list for competition name -->
-    <select class="form-select" id="competition" name="competition" required>
-        <!-- Populate options dynamically from competitions data -->
-        <?php foreach ($competitionsData as $competition) { ?>
-            <option value="<?php echo $competition['competition_id']; ?>"><?php echo htmlspecialchars($competition['competition_name']); ?></option>
-        <?php } ?>
-    </select>
-</div>
+            <div class="modal-body">
+                <form method="post" action="">
+                    <div class="mb-3">
+                        <label for="competition" class="form-label">Competition Name</label>
+                        <!-- Dropdown list for competition name -->
+                        <select class="form-select" id="competition" name="competition" required>
+                            <!-- Populate options dynamically from competitions data -->
+                            <?php foreach ($competitionsData as $competition) { ?>
+                                <option value="<?php echo $competition['competition_id']; ?>"><?php echo htmlspecialchars($competition['competition_name']); ?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
                     <div class="mb-3">
                         <label for="team2" class="form-label">Away Team</label>
                         <!-- Dropdown list for away team -->
