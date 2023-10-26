@@ -1,52 +1,18 @@
 <?php
 $pageTitle = "Matches";
-
 ?>
 
-<style>
-    body {
-        background-color: #333; /* Set the background color */
-        color: white;
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-    }
+<!-- Include Add Match Modal -->
+<?php include "view-matches-addform.php"; ?>
 
-    .container {
-        width: 100%;
-        padding: 20px;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
+<!-- Add Button at the Top Right Corner -->
+<div class="text-end">
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addMatchModal">
+        Add Match
+    </button>
+</div>
 
-    .table-container {
-        background-color: rgba(0, 0, 0, 0.7);
-        margin: 20px;
-        padding: 20px;
-        border-radius: 10px;
-    }
-
-    .table-container table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 10px;
-    }
-
-    .table-container th, .table-container td {
-        padding: 10px;
-        text-align: center;
-        border: 1px solid #ddd;
-    }
-
-    .table-container th {
-        background-color: #444;
-    }
-
-    .table-container tr:hover {
-        background-color: rgba(255, 255, 255, 0.1);
-    }
-</style>
+<!-- ... Your existing code for displaying matches ... -->
 
 <div class="container">
     <?php
@@ -61,6 +27,7 @@ $pageTitle = "Matches";
                         <th>Away Team</th>
                         <th>Date</th>
                         <th>Score</th>
+                        <th>Actions</th> <!-- New column for Edit/Delete icons -->
                     </tr>
                 </thead>
                 <tbody>
@@ -70,6 +37,18 @@ $pageTitle = "Matches";
                             <td><?php echo htmlspecialchars($match['team2_name']); ?></td>
                             <td><?php echo htmlspecialchars($match['match_date']); ?></td>
                             <td><?php echo htmlspecialchars($match['score_team1']) . " : " . htmlspecialchars($match['score_team2']); ?></td>
+                            <td>
+                                <!-- Edit and Delete icons with dropdown menu -->
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="actionsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Actions
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="actionsDropdown">
+                                        <li><a class="dropdown-item" href="#">Edit</a></li>
+                                        <li><a class="dropdown-item" href="#">Delete</a></li>
+                                    </ul>
+                                </div>
+                            </td>
                         </tr>
                     <?php } ?>
                 </tbody>
@@ -78,6 +57,7 @@ $pageTitle = "Matches";
     <?php
     }
     ?>
+
 </div>
 
 <?php include "view-footer.php"; ?>
