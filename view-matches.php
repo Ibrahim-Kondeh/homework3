@@ -47,6 +47,12 @@ include "view-header.php";
     .table-container tr:hover {
         background-color: rgba(255, 255, 255, 0.1);
     }
+
+    .add-match-button {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
 </style>
 
 <div class="container">
@@ -55,11 +61,6 @@ include "view-header.php";
     ?>
         <div class="table-container">
             <h2><?php echo htmlspecialchars($competition); ?></h2>
-            <!-- Add Match Button -->
-            <button type="button" class="btn btn-primary btn-sm mb-3" data-bs-toggle="modal" data-bs-target="#addMatchModal<?php echo htmlspecialchars($competition); ?>">
-                Add Match
-            </button>
-
             <table class="table">
                 <thead>
                     <tr>
@@ -78,56 +79,55 @@ include "view-header.php";
                             <td><?php echo htmlspecialchars($match['match_date']); ?></td>
                             <td><?php echo htmlspecialchars($match['score_team1']) . " : " . htmlspecialchars($match['score_team2']); ?></td>
                             <td>
-                                <!-- Edit Match Icon -->
+                                <!-- Edit Match Icon with Dropdown for Competitions -->
                                 <button class="btn btn-secondary btn-sm edit-match-icon" data-bs-toggle="modal" data-bs-target="#editMatchModal<?php echo $match['match_id']; ?>">Edit</button>
-                                <!-- Delete Match Icon -->
+
+                                <!-- Delete Match Icon with Dropdown for Competitions -->
                                 <button class="btn btn-danger btn-sm delete-match-icon" data-bs-toggle="modal" data-bs-target="#deleteMatchModal<?php echo $match['match_id']; ?>">Delete</button>
                             </td>
                         </tr>
-
-                        <!-- Edit Match Modal for Each Match -->
-                        <div class="modal fade" id="editMatchModal<?php echo $match['match_id']; ?>" tabindex="-1" aria-labelledby="editMatchModalLabel<?php echo $match['match_id']; ?>" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <!-- Edit Match Modal Content Goes Here -->
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Delete Match Modal for Each Match -->
-                        <div class="modal fade" id="deleteMatchModal<?php echo $match['match_id']; ?>" tabindex="-1" aria-labelledby="deleteMatchModalLabel<?php echo $match['match_id']; ?>" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <!-- Delete Match Modal Content Goes Here -->
-                                </div>
-                            </div>
-                        </div>
                     <?php } ?>
                 </tbody>
             </table>
         </div>
-
-        <!-- Add Match Modal for Each Competition -->
-        <div class="modal fade" id="addMatchModal<?php echo htmlspecialchars($competition); ?>" tabindex="-1" aria-labelledby="addMatchModalLabel<?php echo htmlspecialchars($competition); ?>" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <!-- Add Match Modal Content Goes Here -->
-                </div>
-            </div>
-        </div>
     <?php
     }
     ?>
+    <!-- Add Match Button with Dropdown for Competitions -->
+    <button class="btn btn-primary add-match-button" data-bs-toggle="modal" data-bs-target="#addMatchModal">Add Match</button>
 </div>
 
+<!-- Modals for Add, Edit, and Delete Matches -->
+<!-- Add Match Modal -->
+<div class="modal fade" id="addMatchModal" tabindex="-1" aria-labelledby="addMatchModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Add Match Modal Content Goes Here -->
+        </div>
+    </div>
+</div>
+
+<!-- Edit and Delete Match Modals for Each Match -->
+<?php foreach ($matchesData as $competition => $matches) {
+    foreach ($matches as $match) { ?>
+        <!-- Edit Match Modal for Match ID <?php echo $match['match_id']; ?> -->
+        <div class="modal fade" id="editMatchModal<?php echo $match['match_id']; ?>" tabindex="-1" aria-labelledby="editMatchModalLabel<?php echo $match['match_id']; ?>" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- Edit Match Modal Content Goes Here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Delete Match Modal for Match ID <?php echo $match['match_id']; ?> -->
+        <div class="modal fade" id="deleteMatchModal<?php echo $match['match_id']; ?>" tabindex="-1" aria-labelledby="deleteMatchModalLabel<?php echo $match['match_id']; ?>" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- Delete Match Modal Content Goes Here -->
+                </div>
+            </div>
+        </div>
+    <?php }
+} ?>
+
 <?php include "view-footer.php"; ?>
-
-<!-- JavaScript for Add, Edit, and Delete Modals -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
-<script>
-    // JavaScript code for handling add, edit, and delete modals
-    // ...
-</script>
