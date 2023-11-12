@@ -8,19 +8,14 @@ function selectPlayers() {
         $stmt->execute();
         $result = $stmt->get_result();
         
-        $countryCounts = array();
+        $countriesData = array();
         while ($row = $result->fetch_assoc()) {
-            $nationality = $row['nationality'];
-            if (isset($countryCounts[$nationality])) {
-                $countryCounts[$nationality]++;
-            } else {
-                $countryCounts[$nationality] = 1;
-            }
+            $countriesData[] = $row['nationality'];
         }
 
         $conn->close();
 
-        return $countryCounts;
+        return $countriesData;
     } catch (Exception $e) {
         $conn->close();
         throw $e;
