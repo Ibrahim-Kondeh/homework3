@@ -11,7 +11,7 @@
     <style>
         /* Custom CSS to style the players table */
         .player-table {
-            width: 60%;
+            width: 40%;
             border-collapse: collapse;
             margin-top: 20px;
         }
@@ -49,9 +49,10 @@
         }
 
         #globe-container {
-            width: 60%;
+            width: 50%;
             height: 400px;
             margin-top: 20px;
+            margin-left: 10px; /* Add margin to separate the table and globe */
         }
     </style>
 </head>
