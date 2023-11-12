@@ -117,7 +117,7 @@
             <canvas id="countryPieChart" width="400" height="200"></canvas>
         </div>
     </div>
-
+<div id="globe-container"></div>
     <!-- Script for globe.gl -->
     <script>
         // Dynamic data for the globe (without duplicates)
