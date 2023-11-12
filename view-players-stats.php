@@ -7,9 +7,6 @@
     <title>Players</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://unpkg.com/globe.gl"></script>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-
     <style>
         /* Custom CSS to style the players table */
         .player-table {
@@ -50,7 +47,7 @@
             width: 45%;
         }
 
-        #map-container {
+        #globe-container {
             width: 100%;
             height: 400px;
         }
@@ -121,7 +118,7 @@
         </div>
     </div>
 
-    <div id="map-container"></div>
+    <div id="globe-container"></div>
 
     <!-- Script for globe.gl -->
     <script>
@@ -129,43 +126,30 @@
         const locations = <?php echo json_encode($uniqueCountriesData); ?>;
 
         // Get the container div for the globe
-        const globeContainer = document.getElementById('map-container');
+        const globeContainer = document.getElementById('globe-container');
 
         if (globeContainer) {
             // Initialize globe.gl
             const globe = Globe({
-                container: '#map-container',
+                container: '#globe-container',
                 globeImageUrl: 'https://unpkg.com/three-globe/example/img/earth-night.jpg', // Sample image URL
                 pointsData: locations.map(location => ({
                     lat: location.latitude,
                     lon: location.longitude,
                     label: location.nationality,
+                    value: location.playerCount,
                     color: 'rgba(75, 192, 192, 0.7)', // Adjust color as needed
                 })),
                 pointLabel: 'label',
                 pointAltitude: 0.1,
+                pointRadius: 0.5,
+                pointResolution: 20,
+                pointColor: 'color',
+                // Additional options for customization
             });
         } else {
             console.error('Container not found.');
         }
-    </script>
-
-    <!-- Initialize Leaflet map -->
-    <script>
-        const map = L.map('map-container').setView([0, 0], 2);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© OpenStreetMap contributors'
-        }).addTo(map);
-
-        // Coordinates for countries
-        const countriesData = <?php echo json_encode($uniqueCountriesData); ?>;
-
-        // Add markers to the map
-        countriesData.forEach(country => {
-            const marker = L.marker([country.latitude, country.longitude])
-                .addTo(map)
-                .bindPopup(`<b>${country.nationality}</b><br>Players: ${country.playerCount}`);
-        });
     </script>
 
     <?php
