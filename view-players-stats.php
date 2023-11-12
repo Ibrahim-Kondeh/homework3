@@ -6,15 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Players</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css">
-    <script src="https://unpkg.com/globe.gl"></script> <!-- Add globe.gl script tag -->
-
-    <!-- AmCharts script -->
-    <script src="https://www.amcharts.com/lib/4/core.js"></script>
-    <script src="https://www.amcharts.com/lib/4/charts.js"></script>
-    <script src="https://www.amcharts.com/lib/4/maps.js"></script>
-    <script src="https://www.amcharts.com/lib/4/geodata/worldLow.js"></script>
-    <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+    <script src="https://unpkg.com/globe.gl"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
     <style>
         /* Custom CSS to style the players table */
@@ -56,8 +50,7 @@
             width: 45%;
         }
 
-        #globe-container,
-        #amchart-map-container {
+        #map-container {
             width: 100%;
             height: 400px;
         }
@@ -128,8 +121,7 @@
         </div>
     </div>
 
-    <div id="globe-container"></div>
-    <div id="amchart-map-container"></div>
+    <div id="map-container"></div>
 
     <!-- Script for globe.gl -->
     <script>
@@ -137,12 +129,12 @@
         const locations = <?php echo json_encode($uniqueCountriesData); ?>;
 
         // Get the container div for the globe
-        const globeContainer = document.getElementById('globe-container');
+        const globeContainer = document.getElementById('map-container');
 
         if (globeContainer) {
             // Initialize globe.gl
             const globe = Globe({
-                container: '#globe-container',
+                container: '#map-container',
                 globeImageUrl: 'https://unpkg.com/three-globe/example/img/earth-night.jpg', // Sample image URL
                 pointsData: locations.map(location => ({
                     lat: location.latitude,
@@ -158,119 +150,21 @@
         }
     </script>
 
-    <!-- Script for AmCharts map -->
+    <!-- Initialize Leaflet map -->
     <script>
-        // Dynamic data for the map (without duplicates)
-        const mapData = <?php echo json_encode($uniqueCountriesData); ?>;
+        const map = L.map('map-container').setView([0, 0], 2);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
 
-        // Get the container div for the map
-        const mapContainer = document.getElementById('amchart-map-container');
+        // Coordinates for countries
+        const countriesData = <?php echo json_encode($uniqueCountriesData); ?>;
 
-        if (mapContainer) {
-            // Initialize AmCharts map
-            am4core.ready(function () {
-                // Themes begin
-                am4core.useTheme(am4themes_animated);
-                // Themes end
-
-                // Create map instance
-                const map = am4core.create("amchart-map-container", am4maps.MapChart);
-
-                // Set map definition
-                map.geodata = am4geodata_worldLow;
-
-                // Set projection
-                map.projection = new am4maps.projections.Miller();
-
-                // Create map polygon series
-                const polygonSeries = map.series.push(new am4maps.MapPolygonSeries());
-
-                // Exclude Antartica
-                polygonSeries.exclude = ["AQ"];
-
-                // Make map load polygon (like country names) data from GeoJSON
-                polygonSeries.useGeodata = true;
-
-                // Configure series
-                const polygonTemplate = polygonSeries.mapPolygons.template;
-                polygonTemplate.tooltipText = "{name}";
-                polygonTemplate.fill = am4core.color("#74B266"); // Set a default fill color for countries
-
-                // Add data for customizing colors
-                polygonSeries.data = mapData.map(location => ({
-                    id: location.countryCode, // Use the country code as an ID
-                    fill: am4core.color(location.color), // Use the color from your data
-                }));
-
-                // Set up heat rule to modify color of states on hover
-                const heatRule = polygonSeries.heatRules.push({
-                    property: "fill",
-                    target: polygonTemplate,
-                    min: am4core.color("#F4F4F4"),
-                    max: am4core.color("#74B266")
-                });
-
-                // Create a color legend
-                const colorLegend = new am4maps.ColorLegend();
-                colorLegend.parent = map.chartContainer;
-                colorLegend.align = "right";
-                colorLegend.valign = "bottom";
-                colorLegend.width = 250;
-                colorLegend.marginRight = 27;
-                colorLegend.padding(5, 5, 5, 5);
-                colorLegend.valueAxis.renderer.labels.template.fontSize = 10;
-
-                // Add a base button
-                const hideMe = colorLegend.createChild(am4core.Button);
-                hideMe.label.text = "Hide countries with no data";
-                hideMe.padding(5, 5, 5, 5);
-                hideMe.marginTop = 7;
-                hideMe.fontSize = 10;
-                hideMe.background.cornerRadius(5, 5, 5, 5);
-                hideMe.background.strokeOpacity = 0.3;
-                hideMe.background.fillOpacity = 0.1;
-                hideMe.tooltipText = "Toggle countries with no data";
-                hideMe.events.on("hit", function () {
-                    polygonSeries.dataItems.each(function (dataItem) {
-                        dataItem.polygon.show();
-                    });
-                    hideMe.hide();
-                });
-
-                // Add data for countries with no data
-                const emptyCountries = mapData.filter(location => !location.playerCount);
-                polygonSeries.data.push(...emptyCountries.map(location => ({
-                    id: location.countryCode,
-                    fill: am4core.color("#F4F4F4"),
-                })));
-
-                // Hide countries with no data by default
-                polygonSeries.dataItems.each(function (dataItem) {
-                    if (!dataItem.dataContext.playerCount) {
-                        dataItem.polygon.hide();
-                    }
-                });
-
-                // Set up tooltips
-                const hoverState = polygonTemplate.states.create("hover");
-                hoverState.properties.fill = am4core.color("#5E83B4"); // Set the hover color
-
-                // Zoom control
-                map.zoomControl = new am4maps.ZoomControl();
-
-                // Set up small map
-                map.smallMap = new am4maps.SmallMap();
-                map.smallMap.series.push(polygonSeries);
-
-                // Disposal
-                map.chartContainer.events.on("down", function () {
-                    hideMe.hide();
-                    colorLegend.hide();
-                });
-            });
-        } else {
-            console.error('AmCharts map container not found.');
-        }
+        // Add markers for each country
+        countriesData.forEach(country => {
+            const marker = L.marker([country.latitude, country.longitude]).addTo(map);
+            marker.bindPopup(country.nationality);
+        });
     </script>
 
     <?php
