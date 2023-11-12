@@ -60,12 +60,14 @@
             </thead>
             <tbody>
     <?php
-    // Get unique countries and their counts
-    $uniqueCountriesData = array_count_values($playerData);
+  // Get unique countries and their player counts
+  $uniqueCountriesData = selectPlayers();
 
-    foreach ($uniqueCountriesData as $nationality => $count) {
-        // Get the flag icon based on nationality
-        $flagIcon = getFlagIcon($nationality);
+  foreach ($uniqueCountriesData as $row) {
+    $nationality = $row['nationality'];
+    $flagIcon = getFlagIcon($nationality);
+    $playerCount = $row['playerCount'];
+
     ?>
         <tr class="highlight-row">
             <td><?php echo $nationality; ?></td>
