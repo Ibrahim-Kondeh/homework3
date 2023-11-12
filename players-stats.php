@@ -6,7 +6,7 @@ $pageTitle = "Players Stats";
 include "view-header.php";
 
 // Get player data
-$playerCounts = selectPlayers();
+$playerData = selectPlayers();
 
 // Include the view and pass player data
 include "view-players-stats.php";
