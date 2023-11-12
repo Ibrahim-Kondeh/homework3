@@ -59,26 +59,39 @@
                 </tr>
             </thead>
             <tbody>
-                <?php
-                // Get unique countries and their player counts
-                $uniqueCountriesData = selectPlayers();
+               <?php
+// Function to generate distinct colors
+function generateColors($numColors) {
+    $colors = [];
 
-                // Generate distinct colors for each country
-                $countryColors = generateColors(count($uniqueCountriesData));
+    for ($i = 0; $i < $numColors; $i++) {
+        $hue = ($i * 360 / $numColors) % 360;
+        $colors[] = "hsl($hue, 70%, 60%)"; // You can adjust saturation and lightness as needed
+    }
 
-                foreach ($uniqueCountriesData as $index => $row) {
-                    $nationality = $row['nationality'];
-                    $flagIcon = getFlagIcon($nationality);
-                    $playerCount = $row['playerCount'];
-                    $color = $countryColors[$index]; // Assign a unique color to each country
-                ?>
-                    <tr class="highlight-row">
-                        <td><?php echo $nationality; ?></td>
-                        <td><span class="<?php echo $flagIcon; ?>"></span></td>
-                    </tr>
-                <?php
-                }
-                ?>
+    return $colors;
+}
+
+// Get unique countries and their player counts
+$uniqueCountriesData = selectPlayers();
+
+// Generate distinct colors for each country
+$countryColors = generateColors(count($uniqueCountriesData));
+
+foreach ($uniqueCountriesData as $index => $row) {
+    $nationality = $row['nationality'];
+    $flagIcon = getFlagIcon($nationality);
+    $playerCount = $row['playerCount'];
+    $color = $countryColors[$index]; // Assign a unique color to each country
+?>
+    <tr class="highlight-row">
+        <td><?php echo $nationality; ?></td>
+        <td><span class="<?php echo $flagIcon; ?>" style="color: <?php echo $color; ?>"></span></td>
+    </tr>
+<?php
+}
+?>
+
             </tbody>
         </table>
     </div>
