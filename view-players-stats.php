@@ -118,20 +118,20 @@
         </div>
     </div>
 <div id="globe-container"></div>
-    <!-- Script for globe.gl -->
-    <script>
-        // Dynamic data for the globe (without duplicates)
-        const locations = <?php echo json_encode($uniqueCountriesData); ?>;
 
-        // Get the container div for the globe
-        const globeContainer = document.createElement('div');
-        globeContainer.id = 'globe-container';
-        document.body.appendChild(globeContainer);
+<!-- Script for globe.gl -->
+<script>
+    // Dynamic data for the globe (without duplicates)
+    const locations = <?php echo json_encode($uniqueCountriesData); ?>;
 
+    // Get the container div for the globe
+    const globeContainer = document.getElementById('globe-container');
+    
+    if (globeContainer) {
         // Initialize globe.gl
         const globe = Globe({
             container: '#globe-container',
-            globeImageUrl: 'path-to-your-globe-image.jpg', // Replace with the path to your globe texture image
+            globeImageUrl: 'https://unpkg.com/three-globe/example/img/earth-night.jpg', // Sample image URL
             pointsData: locations.map(location => ({
                 lat: location.latitude,
                 lon: location.longitude,
@@ -141,8 +141,10 @@
             pointLabel: 'label',
             pointAltitude: 0.1,
         });
-    </script>
-
+    } else {
+        console.error('Container not found.');
+    }
+</script>
     <?php
     // Dynamic data for charts (without duplicates)
     $labels = array_map(function ($row) {
