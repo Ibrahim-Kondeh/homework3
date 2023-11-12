@@ -52,13 +52,12 @@
     <div class="navbar">
         <a href="/">Home</a>
         <a href="teams.php">Teams</a>
-        <a href="players.php">Players</a>
+
         <a href="matches.php">Matches</a>
         <a href="competitions.php">Competitions</a>
-        <a href="players-stats.php">MATCH STATS</a>
+        <a href="players-stats.php">Players Stats</a>
     </div>
 
-  
 
 </body>
 
