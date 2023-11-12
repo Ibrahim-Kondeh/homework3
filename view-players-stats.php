@@ -12,17 +12,17 @@
     <style>
         /* Custom CSS to style the players table */
         .player-table {
-            width: 30%;
+            width: 60%;
             border-collapse: collapse;
             margin-top: 20px;
         }
 
         .player-table th,
         .player-table td {
-            padding: 6px;
+            padding: 8px;
             border: 1px solid #ddd;
             text-align: left;
-            font-size: 12px; /* Adjust font size as needed */
+            font-size: 14px; /* Adjust font size as needed */
         }
 
         .player-table th {
@@ -36,8 +36,6 @@
 
         .table-responsive {
             margin-top: 20px;
-            width: 30%;
-            float: left;
         }
 
         /* Style for the chart containers */
@@ -45,8 +43,6 @@
             display: flex;
             justify-content: space-around;
             margin-top: 20px;
-            width: 70%;
-            float: left;
         }
 
         .chart {
@@ -54,9 +50,8 @@
         }
 
         #globe-container {
-            width: 30%;
+            width: 100%;
             height: 400px;
-            float: right;
         }
     </style>
 </head>
