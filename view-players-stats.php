@@ -40,10 +40,10 @@
         <table class="player-table table">
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Date of Birth</th>
+            
+                 
                      <th>Nationality</th>th>
-                    <th>Position</th>
+                    
                 </tr>
             </thead>
             <tbody>
@@ -51,10 +51,9 @@
                 while ($players = $player->fetch_assoc()) {
                 ?>
                     <tr class="highlight-row">
-                        <td><?php echo $players['player_name']; ?></td>
-                        <td><?php echo $players['date_of_birth']; ?></td>
+                       
                         <td><?php echo $players['nationality']; ?></td>
-                        <td><?php echo $players['position']; ?></td>
+                   
                     </tr>
                 <?php
                 }
