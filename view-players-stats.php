@@ -9,6 +9,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css">
     <script src="https://unpkg.com/globe.gl"></script> <!-- Add globe.gl script tag -->
 
+    <!-- AmCharts script -->
+    <script src="https://www.amcharts.com/lib/4/core.js"></script>
+    <script src="https://www.amcharts.com/lib/4/charts.js"></script>
+    <script src="https://www.amcharts.com/lib/4/maps.js"></script>
+    <script src="https://www.amcharts.com/lib/4/geodata/worldLow.js"></script>
+    <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+
     <style>
         /* Custom CSS to style the players table */
         .player-table {
@@ -49,7 +56,8 @@
             width: 45%;
         }
 
-        #globe-container {
+        #globe-container,
+        #amchart-map-container {
             width: 100%;
             height: 400px;
         }
@@ -121,6 +129,7 @@
     </div>
 
     <div id="globe-container"></div>
+    <div id="amchart-map-container"></div>
 
     <!-- Script for globe.gl -->
     <script>
@@ -146,6 +155,121 @@
             });
         } else {
             console.error('Container not found.');
+        }
+    </script>
+
+    <!-- Script for AmCharts map -->
+    <script>
+        // Dynamic data for the map (without duplicates)
+        const mapData = <?php echo json_encode($uniqueCountriesData); ?>;
+
+        // Get the container div for the map
+        const mapContainer = document.getElementById('amchart-map-container');
+
+        if (mapContainer) {
+            // Initialize AmCharts map
+            am4core.ready(function () {
+                // Themes begin
+                am4core.useTheme(am4themes_animated);
+                // Themes end
+
+                // Create map instance
+                const map = am4core.create("amchart-map-container", am4maps.MapChart);
+
+                // Set map definition
+                map.geodata = am4geodata_worldLow;
+
+                // Set projection
+                map.projection = new am4maps.projections.Miller();
+
+                // Create map polygon series
+                const polygonSeries = map.series.push(new am4maps.MapPolygonSeries());
+
+                // Exclude Antartica
+                polygonSeries.exclude = ["AQ"];
+
+                // Make map load polygon (like country names) data from GeoJSON
+                polygonSeries.useGeodata = true;
+
+                // Configure series
+                const polygonTemplate = polygonSeries.mapPolygons.template;
+                polygonTemplate.tooltipText = "{name}";
+                polygonTemplate.fill = am4core.color("#74B266"); // Set a default fill color for countries
+
+                // Add data for customizing colors
+                polygonSeries.data = mapData.map(location => ({
+                    id: location.countryCode, // Use the country code as an ID
+                    fill: am4core.color(location.color), // Use the color from your data
+                }));
+
+                // Set up heat rule to modify color of states on hover
+                const heatRule = polygonSeries.heatRules.push({
+                    property: "fill",
+                    target: polygonTemplate,
+                    min: am4core.color("#F4F4F4"),
+                    max: am4core.color("#74B266")
+                });
+
+                // Create a color legend
+                const colorLegend = new am4maps.ColorLegend();
+                colorLegend.parent = map.chartContainer;
+                colorLegend.align = "right";
+                colorLegend.valign = "bottom";
+                colorLegend.width = 250;
+                colorLegend.marginRight = 27;
+                colorLegend.padding(5, 5, 5, 5);
+                colorLegend.valueAxis.renderer.labels.template.fontSize = 10;
+
+                // Add a base button
+                const hideMe = colorLegend.createChild(am4core.Button);
+                hideMe.label.text = "Hide countries with no data";
+                hideMe.padding(5, 5, 5, 5);
+                hideMe.marginTop = 7;
+                hideMe.fontSize = 10;
+                hideMe.background.cornerRadius(5, 5, 5, 5);
+                hideMe.background.strokeOpacity = 0.3;
+                hideMe.background.fillOpacity = 0.1;
+                hideMe.tooltipText = "Toggle countries with no data";
+                hideMe.events.on("hit", function () {
+                    polygonSeries.dataItems.each(function (dataItem) {
+                        dataItem.polygon.show();
+                    });
+                    hideMe.hide();
+                });
+
+                // Add data for countries with no data
+                const emptyCountries = mapData.filter(location => !location.playerCount);
+                polygonSeries.data.push(...emptyCountries.map(location => ({
+                    id: location.countryCode,
+                    fill: am4core.color("#F4F4F4"),
+                })));
+
+                // Hide countries with no data by default
+                polygonSeries.dataItems.each(function (dataItem) {
+                    if (!dataItem.dataContext.playerCount) {
+                        dataItem.polygon.hide();
+                    }
+                });
+
+                // Set up tooltips
+                const hoverState = polygonTemplate.states.create("hover");
+                hoverState.properties.fill = am4core.color("#5E83B4"); // Set the hover color
+
+                // Zoom control
+                map.zoomControl = new am4maps.ZoomControl();
+
+                // Set up small map
+                map.smallMap = new am4maps.SmallMap();
+                map.smallMap.series.push(polygonSeries);
+
+                // Disposal
+                map.chartContainer.events.on("down", function () {
+                    hideMe.hide();
+                    colorLegend.hide();
+                });
+            });
+        } else {
+            console.error('AmCharts map container not found.');
         }
     </script>
 
