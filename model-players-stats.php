@@ -4,7 +4,7 @@
 function selectPlayers() {
     try {
         $conn = get_db_connection();
-        $stmt = $conn->prepare("SELECT nationality FROM player");
+        $stmt = $conn->prepare("SELECT distinct nationality FROM player");
         $stmt->execute();
         $result = $stmt->get_result();
 
