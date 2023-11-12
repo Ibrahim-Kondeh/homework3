@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Players</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css">
     <script src="https://unpkg.com/globe.gl"></script>
+
     <style>
         /* Custom CSS to style the players table */
         .player-table {
@@ -48,8 +50,9 @@
         }
 
         #globe-container {
-            width: 100%;
+            width: 40%; /* Adjust the width as needed */
             height: 400px;
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -92,7 +95,10 @@
                     $color = $countryColors[$index]; // Assign a unique color to each country
                 ?>
                     <tr class="highlight-row">
-                        <td><?php echo $nationality; ?></td>
+                        <td>
+                            <span class="<?php echo $flagIcon; ?>" style="color: <?php echo $color; ?>"></span>
+                            <?php echo $nationality; ?>
+                        </td>
                         <td><span class="<?php echo $flagIcon; ?>" style="color: <?php echo $color; ?>"></span></td>
                     </tr>
                 <?php
@@ -137,15 +143,10 @@
                     lat: location.latitude,
                     lon: location.longitude,
                     label: location.nationality,
-                    value: location.playerCount,
                     color: 'rgba(75, 192, 192, 0.7)', // Adjust color as needed
                 })),
                 pointLabel: 'label',
                 pointAltitude: 0.1,
-                pointRadius: 0.5,
-                pointResolution: 20,
-                pointColor: 'color',
-                // Additional options for customization
             });
         } else {
             console.error('Container not found.');
