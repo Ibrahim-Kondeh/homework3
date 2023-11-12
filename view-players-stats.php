@@ -12,15 +12,17 @@
     <style>
         /* Custom CSS to style the players table */
         .player-table {
-            width: 100%;
+            width: 60%;
             border-collapse: collapse;
+            margin-top: 20px;
         }
 
         .player-table th,
         .player-table td {
-            padding: 10px;
+            padding: 8px;
             border: 1px solid #ddd;
             text-align: left;
+            font-size: 14px; /* Adjust font size as needed */
         }
 
         .player-table th {
