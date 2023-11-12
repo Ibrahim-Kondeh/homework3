@@ -57,7 +57,7 @@
             </thead>
             <tbody>
                 <?php
-                foreach ($players as $nationality => $count) {
+                foreach ($player as $nationality => $count) {
                 ?>
                     <tr class="highlight-row">
                         <td><?php echo $nationality; ?></td>
