@@ -42,7 +42,7 @@
                 <tr>
             
                  
-                     <th>Nationality</th>th>
+                     <th>Nationality</th>
                     
                 </tr>
             </thead>
