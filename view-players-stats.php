@@ -31,6 +31,17 @@
         .table-responsive {
             margin-top: 20px;
         }
+
+        /* Style for the chart containers */
+        .chart-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .chart {
+            width: 45%;
+        }
     </style>
 </head>
 
@@ -40,10 +51,7 @@
         <table class="player-table table">
             <thead>
                 <tr>
-            
-                 
-                     <th>Nationality</th>
-                    
+                    <th>Nationality</th>
                 </tr>
             </thead>
             <tbody>
@@ -51,9 +59,7 @@
                 while ($players = $player->fetch_assoc()) {
                 ?>
                     <tr class="highlight-row">
-                       
                         <td><?php echo $players['nationality']; ?></td>
-                   
                     </tr>
                 <?php
                 }
@@ -61,6 +67,90 @@
             </tbody>
         </table>
     </div>
+
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Chart containers -->
+    <div class="chart-container">
+        <!-- Bar Chart -->
+        <div class="chart">
+            <canvas id="countryChart" width="400" height="200"></canvas>
+        </div>
+
+        <!-- Pie Chart -->
+        <div class="chart">
+            <canvas id="countryPieChart" width="400" height="200"></canvas>
+        </div>
+    </div>
+
+    <script>
+        // Sample data (replace this with your data)
+        const countriesData = [
+            { country: 'USA', count: 5, flag: '🇺🇸' },
+            { country: 'UK', count: 3, flag: '🇬🇧' },
+            { country: 'Germany', count: 2, flag: '🇩🇪' },
+            // Add more countries as needed
+        ];
+
+        // Extract data for charts
+        const labels = countriesData.map(country => country.country);
+        const counts = countriesData.map(country => country.count);
+
+        // Get canvas elements and contexts
+        const ctx = document.getElementById('countryChart').getContext('2d');
+        const pieCtx = document.getElementById('countryPieChart').getContext('2d');
+
+        // Create bar chart
+        const countryChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Number of Countries Represented',
+                    data: counts,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)', // Change the color as needed
+                    borderColor: 'rgba(75, 192, 192, 1)', // Change the color as needed
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Create pie chart
+        const countryPieChart = new Chart(pieCtx, {
+            type: 'pie',
+            data: {
+                labels: labels,
+                datasets: [{
+                    data: counts,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        // Add more colors as needed
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        // Add more colors as needed
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+            }
+        });
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-ZOsT2UQzY3FN8LkFDrF4D72KlSb0P9ABqT1ggK5biQOp6iUAZjA8M2reF5FOSta0" crossorigin="anonymous"></script>
 </body>
