@@ -59,7 +59,8 @@
             <tbody>
                 <?php
                 foreach ($playerData as $nationality) {
-                    // Get the flag emoji based on nationality (replace this with your actual flags)
+                    // Implement your logic to get the flag emoji based on nationality
+                    // Replace the following line with your actual logic
                     $flag = getFlagEmoji($nationality);
                 ?>
                     <tr class="highlight-row">
