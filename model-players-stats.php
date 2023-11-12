@@ -39,7 +39,13 @@ function getFlagIcon($nationality) {
         'Cameroon' => 'cm',
         'Denmark' => 'dk',
         'Germany' => 'de',
-        // Add more mappings as needed
+        'Argentina' => 'ar',
+        'Switzerland' => 'ch',
+        'Spain' => 'es',
+        'Ecuador' => 'ec',
+        'Senegal' => 'sn',
+        'Albania' => 'al',
+        
     ];
 
     $countryCode = $countryCodeMapping[$nationality] ?? ''; // Get the country code or empty string if not found
