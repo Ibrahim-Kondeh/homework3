@@ -35,7 +35,7 @@
 </head>
 
 <body>
-    <h1>Players</h1>
+    <h1>One Football One World</h1>
     <div class="table-responsive">
         <table class="player-table table">
             <thead>
