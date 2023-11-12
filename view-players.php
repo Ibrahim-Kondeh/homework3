@@ -48,13 +48,13 @@
             </thead>
             <tbody>
                 <?php
-                while ($players = $player->fetch_assoc()) {
+                while ($player = $players->fetch_assoc()) {
                 ?>
                     <tr class="highlight-row">
-                        <td><?php echo $players['player_name']; ?></td>
-                        <td><?php echo $players['date_of_birth']; ?></td>
-                        <td><?php echo $players['nationality']; ?></td>
-                        <td><?php echo $players['position']; ?></td>
+                        <td><?php echo $player['player_name']; ?></td>
+                        <td><?php echo $player['date_of_birth']; ?></td>
+                        <td><?php echo $player['nationality']; ?></td>
+                        <td><?php echo $player['position']; ?></td>
                     </tr>
                 <?php
                 }
