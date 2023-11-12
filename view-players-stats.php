@@ -5,15 +5,29 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Players</title>
+    <link href="https://unpkg.com/leaflet/dist/leaflet.css" rel="stylesheet">
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/globe.gl"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css">
 
     <style>
         /* Custom CSS to style the players table */
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
         .player-table {
             width: 40%;
             border-collapse: collapse;
-            margin-top: 20px;
         }
 
         .player-table th,
@@ -42,86 +56,88 @@
             display: flex;
             justify-content: space-around;
             margin-top: 20px;
+            width: 100%;
         }
 
         .chart {
             width: 45%;
         }
 
-        #globe-container {
-            width: 50%;
+        #leaflet-map-container {
+            width: 40%;
             height: 400px;
             margin-top: 20px;
-            margin-left: 10px; /* Add margin to separate the table and globe */
         }
     </style>
 </head>
 
 <body>
     <h1>One Football One World</h1>
-    <div class="table-responsive">
-        <table class="player-table table">
-            <thead>
-                <tr>
-                    <th>Nationality</th>
-                    <th>Flag</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                // Function to generate distinct colors
-                function generateColors($numColors)
-                {
-                    $colors = [];
+    <div class="container">
+        <div class="table-responsive">
+            <table class="player-table table">
+                <thead>
+                    <tr>
+                        <th>Nationality</th>
+                        <th>Flag</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    // Function to generate distinct colors
+                    function generateColors($numColors)
+                    {
+                        $colors = [];
 
-                    for ($i = 0; $i < $numColors; $i++) {
-                        $hue = ($i * 360 / $numColors) % 360;
-                        $colors[] = "hsl($hue, 70%, 60%)"; // You can adjust saturation and lightness as needed
+                        for ($i = 0; $i < $numColors; $i++) {
+                            $hue = ($i * 360 / $numColors) % 360;
+                            $colors[] = "hsl($hue, 70%, 60%)"; // You can adjust saturation and lightness as needed
+                        }
+
+                        return $colors;
                     }
 
-                    return $colors;
-                }
+                    // Get unique countries and their player counts
+                    $uniqueCountriesData = selectPlayers();
 
-                // Get unique countries and their player counts
-                $uniqueCountriesData = selectPlayers();
+                    // Generate distinct colors for each country
+                    $countryColors = generateColors(count($uniqueCountriesData));
 
-                // Generate distinct colors for each country
-                $countryColors = generateColors(count($uniqueCountriesData));
-
-                foreach ($uniqueCountriesData as $index => $row) {
-                    $nationality = $row['nationality'];
-                    $flagIcon = getFlagIcon($nationality);
-                    $playerCount = $row['playerCount'];
-                    $color = $countryColors[$index]; // Assign a unique color to each country
-                ?>
-                    <tr class="highlight-row">
-                        <td><?php echo $nationality; ?></td>
-                        <td><span class="<?php echo $flagIcon; ?>" style="color: <?php echo $color; ?>"></span></td>
-                    </tr>
-                <?php
-                }
-                ?>
-            </tbody>
-        </table>
-    </div>
-
-    <!-- Chart.js CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <!-- Chart containers -->
-    <div class="chart-container">
-        <!-- Bar Chart -->
-        <div class="chart">
-            <canvas id="countryChart" width="400" height="200"></canvas>
+                    foreach ($uniqueCountriesData as $index => $row) {
+                        $nationality = $row['nationality'];
+                        $flagIcon = getFlagIcon($nationality);
+                        $playerCount = $row['playerCount'];
+                        $color = $countryColors[$index]; // Assign a unique color to each country
+                    ?>
+                        <tr class="highlight-row">
+                            <td><?php echo $nationality; ?></td>
+                            <td><span class="<?php echo $flagIcon; ?>" style="color: <?php echo $color; ?>"></span></td>
+                        </tr>
+                    <?php
+                    }
+                    ?>
+                </tbody>
+            </table>
         </div>
 
-        <!-- Pie Chart -->
-        <div class="chart">
-            <canvas id="countryPieChart" width="400" height="200"></canvas>
-        </div>
-    </div>
+        <!-- Chart.js CDN -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <div id="globe-container"></div>
+        <!-- Chart containers -->
+        <div class="chart-container">
+            <!-- Bar Chart -->
+            <div class="chart">
+                <canvas id="countryChart" width="400" height="200"></canvas>
+            </div>
+
+            <!-- Pie Chart -->
+            <div class="chart">
+                <canvas id="countryPieChart" width="400" height="200"></canvas>
+            </div>
+        </div>
+
+        <div id="leaflet-map-container"></div>
+    </div>
 
     <?php
     // Dynamic data for charts (without duplicates)
@@ -181,30 +197,26 @@
         });
     </script>
 
-    <!-- Script for globe.gl -->
-    <script src="https://unpkg.com/globe.gl"></script>
+    <!-- Script for Leaflet map -->
     <script>
-        // Dynamic data for the globe (without duplicates)
-        const locations = <?php echo json_encode($uniqueCountriesData); ?>;
+        const mapContainer = document.getElementById('leaflet-map-container');
 
-        // Get the container div for the globe
-        const globeContainer = document.getElementById('globe-container');
+        if (mapContainer) {
+            const map = L.map('leaflet-map-container').setView([0, 0], 2); // Set the initial view
 
-        if (globeContainer) {
-            // Initialize globe.gl
-            const myGlobe = Globe();
-            myGlobe(globeContainer)
-                .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-night.jpg') // Sample image URL
-                .pointsData(locations.map(location => ({
-                    lat: location.latitude,
-                    lon: location.longitude,
-                    label: location.nationality,
-                    color: 'rgba(75, 192, 192, 0.7)', // Adjust color as needed
-                })))
-                .pointLabel('label')
-                .pointAltitude(0.1);
+            // Add the OpenStreetMap tiles as a base layer
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            // Add markers for each country
+            <?php foreach ($uniqueCountriesData as $row) : ?>
+                L.marker([<?= $row['latitude']; ?>, <?= $row['longitude']; ?>])
+                    .addTo(map)
+                    .bindPopup('<?= $row['nationality']; ?>');
+            <?php endforeach; ?>
         } else {
-            console.error('Container not found.');
+            console.error('Leaflet map container not found.');
         }
     </script>
 
