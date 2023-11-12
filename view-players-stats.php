@@ -7,7 +7,6 @@
     <title>Players</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css">
-    <script src="https://unpkg.com/globe.gl"></script> <!-- Add globe.gl script tag -->
 
     <style>
         /* Custom CSS to style the players table */
@@ -50,8 +49,9 @@
         }
 
         #globe-container {
-            width: 100%;
+            width: 60%;
             height: 400px;
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -122,33 +122,6 @@
 
     <div id="globe-container"></div>
 
-    <!-- Script for globe.gl -->
-    <script>
-        // Dynamic data for the globe (without duplicates)
-        const locations = <?php echo json_encode($uniqueCountriesData); ?>;
-
-        // Get the container div for the globe
-        const globeContainer = document.getElementById('globe-container');
-
-        if (globeContainer) {
-            // Initialize globe.gl
-            const globe = Globe({
-                container: '#globe-container',
-                globeImageUrl: 'https://unpkg.com/three-globe/example/img/earth-night.jpg', // Sample image URL
-                pointsData: locations.map(location => ({
-                    lat: location.latitude,
-                    lon: location.longitude,
-                    label: location.nationality,
-                    color: 'rgba(75, 192, 192, 0.7)', // Adjust color as needed
-                })),
-                pointLabel: 'label',
-                pointAltitude: 0.1,
-            });
-        } else {
-            console.error('Container not found.');
-        }
-    </script>
-
     <?php
     // Dynamic data for charts (without duplicates)
     $labels = array_map(function ($row) {
@@ -205,6 +178,33 @@
                 maintainAspectRatio: false,
             }
         });
+    </script>
+
+    <!-- Script for globe.gl -->
+    <script src="https://unpkg.com/globe.gl"></script>
+    <script>
+        // Dynamic data for the globe (without duplicates)
+        const locations = <?php echo json_encode($uniqueCountriesData); ?>;
+
+        // Get the container div for the globe
+        const globeContainer = document.getElementById('globe-container');
+
+        if (globeContainer) {
+            // Initialize globe.gl
+            const myGlobe = Globe();
+            myGlobe(globeContainer)
+                .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-night.jpg') // Sample image URL
+                .pointsData(locations.map(location => ({
+                    lat: location.latitude,
+                    lon: location.longitude,
+                    label: location.nationality,
+                    color: 'rgba(75, 192, 192, 0.7)', // Adjust color as needed
+                })))
+                .pointLabel('label')
+                .pointAltitude(0.1);
+        } else {
+            console.error('Container not found.');
+        }
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-ZOsT2UQzY3FN8LkFDrF4D72KlSb0P9ABqT1ggK5biQOp6iUAZjA8M2reF5FOSta0" crossorigin="anonymous"></script>
