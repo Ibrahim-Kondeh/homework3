@@ -60,9 +60,10 @@
             </thead>
             <tbody>
     <?php
-    $uniqueCountries = array_unique($playerData);
+    // Get unique countries and their counts
+    $uniqueCountriesData = array_count_values($playerData);
 
-    foreach ($uniqueCountries as $nationality) {
+    foreach ($uniqueCountriesData as $nationality => $count) {
         // Get the flag icon based on nationality
         $flagIcon = getFlagIcon($nationality);
     ?>
