@@ -4,13 +4,13 @@
 function selectPlayers() {
     try {
         $conn = get_db_connection();
-        $stmt = $conn->prepare("SELECT distinct nationality FROM player");
+        $stmt = $conn->prepare("SELECT COUNT(*) AS playerCount, nationality FROM player GROUP BY nationality");
         $stmt->execute();
         $result = $stmt->get_result();
 
         $countriesData = array();
         while ($row = $result->fetch_assoc()) {
-            $countriesData[] = $row['nationality'];
+            $countriesData[] = $row;
         }
 
         $conn->close();
