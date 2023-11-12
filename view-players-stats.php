@@ -13,7 +13,8 @@
             border-collapse: collapse;
         }
 
-        .player-table th, .player-table td {
+        .player-table th,
+        .player-table td {
             padding: 10px;
             border: 1px solid #ddd;
             text-align: left;
@@ -56,10 +57,10 @@
             </thead>
             <tbody>
                 <?php
-                while ($players = $player->fetch_assoc()) {
+                foreach ($players as $nationality => $count) {
                 ?>
                     <tr class="highlight-row">
-                        <td><?php echo $players['nationality']; ?></td>
+                        <td><?php echo $nationality; ?></td>
                     </tr>
                 <?php
                 }
