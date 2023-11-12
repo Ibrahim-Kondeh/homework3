@@ -160,10 +160,11 @@
         // Coordinates for countries
         const countriesData = <?php echo json_encode($uniqueCountriesData); ?>;
 
-        // Add markers for each country
+        // Add markers to the map
         countriesData.forEach(country => {
-            const marker = L.marker([country.latitude, country.longitude]).addTo(map);
-            marker.bindPopup(country.nationality);
+            const marker = L.marker([country.latitude, country.longitude])
+                .addTo(map)
+                .bindPopup(`<b>${country.nationality}</b><br>Players: ${country.playerCount}`);
         });
     </script>
 
