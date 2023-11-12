@@ -53,14 +53,18 @@
             <thead>
                 <tr>
                     <th>Nationality</th>
+                    <th>Flag</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
-                foreach ($playerCounts as $nationality => $count) {
+                foreach ($playerData as $nationality) {
+                    // Get the flag emoji based on nationality (replace this with your actual flags)
+                    $flag = getFlagEmoji($nationality);
                 ?>
                     <tr class="highlight-row">
                         <td><?php echo $nationality; ?></td>
+                        <td><?php echo $flag; ?></td>
                     </tr>
                 <?php
                 }
@@ -86,13 +90,14 @@
     </div>
 
     <?php
-    // Dynamic data from the database
-    $labels = array_keys($playerCounts);
-    $counts = array_values($playerCounts);
+    // Dynamic data for charts (without duplicates)
+    $uniqueCountriesData = array_count_values($playerData);
+    $labels = array_keys($uniqueCountriesData);
+    $counts = array_values($uniqueCountriesData);
     ?>
 
     <script>
-        // Dynamic data from the database
+        // Dynamic data for charts (without duplicates)
         const labels = <?php echo json_encode($labels); ?>;
         const counts = <?php echo json_encode($counts); ?>;
 
