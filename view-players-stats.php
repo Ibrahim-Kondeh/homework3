@@ -59,20 +59,21 @@
                 </tr>
             </thead>
             <tbody>
-                <?php
-                foreach ($playerData as $nationality) {
-                    // Implement your logic to get the flag emoji based on nationality
-                    // Replace the following line with your actual logic
-                    $flag = getFlagEmoji($nationality);
-                ?>
-                    <tr class="highlight-row">
-                        <td><?php echo $nationality; ?></td>
-                        <td><?php echo $flag; ?></td>
-                    </tr>
-                <?php
-                }
-                ?>
-            </tbody>
+    <?php
+    $uniqueCountries = array_unique($playerData);
+
+    foreach ($uniqueCountries as $nationality) {
+        // Get the flag icon based on nationality
+        $flagIcon = getFlagIcon($nationality);
+    ?>
+        <tr class="highlight-row">
+            <td><?php echo $nationality; ?></td>
+            <td><span class="<?php echo $flagIcon; ?>"></span></td>
+        </tr>
+    <?php
+    }
+    ?>
+</tbody>
         </table>
     </div>
 
