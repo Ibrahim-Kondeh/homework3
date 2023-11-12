@@ -2,10 +2,10 @@
 require_once("util-db.php");
 require_once("model-players-stats.php");
 
-$pageTitle = "Players";
+$pageTitle = "Players Stats";
 include "view-header.php";
 $players = selectPlayers();
 $player = selectPlayers();
-include "view-players.php";
+include "view-players-stats.php";
 include "view-footer.php";
 ?>
