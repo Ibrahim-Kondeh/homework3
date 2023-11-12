@@ -54,7 +54,7 @@
     <?php
   // Get unique countries and their player counts
   $uniqueCountriesData = selectPlayers();
-  <?php
+ 
 // Get unique countries and their player counts
 $uniqueCountriesData = selectPlayers();
 
