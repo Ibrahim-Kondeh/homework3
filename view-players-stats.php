@@ -50,9 +50,8 @@
         }
 
         #globe-container {
-            width: 40%; /* Adjust the width as needed */
+            width: 45%;
             height: 400px;
-            margin-top: 20px;
         }
     </style>
 </head>
@@ -95,10 +94,7 @@
                     $color = $countryColors[$index]; // Assign a unique color to each country
                 ?>
                     <tr class="highlight-row">
-                        <td>
-                            <span class="<?php echo $flagIcon; ?>" style="color: <?php echo $color; ?>"></span>
-                            <?php echo $nationality; ?>
-                        </td>
+                        <td><?php echo $nationality; ?></td>
                         <td><span class="<?php echo $flagIcon; ?>" style="color: <?php echo $color; ?>"></span></td>
                     </tr>
                 <?php
