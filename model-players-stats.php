@@ -7,8 +7,7 @@ function selectPlayers() {
         $stmt = $conn->prepare("SELECT nationality FROM player");
         $stmt->execute();
         $result = $stmt->get_result();
-        $conn->close();
-
+        
         $countryCounts = array();
         while ($row = $result->fetch_assoc()) {
             $nationality = $row['nationality'];
@@ -18,6 +17,8 @@ function selectPlayers() {
                 $countryCounts[$nationality] = 1;
             }
         }
+
+        $conn->close();
 
         return $countryCounts;
     } catch (Exception $e) {
