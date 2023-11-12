@@ -4,8 +4,12 @@ require_once("model-players-stats.php");
 
 $pageTitle = "Players Stats";
 include "view-header.php";
-$players = selectPlayers();
-$player = selectPlayers();
+
+// Get player data
+$playerCounts = selectPlayers();
+
+// Include the view and pass player data
 include "view-players-stats.php";
+
 include "view-footer.php";
 ?>
