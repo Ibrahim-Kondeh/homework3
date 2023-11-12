@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -84,18 +84,16 @@
         </div>
     </div>
 
-    <script>
-        // Sample data (replace this with your data)
-        const countriesData = [
-            { country: 'USA', count: 5, flag: '🇺🇸' },
-            { country: 'UK', count: 3, flag: '🇬🇧' },
-            { country: 'Germany', count: 2, flag: '🇩🇪' },
-            // Add more countries as needed
-        ];
+    <?php
+    // Dynamic data from the database
+    $labels = array_keys($playerCounts);
+    $counts = array_values($playerCounts);
+    ?>
 
-        // Extract data for charts
-        const labels = countriesData.map(country => country.country);
-        const counts = countriesData.map(country => country.count);
+    <script>
+        // Dynamic data from the database
+        const labels = <?php echo json_encode($labels); ?>;
+        const counts = <?php echo json_encode($counts); ?>;
 
         // Get canvas elements and contexts
         const ctx = document.getElementById('countryChart').getContext('2d');
