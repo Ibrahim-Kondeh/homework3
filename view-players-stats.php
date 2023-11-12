@@ -94,13 +94,15 @@
         </div>
     </div>
 
-    <?php
-    // Dynamic data for charts (without duplicates)
-    $uniqueCountriesData = array_count_values($playerData);
-    $labels = array_keys($uniqueCountriesData);
-    $counts = array_values($uniqueCountriesData);
-    ?>
-
+ <?php
+  // Dynamic data for charts (without duplicates)
+  $labels = array_map(function ($row) {
+    return $row['nationality'];
+  }, $uniqueCountriesData);
+  $counts = array_map(function ($row) {
+    return $row['playerCount'];
+  }, $uniqueCountriesData);
+  ?>
     <script>
         // Dynamic data for charts (without duplicates)
         const labels = <?php echo json_encode($labels); ?>;
