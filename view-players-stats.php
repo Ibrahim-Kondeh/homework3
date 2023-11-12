@@ -46,7 +46,7 @@
         .chart {
             width: 45%;
         }
-        
+
         #globe-container {
             width: 100%;
             height: 400px;
@@ -117,34 +117,36 @@
             <canvas id="countryPieChart" width="400" height="200"></canvas>
         </div>
     </div>
-<div id="globe-container"></div>
 
-<!-- Script for globe.gl -->
-<script>
-    // Dynamic data for the globe (without duplicates)
-    const locations = <?php echo json_encode($uniqueCountriesData); ?>;
+    <div id="globe-container"></div>
 
-    // Get the container div for the globe
-    const globeContainer = document.getElementById('globe-container');
-    
-    if (globeContainer) {
-        // Initialize globe.gl
-        const globe = Globe({
-            container: '#globe-container',
-            globeImageUrl: 'https://unpkg.com/three-globe/example/img/earth-night.jpg', // Sample image URL
-            pointsData: locations.map(location => ({
-                lat: location.latitude,
-                lon: location.longitude,
-                label: location.nationality,
-                color: 'rgba(75, 192, 192, 0.7)', // Adjust color as needed
-            })),
-            pointLabel: 'label',
-            pointAltitude: 0.1,
-        });
-    } else {
-        console.error('Container not found.');
-    }
-</script>
+    <!-- Script for globe.gl -->
+    <script>
+        // Dynamic data for the globe (without duplicates)
+        const locations = <?php echo json_encode($uniqueCountriesData); ?>;
+
+        // Get the container div for the globe
+        const globeContainer = document.getElementById('globe-container');
+
+        if (globeContainer) {
+            // Initialize globe.gl
+            const globe = Globe({
+                container: '#globe-container',
+                globeImageUrl: 'https://unpkg.com/three-globe/example/img/earth-night.jpg', // Sample image URL
+                pointsData: locations.map(location => ({
+                    lat: location.latitude,
+                    lon: location.longitude,
+                    label: location.nationality,
+                    color: 'rgba(75, 192, 192, 0.7)', // Adjust color as needed
+                })),
+                pointLabel: 'label',
+                pointAltitude: 0.1,
+            });
+        } else {
+            console.error('Container not found.');
+        }
+    </script>
+
     <?php
     // Dynamic data for charts (without duplicates)
     $labels = array_map(function ($row) {
