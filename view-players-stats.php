@@ -8,7 +8,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css">
     <script src="https://unpkg.com/globe.gl"></script>
-    <script src="https://unpkg.com/cesium@1.84.0/Build/Cesium/Cesium.js"></script> <!-- Add Cesium script tag -->
 
     <style>
         /* Custom CSS to style the players table */
@@ -51,11 +50,6 @@
         }
 
         #globe-container {
-            width: 45%;
-            height: 400px;
-        }
-
-        #cesiumContainer {
             width: 45%;
             height: 400px;
         }
@@ -127,7 +121,6 @@
     </div>
 
     <div id="globe-container"></div>
-    <div id="cesiumContainer"></div> <!-- Add Cesium container -->
 
     <!-- Script for globe.gl -->
     <script>
@@ -154,52 +147,6 @@
         } else {
             console.error('Container not found.');
         }
-    </script>
-
-    <!-- Script for Cesium -->
-    <script>
-        // Initialize Cesium globe
-        Cesium.Ion.defaultAccessToken = 'your-Cesium-Ion-token'; // Get your free Cesium Ion token: https://cesium.com/ion/signup/
-
-        const viewer = new Cesium.Viewer('cesiumContainer', {
-            imageryProvider: new Cesium.createTileMapServiceImageryProvider({
-                url: Cesium.buildModuleUrl('Assets/Textures/NaturalEarthII')
-            }),
-            baseLayerPicker: false,
-            geocoder: false,
-            infoBox: false,
-            sceneModePicker: false,
-            navigationHelpButton: false,
-            navigationInstructionsInitiallyVisible: false,
-            animation: false,
-            timeline: false
-        });
-
-        // Add pins for each country
-        const dataSource = new Cesium.CzmlDataSource();
-        viewer.dataSources.add(dataSource);
-
-        const locationsCesium = <?php echo json_encode($uniqueCountriesData); ?>;
-        locationsCesium.forEach(location => {
-            dataSource.entities.add({
-                position: Cesium.Cartesian3.fromDegrees(location.longitude, location.latitude),
-                point: {
-                    pixelSize: 8,
-                    color: Cesium.Color.RED,
-                    outlineColor: Cesium.Color.WHITE,
-                    outlineWidth: 2
-                },
-                label: {
-                    text: location.nationality,
-                    font: '14px sans-serif',
-                    style: Cesium.LabelStyle.FILL_AND_OUTLINE,
-                    fillColor: Cesium.Color.YELLOW,
-                    outlineColor: Cesium.Color.BLACK,
-                    outlineWidth: 2,
-                    pixelOffset: new Cesium.Cartesian2(0, -20)
-                }
-            });
-        });
     </script>
 
     <?php
