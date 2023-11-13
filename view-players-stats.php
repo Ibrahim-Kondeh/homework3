@@ -1,32 +1,3 @@
-England
-
-England 
-
-France
-Brazil
-Ukraine
-Japan
-Ghana
-Norway
-England
-England
-Brazil
-Belgium
-Cameroon
-France
-England
-England
-England
-Portugal
-Brazil
-Denmark
-England
-Brazil
-England
-Germany
-England
-England 
-
 <!DOCTYPE html>
 <html lang="en">
 
