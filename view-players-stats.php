@@ -192,7 +192,7 @@
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         // Initialize Cesium globe
-        Cesium.Ion.defaultAccessToken = 'your-Cesium-Ion-token'; // Get your free Cesium Ion token: https://cesium.com/ion/signup/
+        Cesium.Ion.defaultAccessToken = 'assets:read, geocode'; // Get your free Cesium Ion token: https://cesium.com/ion/signup/
 
         const viewer = new Cesium.Viewer('cesiumContainer', {
             imageryProvider: new Cesium.createTileMapServiceImageryProvider({
