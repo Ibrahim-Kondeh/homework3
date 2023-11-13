@@ -7,7 +7,7 @@
     <title>Players</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css">
-    <script src="https://unpkg.com/globe.gl"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <style>
         /* Custom CSS to style the players table */
@@ -47,11 +47,6 @@
 
         .chart {
             width: 45%;
-        }
-
-        #globe-container {
-            width: 45%;
-            height: 400px;
         }
     </style>
 </head>
@@ -104,9 +99,6 @@
         </table>
     </div>
 
-    <!-- Chart.js CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
     <!-- Chart containers -->
     <div class="chart-container">
         <!-- Bar Chart -->
@@ -119,35 +111,6 @@
             <canvas id="countryPieChart" width="400" height="200"></canvas>
         </div>
     </div>
-
-    <div id="globe-container"></div>
-
-    <!-- Script for globe.gl -->
-    <script>
-        // Dynamic data for the globe (without duplicates)
-        const locationsGlobe = <?php echo json_encode($uniqueCountriesData); ?>;
-
-        // Get the container div for the globe
-        const globeContainer = document.getElementById('globe-container');
-
-        if (globeContainer) {
-            // Initialize globe.gl
-            const globe = Globe({
-                container: '#globe-container',
-                globeImageUrl: 'https://unpkg.com/three-globe/example/img/earth-night.jpg', // Sample image URL
-                pointsData: locationsGlobe.map(location => ({
-                    lat: location.latitude,
-                    lon: location.longitude,
-                    label: location.nationality,
-                    color: 'rgba(75, 192, 192, 0.7)', // Adjust color as needed
-                })),
-                pointLabel: 'label',
-                pointAltitude: 0.1,
-            });
-        } else {
-            console.error('Container not found.');
-        }
-    </script>
 
     <?php
     // Dynamic data for charts (without duplicates)
