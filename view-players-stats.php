@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://unpkg.com/cesium@1.84.0/Build/Cesium/Cesium.js"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script> <!-- Add Leaflet library -->
 
     <style>
         /* Custom CSS to style the players table */
@@ -52,6 +52,11 @@
 
         #cesiumContainer {
             width: 100%;
+            height: 400px;
+        }
+
+        /* Style for the map container */
+        #map {
             height: 400px;
         }
     </style>
@@ -120,6 +125,9 @@
 
     <!-- Cesium container -->
     <div id="cesiumContainer"></div>
+
+    <!-- Leaflet Map container -->
+    <div id="map"></div>
 
     <?php
     // Dynamic data for charts (without duplicates)
