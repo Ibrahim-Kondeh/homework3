@@ -7,8 +7,7 @@
     <title>Players</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script> <!-- Add Leaflet library -->
+    <script src="https://unpkg.com/globe.gl"></script>
 
     <style>
         /* Custom CSS to style the players table */
@@ -50,13 +49,8 @@
             width: 45%;
         }
 
-        #cesiumContainer {
-            width: 100%;
-            height: 400px;
-        }
-
-        /* Style for the map container */
-        #map {
+        #globe-container {
+            width: 45%;
             height: 400px;
         }
     </style>
@@ -110,6 +104,9 @@
         </table>
     </div>
 
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <!-- Chart containers -->
     <div class="chart-container">
         <!-- Bar Chart -->
@@ -123,11 +120,34 @@
         </div>
     </div>
 
-    <!-- Cesium container -->
-    <div id="cesiumContainer"></div>
+    <div id="globe-container"></div>
 
-    <!-- Leaflet Map container -->
-    <div id="map"></div>
+    <!-- Script for globe.gl -->
+    <script>
+        // Dynamic data for the globe (without duplicates)
+        const locations = <?php echo json_encode($uniqueCountriesData); ?>;
+
+        // Get the container div for the globe
+        const globeContainer = document.getElementById('globe-container');
+
+        if (globeContainer) {
+            // Initialize globe.gl
+            const globe = Globe({
+                container: '#globe-container',
+                globeImageUrl: 'https://unpkg.com/three-globe/example/img/earth-night.jpg', // Sample image URL
+                pointsData: locations.map(location => ({
+                    lat: location.latitude,
+                    lon: location.longitude,
+                    label: location.nationality,
+                    color: 'rgba(75, 192, 192, 0.7)', // Adjust color as needed
+                })),
+                pointLabel: 'label',
+                pointAltitude: 0.1,
+            });
+        } else {
+            console.error('Container not found.');
+        }
+    </script>
 
     <?php
     // Dynamic data for charts (without duplicates)
@@ -186,55 +206,6 @@
             }
         });
     </script>
-
-    <!-- Script for Cesium -->
-<script src="https://unpkg.com/cesium@1.84.0/Build/Cesium/Cesium.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // Initialize Cesium globe
-        Cesium.Ion.defaultAccessToken = 'assets:read, geocode'; // Get your free Cesium Ion token: https://cesium.com/ion/signup/
-
-        const viewer = new Cesium.Viewer('cesiumContainer', {
-            imageryProvider: new Cesium.createTileMapServiceImageryProvider({
-                url: Cesium.buildModuleUrl('Assets/Textures/NaturalEarthII')
-            }),
-            baseLayerPicker: false,
-            geocoder: false,
-            infoBox: false,
-            sceneModePicker: false,
-            navigationHelpButton: false,
-            navigationInstructionsInitiallyVisible: false,
-            animation: false,
-            timeline: false
-        });
-
-        // Add pins for each country
-        const dataSource = new Cesium.CzmlDataSource();
-        viewer.dataSources.add(dataSource);
-
-        const locationsCesium = <?php echo json_encode($uniqueCountriesData); ?>;
-        locationsCesium.forEach(location => {
-            dataSource.entities.add({
-                position: Cesium.Cartesian3.fromDegrees(location.longitude, location.latitude),
-                point: {
-                    pixelSize: 8,
-                    color: Cesium.Color.RED,
-                    outlineColor: Cesium.Color.WHITE,
-                    outlineWidth: 2
-                },
-                label: {
-                    text: location.nationality,
-                    font: '14px sans-serif',
-                    style: Cesium.LabelStyle.FILL_AND_OUTLINE,
-                    fillColor: Cesium.Color.YELLOW,
-                    outlineColor: Cesium.Color.BLACK,
-                    outlineWidth: 2,
-                    pixelOffset: new Cesium.Cartesian2(0, -20)
-                }
-            });
-        });
-    });
-</script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-ZOsT2UQzY3FN8LkFDrF4D72KlSb0P9ABqT1ggK5biQOp6iUAZjA8M2reF5FOSta0" crossorigin="anonymous"></script>
 </body>
