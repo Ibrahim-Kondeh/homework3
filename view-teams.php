@@ -121,8 +121,18 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ZOsT2UQzY3FN8LkFDrF4D72KlSb0P9ABqT1ggK5biQOp6iUAZjA8M2reF5FOSta0" crossorigin="anonymous"></script>
-   
+        integrity="sha384-ZOsT2UQzY3FN8LkFDrF4D72KlSb0P9ABqT1ggK5biQOp6iUAZjA8M2reF5FOSta0" crossorigin="anonymous"> </script>
+ <script>
+         // Function to show delete message
+        function showDeleteMessage(teamName) {
+            Swal.fire({
+                title: "Team Deleted!",
+                text: "The team " + teamName + " has been deleted.",
+                icon: "success"
+            });
+        }
+       
+    </script>
 </body>
 
 </html>
