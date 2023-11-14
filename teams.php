@@ -35,10 +35,12 @@ if (isset($_POST['actionType'])) {
     }
 }
 
-if (!empty($successMessage)) {
-    echo '<div class="alert alert-success text-center" role="alert">' . $successMessage . '</div>';
-}
+// Redirect to clear the POST data and prevent message re-display on page refresh
+header("Location: teams.php");
+exit();
+?>
 
+<?php
 $teams = selectTeams();
 include "view-teams.php";
 include "view-footer.php";
