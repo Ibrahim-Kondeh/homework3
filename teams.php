@@ -34,12 +34,9 @@ if (isset($_POST['actionType'])) {
             break;
     }
 
-    // Clear the POST data
-    $_POST = array();
-}
-
-if (!empty($successMessage)) {
-    echo '<div class="alert alert-success text-center" role="alert">' . $successMessage . '</div>';
+    // Redirect to clear the POST data and prevent message re-display on page refresh
+    header("Location: teams.php");
+    exit();
 }
 
 $teams = selectTeams();
