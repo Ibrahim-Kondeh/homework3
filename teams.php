@@ -1,4 +1,3 @@
-// teams.php
 <?php
 require_once("util-db.php");
 require_once("model-teams.php");
@@ -34,10 +33,10 @@ if (isset($_POST['actionType'])) {
             }
             break;
     }
+}
 
-    // Redirect to clear the POST data and prevent message re-display on page refresh
-    header("Location: teams.php");
-    exit();
+if (!empty($successMessage)) {
+    echo '<div class="alert alert-success text-center" role="alert">' . $successMessage . '</div>';
 }
 
 $teams = selectTeams();
