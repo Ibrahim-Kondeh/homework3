@@ -34,16 +34,9 @@ if (isset($_POST['actionType'])) {
             break;
     }
 
-    // Generate JavaScript code for SweetAlert2
-    echo '<script>';
-    if (!empty($successMessage)) {
-        echo 'Swal.fire({
-            icon: "success",
-            title: "Success!",
-            text: "' . $successMessage . '"
-        });';
-    }
-    echo '</script>';
+    // Redirect to clear the POST data and prevent message re-display on page refresh
+    header("Location: teams.php");
+    exit();
 }
 
 $teams = selectTeams();
