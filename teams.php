@@ -16,15 +16,16 @@ if (isset($_POST['actionType'])) {
                 $successMessage = "Failed to add team. Please try again.";
             }
             break;
-       case "Edit":
-    if (updateTeams($_POST['tName'], $_POST['tcName'], $_POST['tFyear'], $_POST['tStadium'], $_POST['teamId'])) {
-        $successMessage = "Team edited successfully! 😊";
-    } else {
-        $successMessage = "Failed to edit team. Please try again.";
-    }
-    break;
 
-       case "Delete":
+        case "Edit":
+            if (updateTeams($_POST['tName'], $_POST['tcName'], $_POST['tFyear'], $_POST['tStadium'], $_POST['teamId'])) {
+                $successMessage = "Team edited successfully! 😊";
+            } else {
+                $successMessage = "Failed to edit team. Please try again.";
+            }
+            break;
+
+        case "Delete":
             if (deleteTeams($_POST['teamId'])) {
                 $successMessage = "Team deleted successfully!";
             } else {
@@ -32,10 +33,17 @@ if (isset($_POST['actionType'])) {
             }
             break;
     }
-}
 
-if (!empty($successMessage)) {
-    echo '<div class="alert alert-success text-center" role="alert">' . $successMessage . '</div>';
+    // Generate JavaScript code for SweetAlert2
+    echo '<script>';
+    if (!empty($successMessage)) {
+        echo 'Swal.fire({
+            icon: "success",
+            title: "Success!",
+            text: "' . $successMessage . '"
+        });';
+    }
+    echo '</script>';
 }
 
 $teams = selectTeams();
