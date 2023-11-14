@@ -7,7 +7,7 @@
     <title>Players</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
     <style>
         .player-table {
@@ -93,9 +93,12 @@
     </div>
 
     <div class="chart-container">
+        <!-- Plotly Bar Chart -->
         <div class="chart">
-            <canvas id="countryChart" width="400" height="200"></canvas>
+            <div id="countryChart"></div>
         </div>
+
+        <!-- Chart.js Pie Chart -->
         <div class="chart">
             <canvas id="countryPieChart" width="400" height="200"></canvas>
         </div>
@@ -114,29 +117,38 @@
         const counts = <?php echo json_encode($counts); ?>;
         const countryColors = <?php echo json_encode($countryColors); ?>;
 
-        const ctx = document.getElementById('countryChart').getContext('2d');
+        // Create data trace for Plotly bar chart
+        const barChartTrace = {
+            x: labels,
+            y: counts,
+            type: 'bar',
+            marker: {
+                color: countryColors
+            }
+        };
+
+        // Layout for Plotly bar chart
+        const barChartLayout = {
+            title: 'Number of Countries Represented',
+            xaxis: {
+                title: 'Nationality'
+            },
+            yaxis: {
+                title: 'Player Count',
+                zeroline: false
+            }
+        };
+
+        // Plot the Plotly bar chart
+        Plotly.newPlot('countryChart', [barChartTrace], barChartLayout);
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Dynamic data for Chart.js pie chart (without duplicates)
         const pieCtx = document.getElementById('countryPieChart').getContext('2d');
 
-        const countryChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: labels,
-                datasets: [{
-                    label: 'Number of Countries Represented',
-                    data: counts,
-                    backgroundColor: countryColors,
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-
+        // Create Chart.js pie chart
         const countryPieChart = new Chart(pieCtx, {
             type: 'pie',
             data: {
