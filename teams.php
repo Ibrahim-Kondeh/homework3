@@ -1,4 +1,4 @@
-<?php
+ <?php
 require_once("util-db.php");
 require_once("model-teams.php");
 
@@ -16,16 +16,15 @@ if (isset($_POST['actionType'])) {
                 $successMessage = "Failed to add team. Please try again.";
             }
             break;
+       case "Edit":
+    if (updateTeams($_POST['tName'], $_POST['tcName'], $_POST['tFyear'], $_POST['tStadium'], $_POST['teamId'])) {
+        $successMessage = "Team edited successfully! 😊";
+    } else {
+        $successMessage = "Failed to edit team. Please try again.";
+    }
+    break;
 
-        case "Edit":
-            if (updateTeams($_POST['tName'], $_POST['tcName'], $_POST['tFyear'], $_POST['tStadium'], $_POST['teamId'])) {
-                $successMessage = "Team edited successfully! 😊";
-            } else {
-                $successMessage = "Failed to edit team. Please try again.";
-            }
-            break;
-
-        case "Delete":
+       case "Delete":
             if (deleteTeams($_POST['teamId'])) {
                 $successMessage = "Team deleted successfully!";
             } else {
@@ -33,10 +32,10 @@ if (isset($_POST['actionType'])) {
             }
             break;
     }
+}
 
-    // Redirect to clear the POST data and prevent message re-display on page refresh
-    header("Location: teams.php");
-    exit();
+if (!empty($successMessage)) {
+    echo '<div class="alert alert-success text-center" role="alert">' . $successMessage . '</div>';
 }
 
 $teams = selectTeams();
