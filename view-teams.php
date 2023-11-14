@@ -109,6 +109,11 @@
                 </table>
             </div>
             <div class="col-md-3">
+                <?php
+                if (!empty($successMessage)) {
+                    echo '<div class="alert alert-success text-center" role="alert">' . $successMessage . '</div>';
+                }
+                ?>
                 <!-- Include the form within the modal -->
                 <?php include "view-teams-newform.php"; ?>
             </div>
