@@ -8,9 +8,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css">
-
-    <!-- Leaflet CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <style>
         .player-table {
@@ -46,11 +45,7 @@
         }
 
         .chart {
-            width: 45%;
-        }
-
-        #leafletMap {
-            height: 400px;
+            width: 30%;
         }
     </style>
 </head>
@@ -109,10 +104,12 @@
         <div class="chart">
             <canvas id="countryPieChart" width="400" height="200"></canvas>
         </div>
-    </div>
 
-    <!-- Leaflet Map Container -->
-    <div id="leafletMap"></div>
+        <!-- Third-party Chart (Radar Chart) -->
+        <div class="chart">
+            <canvas id="radarChart" width="400" height="200"></canvas>
+        </div>
+    </div>
 
     <?php
     $labels = array_map(function ($row) {
@@ -153,7 +150,6 @@
         Plotly.newPlot('countryChart', [barChartTrace], barChartLayout);
     </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         // Dynamic data for Chart.js pie chart (without duplicates)
         const pieCtx = document.getElementById('countryPieChart').getContext('2d');
@@ -176,38 +172,37 @@
         });
     </script>
 
-    <!-- Leaflet JavaScript -->
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-
     <script>
-        // Your existing data
-        var series = [
-            ["USA", 179],
-            ["CAN", 332],
-            ["CRI", 26],
-            // ... (other data)
-        ];
+        // Third-party Chart (Radar Chart)
+        const radarCtx = document.getElementById('radarChart').getContext('2d');
 
-        var dataset = {};
+        // Sample data for the radar chart (replace with your own)
+        const radarData = {
+            labels: ['Stat1', 'Stat2', 'Stat3', 'Stat4', 'Stat5'],
+            datasets: [{
+                label: 'Player Stats',
+                data: [65, 59, 90, 81, 56],
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1
+            }]
+        };
 
-        // Create a Leaflet map
-        var map = L.map('leafletMap').setView([0, 0], 2);
+        // Options for the radar chart
+        const radarOptions = {
+            scale: {
+                ticks: {
+                    beginAtZero: true,
+                    max: 100
+                }
+            }
+        };
 
-        // Add a tile layer to the map (you can use other tile providers)
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© OpenStreetMap contributors'
-        }).addTo(map);
-
-        // Add markers to the map based on your data
-        series.forEach(function (item) {
-            var iso = item[0];
-            var value = item[1];
-
-            var marker = L.marker([0, 0]).addTo(map);
-
-            // Set the marker position based on the country's ISO code (you might need a mapping)
-            // For simplicity, this example uses [0, 0]
-            marker.setLatLng([0, 0]).bindPopup(iso + ': ' + value);
+        // Create the radar chart
+        const radarChart = new Chart(radarCtx, {
+            type: 'radar',
+            data: radarData,
+            options: radarOptions
         });
     </script>
 
