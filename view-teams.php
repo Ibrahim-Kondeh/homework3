@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -7,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap-icons.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <style>
         .team-table {
             width: 100%;
@@ -118,6 +120,55 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ZOsT2UQzY3FN8LkFDrF4D72KlSb0P9ABqT1ggK5biQOp6iUAZjA8M2reF5FOSta0" crossorigin="anonymous"></script>
+    <script>
+        function showAlert(title, text, icon) {
+            Swal.fire({
+                title: title,
+                text: text,
+                icon: icon
+            });
+        }
+
+        <?php
+        // Add SweetAlert code for success messages
+        if (!empty($successMessage)) {
+            echo "showAlert('Success', '{$successMessage}', 'success');";
+        }
+        ?>
+
+        function handleFormSubmit(actionType) {
+            var confirmationMessage = "";
+
+            switch (actionType) {
+                case "Add":
+                    confirmationMessage = "Are you sure you want to add this team?";
+                    break;
+                case "Edit":
+                    confirmationMessage = "Are you sure you want to edit this team?";
+                    break;
+                case "Delete":
+                    confirmationMessage = "Are you sure you want to delete this team?";
+                    break;
+            }
+
+            if (confirmationMessage !== "") {
+                Swal.fire({
+                    title: "Confirmation",
+                    text: confirmationMessage,
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, proceed!"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        document.getElementById("actionType").value = actionType;
+                        document.getElementById("teamForm").submit();
+                    }
+                });
+            }
+        }
+    </script>
 </body>
 
 </html>
