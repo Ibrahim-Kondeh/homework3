@@ -6,17 +6,13 @@ include "view-header.php";
 <h1>HomeWork 6</h1>
 
 <div class="video-container">
-    <video id="homeVideo" playsinline controls width="640" height="360">
-        <source src="https://www.youtube.com/watch?v=bUwSb_8BGbs" type="video/mp4">
-        
-        Your browser does not support the video tag.
-    </video>
+    <iframe width="640" height="360" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
 </div>
 
 <div class="highlights-container">
     <h2>Last Week Highlights</h2>
     <div id="highlightSlideshow" class="slideshow">
-        <!--image elements with alt text for accessibility -->
+        <!-- Add your image elements with alt text for accessibility -->
         <img src="highlight1.jpg" alt="Highlight 1">
         <img src="highlight2.jpg" alt="Highlight 2">
         <!-- Add more images as needed -->
