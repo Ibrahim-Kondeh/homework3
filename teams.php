@@ -11,7 +11,7 @@ if (isset($_POST['actionType'])) {
     switch ($_POST['actionType']) {
         case "Add":
             if (insertTeams($_POST['tName'], $_POST['tcName'], $_POST['tFyear'], $_POST['tStadium'])) {
-                $successMessage = "Team added successfully! 😊";
+                $successMessage = "";
             } else {
                 $successMessage = "Failed to add team. Please try again.";
             }
