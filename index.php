@@ -6,7 +6,7 @@ include "view-header.php";
 <h1>HomeWork 6</h1>
 
 <div class="video-container">
-    <iframe width="640" height="360" src="https://www.youtube.com/watch?v=ugc35l-3GNQ?autoplay=1" frameborder="0" allowfullscreen></iframe>
+    <iframe width="640" height="360" src="https://www.youtube.com/watch?v=ugc35l-3GNQ" frameborder="0" allowfullscreen></iframe>
 </div>
 
 <div class="highlights-container">
