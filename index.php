@@ -10,8 +10,8 @@ include "view-header.php";
     <div class="slideshow-container">
         <!-- Add your image elements with alt text for accessibility -->
         <div class="mySlides fade"><img src="https://dynaimage.cdn.cnn.com/cnn/c_fill,g_auto,w_1200,h_675,ar_16:9/https%3A%2F%2Fcdn.cnn.com%2Fcnnnext%2Fdam%2Fassets%2F221104122416-arsenal-celebrate-card.jpg" alt="Highlight 2"></div>
-        <div class="mySlides fade"><img src="https://e0.365dm.com/23/10/768x432/skysports-arsenal-saka-jesus_6308558.jpg?20231004120130" alt="Highlight 2"></div>
-        <div class="mySlides fade"><img src="https://media.gq-magazine.co.uk/photos/640b02e70a046f0156dd5365/16:9/w_2560%2Cc_limit/GettyImages-1247252693.jpg" alt="Highlight 1"></div>
+        <div class="mySlides fade"><img src="https://i.eurosport.com/2023/11/13/3825443-77741788-2560-1440.jpg" alt="Highlight 2"></div>
+        <div class="mySlides fade"><img src="https://i2-prod.mirror.co.uk/sport/article30851283.ece/ALTERNATES/s1200d/0_GettyImages-1655137419.jpg" alt="Highlight 1"></div>
         <div class="mySlides fade"><img src="https://www.mpl.live/blog/wp-content/uploads/2021/09/man-city-1.jpg" alt="Highlight 2"></div>
         <!-- Add more images as needed -->
     </div>
