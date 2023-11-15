@@ -5,10 +5,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Players</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css">
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
     <style>
         .player-table {
@@ -44,7 +44,7 @@
         }
 
         .chart {
-            width: 45%;
+            width: 30%;
         }
     </style>
 </head>
@@ -103,6 +103,11 @@
         <div class="chart">
             <canvas id="countryPieChart" width="400" height="200"></canvas>
         </div>
+
+        <!-- ApexCharts Line Chart -->
+        <div class="chart">
+            <div id="countryLineChart"></div>
+        </div>
     </div>
 
     <?php
@@ -114,34 +119,36 @@
     }, $uniqueCountriesData);
     ?>
     <script>
-        const labels = <?php echo json_encode($labels); ?>;
-        const counts = <?php echo json_encode($counts); ?>;
-        const countryColors = <?php echo json_encode($countryColors); ?>;
+        document.addEventListener('DOMContentLoaded', () => {
+            const labels = <?php echo json_encode($labels); ?>;
+            const counts = <?php echo json_encode($counts); ?>;
+            const countryColors = <?php echo json_encode($countryColors); ?>;
 
-        // Create data trace for Plotly bar chart
-        const barChartTrace = {
-            x: labels,
-            y: counts,
-            type: 'bar',
-            marker: {
-                color: countryColors
-            }
-        };
+            // Create data trace for Plotly bar chart
+            const barChartTrace = {
+                x: labels,
+                y: counts,
+                type: 'bar',
+                marker: {
+                    color: countryColors
+                }
+            };
 
-        // Layout for Plotly bar chart
-        const barChartLayout = {
-            title: 'Number of Countries Represented',
-            xaxis: {
-                title: 'Nationality'
-            },
-            yaxis: {
-                title: 'Player Count',
-                zeroline: false
-            }
-        };
+            // Layout for Plotly bar chart
+            const barChartLayout = {
+                title: 'Number of Countries Represented',
+                xaxis: {
+                    title: 'Nationality'
+                },
+                yaxis: {
+                    title: 'Player Count',
+                    zeroline: false
+                }
+            };
 
-        // Plot the Plotly bar chart
-        Plotly.newPlot('countryChart', [barChartTrace], barChartLayout);
+            // Plot the Plotly bar chart
+            Plotly.newPlot('countryChart', [barChartTrace], barChartLayout);
+        });
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -167,9 +174,59 @@
         });
     </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ZOsT2UQzY3FN8LkFDrF4D72KlSb0P9ABqT1ggK5biQOp6iUAZjA8M2reF5FOSta0"
-        crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Create data series for ApexCharts line chart
+            const series = [{
+                name: 'Player Count',
+                data: counts
+            }];
+
+            // Create options for ApexCharts line chart
+            const options = {
+                chart: {
+                    type: 'line',
+                    height: 350,
+                    toolbar: {
+                        show: false
+                    }
+                },
+                plotOptions: {
+                    bar: {
+                        horizontal: false,
+                        columnWidth: '55%',
+                        endingShape: 'rounded'
+                    },
+                },
+                colors: countryColors,
+                xaxis: {
+                    categories: labels,
+                    title: {
+                        text: 'Nationality'
+                    }
+                },
+                yaxis: {
+                    title: {
+                        text: 'Player Count'
+                    }
+                },
+                legend: {
+                    show: false
+                }
+            };
+
+            // Initialize ApexCharts line chart
+            const lineChart = new ApexCharts(document.querySelector('#countryLineChart'), {
+                series: series,
+                options: options
+            });
+
+            // Render the ApexCharts line chart
+            lineChart.render();
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-ZOsT2UQzY3FN8LkFDrF4D72KlSb0P9ABqT1ggK5biQOp6iUAZjA8M2reF5FOSta0" crossorigin="anonymous"></script>
 </body>
 
 </html>
