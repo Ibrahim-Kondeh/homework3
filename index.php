@@ -2,7 +2,9 @@
 $pageTitle = "Home";
 include "view-header.php";
 ?>
+
 <h1>HomeWork 6</h1>
+
 <div class="highlights-container">
     <h2>Last Week Highlights</h2>
     <div class="slideshow-container">
@@ -15,6 +17,7 @@ include "view-header.php";
         <!-- Add more images as needed -->
     </div>
 </div>
+
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         let slideIndex = 0;
@@ -34,6 +37,7 @@ include "view-header.php";
         showSlides();
     });
 </script>
+
 <style>
     /* Add your styles for highlights container and slideshow container as needed */
     .highlights-container {
@@ -53,6 +57,7 @@ include "view-header.php";
         height: auto;
     }
 </style>
+
 <?php
 include "view-footer.php";
 ?>
