@@ -9,6 +9,8 @@ include "view-header.php";
     <h2>Last Week Highlights</h2>
     <div class="slideshow-container">
         <!-- Add your image elements with alt text for accessibility -->
+        div class="mySlides fade"><img src="https://dynaimage.cdn.cnn.com/cnn/c_fill,g_auto,w_1200,h_675,ar_16:9/https%3A%2F%2Fcdn.cnn.com%2Fcnnnext%2Fdam%2Fassets%2F221104122416-arsenal-celebrate-card.jpg" alt="Highlight 2"></div>
+      
         <div class="mySlides fade"><img src="https://www.hindustantimes.com/ht-img/img/2023/06/03/1600x900/FBL-ENG-FA-CUP-MAN-CITY-MAN-UTD-26_1685801471243_1685801500045.jpg" alt="Highlight 1"></div>
         <div class="mySlides fade"><img src="https://www.mpl.live/blog/wp-content/uploads/2021/09/man-city-1.jpg" alt="Highlight 2"></div>
         <!-- Add more images as needed -->
