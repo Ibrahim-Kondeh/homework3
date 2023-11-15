@@ -26,6 +26,8 @@ include "view-header.php";
             slidesToScroll: 1,
             autoplay: true,
             autoplaySpeed: 5000, // Change slide every 5 seconds (adjust as needed)
+            arrows: false, // Hide navigation arrows
+            dots: false, // Hide navigation dots
         });
     });
 </script>
