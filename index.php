@@ -6,15 +6,15 @@ include "view-header.php";
 <h1>HomeWork 6</h1>
 
 <div class="video-container">
-    <iframe width="640" height="360" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+    <iframe width="640" height="360" src="https://www.youtube.com/watch?v=EuNGR4JoJsY" frameborder="0" allowfullscreen></iframe>
 </div>
 
 <div class="highlights-container">
     <h2>Last Week Highlights</h2>
     <div id="highlightSlideshow" class="slideshow">
         <!-- Add your image elements with alt text for accessibility -->
-        <img src="highlight1.jpg" alt="Highlight 1">
-        <img src="highlight2.jpg" alt="Highlight 2">
+        <img src="https://e0.365dm.com/23/10/768x432/skysports-arsenal-saka-jesus_6308558.jpg?20231004120130" alt="Highlight 1">
+        <img src="https://media.gq-magazine.co.uk/photos/640b02e70a046f0156dd5365/16:9/w_2560%2Cc_limit/GettyImages-1247252693.jpg" alt="Highlight 2">
         <!-- Add more images as needed -->
     </div>
 </div>
