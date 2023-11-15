@@ -5,9 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Players</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css">
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
     <style>
@@ -39,14 +39,25 @@
 
         .chart-container {
             display: flex;
-            flex-wrap: wrap; /* Allow charts to wrap to the next line on smaller screens */
             justify-content: space-around;
             margin-top: 20px;
         }
 
         .chart {
             width: 45%;
-            margin-bottom: 20px; /* Add some space between charts */
+        }
+
+        /* Set the maximum width of the map container */
+        .map-container {
+            max-width: 800px;
+            margin: auto;
+            margin-top: 20px;
+        }
+
+        /* Set the maximum width of the embedded map */
+        .embedded-map {
+            width: 100%;
+            height: 400px;
         }
     </style>
 </head>
@@ -105,11 +116,13 @@
         <div class="chart">
             <canvas id="countryPieChart" width="400" height="200"></canvas>
         </div>
+    </div>
 
-        <!-- Google Maps Chart -->
-        <div class="chart" style="height: 400px;">
-            <div id="googleMap"></div>
-        </div>
+    <!-- Embedded Google Maps iframe -->
+    <div class="map-container">
+        <iframe class="embedded-map"
+            src="https://www.google.com/maps/embed/v1/view?key=YOUR_GOOGLE_MAPS_API_KEY&center=20,0&zoom=2&maptype=satellite"
+            allowfullscreen></iframe>
     </div>
 
     <?php
@@ -174,39 +187,9 @@
         });
     </script>
 
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script>
-        google.charts.load('current', {
-            'packages': ['map'],
-            'mapsApiKey': 'YOUR_GOOGLE_MAPS_API_KEY'
-        });
-        google.charts.setOnLoadCallback(drawMap);
-
-        function drawMap() {
-            var data = google.visualization.arrayToDataTable([
-                ['Country', 'Latitude', 'Longitude', 'Player Count'],
-                <?php
-                foreach ($uniqueCountriesData as $row) {
-                    $isoCode = getIsoCode($row['nationality']); // Implement this function to get ISO code
-                    echo "['" . $row['nationality'] . "', '" . $isoCode . "', 0, " . $row['playerCount'] . "],";
-                }
-                ?>
-            ]);
-
-            var options = {
-                showTooltip: true,
-                showInfoWindow: true,
-                mapType: 'normal',
-                zoomLevel: 2
-            };
-
-            var map = new google.visualization.Map(document.getElementById('googleMap'));
-
-            map.draw(data, options);
-        }
-    </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-ZOsT2UQzY3FN8LkFDrF4D72KlSb0P9ABqT1ggK5biQOp6iUAZjA8M2reF5FOSta0" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ZOsT2UQzY3FN8LkFDrF4D72KlSb0P9ABqT1ggK5biQOp6iUAZjA8M2reF5FOSta0"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
