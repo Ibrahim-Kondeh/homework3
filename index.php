@@ -7,33 +7,41 @@ include "view-header.php";
 
 <div class="highlights-container">
     <h2>Last Week Highlights</h2>
-    <div class="slick-carousel">
+    <div class="slideshow-container">
         <!-- Add your image elements with alt text for accessibility -->
-        <div><img src="https://media.gq-magazine.co.uk/photos/640b02e70a046f0156dd5365/16:9/w_2560%2Cc_limit/GettyImages-1247252693.jpg" alt="Highlight 1"></div>
-        <div><img src="https://www.mpl.live/blog/wp-content/uploads/2021/09/man-city-1.jpg" alt="Highlight 2"></div>
+        <div class="mySlides fade"><img src="https://media.gq-magazine.co.uk/photos/640b02e70a046f0156dd5365/16:9/w_2560%2Cc_limit/GettyImages-1247252693.jpg" alt="Highlight 1"></div>
+        <div class="mySlides fade"><img src="https://www.mpl.live/blog/wp-content/uploads/2021/09/man-city-1.jpg" alt="Highlight 2"></div>
         <!-- Add more images as needed -->
     </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // Initialize Slick carousel for image slideshow
-        $('.slick-carousel').slick({
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            autoplay: true,
-            autoplaySpeed: 5000, // Change slide every 5 seconds (adjust as needed)
-            arrows: false, // Hide navigation arrows
-            dots: false, // Hide navigation dots
-        });
+        let slideIndex = 0;
+
+        function showSlides() {
+            const slides = document.getElementsByClassName("mySlides");
+            
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+
+            slideIndex++;
+
+            if (slideIndex > slides.length) {
+                slideIndex = 1;
+            }
+
+            slides[slideIndex - 1].style.display = "block";
+            setTimeout(showSlides, 5000); // Change slide every 5 seconds (adjust as needed)
+        }
+
+        showSlides();
     });
 </script>
 
 <style>
-    /* Add your styles for highlights container and Slick carousel as needed */
+    /* Add your styles for highlights container and slideshow container as needed */
     .highlights-container {
         margin-top: 20px;
         max-width: 800px; /* Set the maximum width of the highlights container */
@@ -41,11 +49,14 @@ include "view-header.php";
         margin-right: auto;
     }
 
-    .slick-carousel {
-        width: 100%;
+    .slideshow-container {
+        max-width: 100%;
+        position: relative;
+        margin: auto;
     }
 
-    .slick-carousel img {
+    .mySlides {
+        display: none;
         width: 100%; /* Make images fill the container */
         height: auto;
     }
