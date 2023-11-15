@@ -46,19 +46,6 @@
         .chart {
             width: 45%;
         }
-
-        /* Set the maximum width of the map container */
-        .map-container {
-            max-width: 800px;
-            margin: auto;
-            margin-top: 20px;
-        }
-
-        /* Set the maximum width of the embedded map */
-        .embedded-map {
-            width: 100%;
-            height: 400px;
-        }
     </style>
 </head>
 
@@ -116,13 +103,6 @@
         <div class="chart">
             <canvas id="countryPieChart" width="400" height="200"></canvas>
         </div>
-    </div>
-
-    <!-- Embedded Google Maps iframe -->
-    <div class="map-container">
-        <iframe class="embedded-map"
-            src="https://www.google.com/maps/embed/v1/view?key=YOUR_GOOGLE_MAPS_API_KEY&center=20,0&zoom=2&maptype=satellite"
-            allowfullscreen></iframe>
     </div>
 
     <?php
