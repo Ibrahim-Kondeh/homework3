@@ -6,7 +6,7 @@ include "view-header.php";
 <h1>HomeWork 6</h1>
 
 <div class="video-container">
-    <video id="homeVideo" playsinline controls>
+    <video id="homeVideo" playsinline controls width="640" height="360">
         <source src="your-video-file.mp4" type="video/mp4">
         <!-- Add additional source elements for different video formats if needed -->
         Your browser does not support the video tag.
@@ -58,6 +58,9 @@ include "view-header.php";
     /* Add your styles for video and highlights container as needed */
     .video-container {
         margin-top: 20px;
+        max-width: 800px; /* Set the maximum width of the video container */
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .highlights-container {
