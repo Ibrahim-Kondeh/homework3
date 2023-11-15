@@ -5,73 +5,51 @@ include "view-header.php";
 
 <h1>HomeWork 6</h1>
 
-<div class="video-container">
-    <iframe width="640" height="360" src="https://www.youtube.com/watch?v=ugc35l-3GNQ" frameborder="0" allowfullscreen></iframe>
-</div>
-
 <div class="highlights-container">
     <h2>Last Week Highlights</h2>
-    <div id="highlightSlideshow" class="slideshow">
-        <!-- Add your image elements with alt text for accessibility -->
-        <img src="highlight1.jpg" alt="Highlight 1">
-        <img src="highlight2.jpg" alt="Highlight 2">
-        <!-- Add more images as needed -->
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <!-- Add your image elements with alt text for accessibility -->
+            <div class="swiper-slide"><img src="highlight1.jpg" alt="Highlight 1"></div>
+            <div class="swiper-slide"><img src="highlight2.jpg" alt="Highlight 2"></div>
+            <!-- Add more images as needed -->
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
     </div>
 </div>
 
-<script src="https://cdn.plyr.io/3.6.2/plyr.js"></script>
-<link rel="stylesheet" href="https://cdn.plyr.io/3.6.2/plyr.css">
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // Initialize Plyr for video playback
-        const player = new Plyr('#homeVideo');
-
-        // Initialize the image slideshow
-        const highlightSlideshow = document.getElementById('highlightSlideshow');
-        let currentIndex = 0;
-
-        function showNextImage() {
-            const images = highlightSlideshow.children;
-
-            if (images.length > 1) {
-                images[currentIndex].classList.remove('visible');
-                currentIndex = (currentIndex + 1) % images.length;
-                images[currentIndex].classList.add('visible');
-                setTimeout(showNextImage, 5000); // Change slide every 5 seconds (adjust as needed)
-            }
-        }
-
-        // Show the first image and start the slideshow
-        if (highlightSlideshow.children.length > 0) {
-            highlightSlideshow.children[currentIndex].classList.add('visible');
-            setTimeout(showNextImage, 5000); // Change slide every 5 seconds (adjust as needed)
-        }
-
-        // Autoplay video
-        player.play();
+        // Initialize Swiper for image slideshow
+        const swiper = new Swiper('.swiper-container', {
+            slidesPerView: 1,
+            spaceBetween: 10,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            autoplay: {
+                delay: 5000, // Change slide every 5 seconds (adjust as needed)
+            },
+        });
     });
 </script>
 
 <style>
-    /* Add your styles for video and highlights container as needed */
-    .video-container {
+    /* Add your styles for highlights container and Swiper container as needed */
+    .highlights-container {
         margin-top: 20px;
-        max-width: 800px; /* Set the maximum width of the video container */
+        max-width: 800px; /* Set the maximum width of the highlights container */
         margin-left: auto;
         margin-right: auto;
     }
 
-    .highlights-container {
-        margin-top: 20px;
-    }
-
-    .slideshow {
-        display: none;
-    }
-
-    .visible {
-        display: block;
+    .swiper-container {
+        width: 100%;
+        height: 100%;
     }
 </style>
 
