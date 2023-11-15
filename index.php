@@ -9,7 +9,7 @@ include "view-header.php";
     <h2>Last Week Highlights</h2>
     <div class="slideshow-container">
         <!-- Add your image elements with alt text for accessibility -->
-        <div class="mySlides fade"><img src="https://media.gq-magazine.co.uk/photos/640b02e70a046f0156dd5365/16:9/w_2560%2Cc_limit/GettyImages-1247252693.jpg" alt="Highlight 1"></div>
+        <div class="mySlides fade"><img src="https://media.premiumtimesng.com/wp-content/files/2021/05/E2k9c3dXoAkE4Zr-scaled.jpg" alt="Highlight 1"></div>
         <div class="mySlides fade"><img src="https://www.mpl.live/blog/wp-content/uploads/2021/09/man-city-1.jpg" alt="Highlight 2"></div>
         <!-- Add more images as needed -->
     </div>
