@@ -176,12 +176,12 @@
         // Third-party Chart (Radar Chart)
         const radarCtx = document.getElementById('radarChart').getContext('2d');
 
-        // Sample data for the radar chart (replace with your own)
+    
         const radarData = {
-            labels: ['Stat1', 'Stat2', 'Stat3', 'Stat4', 'Stat5'],
+            labels: ['Europe', 'Africa', 'Americas', 'Asia'],
             datasets: [{
-                label: 'Player Stats',
-                data: [65, 59, 90, 81, 56],
+                label: 'Countries represented',
+                data: [11, 3, 3, 1],
                 backgroundColor: 'rgba(255, 99, 132, 0.2)',
                 borderColor: 'rgba(255, 99, 132, 1)',
                 borderWidth: 1
