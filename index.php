@@ -7,48 +7,40 @@ include "view-header.php";
 
 <div class="highlights-container">
     <h2>Last Week Highlights</h2>
-    <div class="swiper-container">
-        <div class="swiper-wrapper">
-            <!-- Add your image elements with alt text for accessibility -->
-            <div class="swiper-slide"><img src="https://media.gq-magazine.co.uk/photos/640b02e70a046f0156dd5365/16:9/w_2560%2Cc_limit/GettyImages-1247252693.jpg" alt="Highlight 1"></div>
-            <div class="swiper-slide"><img src="https://www.mpl.live/blog/wp-content/uploads/2021/09/man-city-1.jpg" alt="Highlight 2"></div>
-            <!-- Add more images as needed -->
+    <div class="glide">
+        <div class="glide__track" data-glide-el="track">
+            <ul class="glide__slides">
+                <!-- Add your image elements with alt text for accessibility -->
+                <li class="glide__slide"><img src="https://media.gq-magazine.co.uk/photos/640b02e70a046f0156dd5365/16:9/w_2560%2Cc_limit/GettyImages-1247252693.jpg" alt="Highlight 1"></li>
+                <li class="glide__slide"><img src="https://www.mpl.live/blog/wp-content/uploads/2021/09/man-city-1.jpg" alt="Highlight 2"></li>
+                <!-- Add more images as needed -->
+            </ul>
         </div>
-        <!-- Add Pagination -->
-        <div class="swiper-pagination"></div>
+        <!-- Add Navigation -->
+        <div class="glide__arrows" data-glide-el="controls">
+            <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
+            <button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button>
+        </div>
     </div>
 </div>
 
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // Initialize Swiper for image slideshow
-        const swiper = new Swiper('.swiper-container', {
-            effect: 'coverflow',
-            grabCursor: true,
-            centeredSlides: true,
-            slidesPerView: 'auto',
-            coverflowEffect: {
-                rotate: 50,
-                stretch: 0,
-                depth: 100,
-                modifier: 1,
-                slideShadows: true,
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            autoplay: {
-                delay: 5000, // Change slide every 5 seconds (adjust as needed)
-            },
-        });
+        // Initialize Glide for image slideshow
+        new Glide('.glide', {
+            type: 'carousel',
+            startAt: 0, // Start at the first slide
+            perView: 1, // Show one slide at a time
+            autoplay: 5000, // Change slide every 5 seconds (adjust as needed)
+            hoverpause: true, // Pause autoplay on hover
+        }).mount();
     });
 </script>
 
 <style>
-    /* Add your styles for highlights container and Swiper container as needed */
+    /* Add your styles for highlights container and Glide container as needed */
     .highlights-container {
         margin-top: 20px;
         max-width: 800px; /* Set the maximum width of the highlights container */
@@ -56,9 +48,15 @@ include "view-header.php";
         margin-right: auto;
     }
 
-    .swiper-container {
+    .glide {
         width: 100%;
-        height: 100%;
+        max-width: 800px; /* Set the maximum width of the Glide container */
+        margin: 0 auto;
+    }
+
+    .glide__slides img {
+        width: 100%; /* Make images fill the container */
+        height: auto;
     }
 </style>
 
