@@ -7,7 +7,7 @@
     <title>Players</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css">
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
     <style>
         .player-table {
@@ -102,6 +102,11 @@
         <div class="chart">
             <canvas id="countryPieChart" width="400" height="200"></canvas>
         </div>
+
+        <!-- Google Maps Chart -->
+        <div class="chart" style="height: 400px;">
+            <div id="googleMap"></div>
+        </div>
     </div>
 
     <?php
@@ -113,17 +118,13 @@
     }, $uniqueCountriesData);
     ?>
     <script>
-        const labels = <?php echo json_encode($labels); ?>;
-        const counts = <?php echo json_encode($counts); ?>;
-        const countryColors = <?php echo json_encode($countryColors); ?>;
-
         // Create data trace for Plotly bar chart
         const barChartTrace = {
-            x: labels,
-            y: counts,
+            x: <?php echo json_encode($labels); ?>,
+            y: <?php echo json_encode($counts); ?>,
             type: 'bar',
             marker: {
-                color: countryColors
+                color: <?php echo json_encode($countryColors); ?>
             }
         };
 
@@ -152,10 +153,10 @@
         const countryPieChart = new Chart(pieCtx, {
             type: 'pie',
             data: {
-                labels: labels,
+                labels: <?php echo json_encode($labels); ?>,
                 datasets: [{
-                    data: counts,
-                    backgroundColor: countryColors,
+                    data: <?php echo json_encode($counts); ?>,
+                    backgroundColor: <?php echo json_encode($countryColors); ?>,
                     borderWidth: 1
                 }]
             },
@@ -164,6 +165,35 @@
                 maintainAspectRatio: false,
             }
         });
+    </script>
+
+    <script>
+        google.charts.load('current', {
+            'packages': ['map'],
+            'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
+        });
+
+        google.charts.setOnLoadCallback(drawMap);
+
+        function drawMap() {
+            var data = google.visualization.arrayToDataTable([
+                ['Country', 'Population'],
+                <?php
+                foreach ($uniqueCountriesData as $row) {
+                    echo "['" . $row['nationality'] . "', " . $row['playerCount'] . "],";
+                }
+                ?>
+            ]);
+
+            var options = {
+                showTooltip: true,
+                showInfoWindow: true
+            };
+
+            var map = new google.visualization.Map(document.getElementById('googleMap'));
+
+            map.draw(data, options);
+        };
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-ZOsT2UQzY3FN8LkFDrF4D72KlSb0P9ABqT1ggK5biQOp6iUAZjA8M2reF5FOSta0" crossorigin="anonymous"></script>
