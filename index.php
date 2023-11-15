@@ -7,8 +7,8 @@ include "view-header.php";
 
 <div class="video-container">
     <video id="homeVideo" playsinline controls width="640" height="360">
-        <source src="your-video-file.mp4" type="video/mp4">
-        <!-- Add additional source elements for different video formats if needed -->
+        <source src="https://www.youtube.com/watch?v=bUwSb_8BGbs" type="video/mp4">
+        
         Your browser does not support the video tag.
     </video>
 </div>
@@ -16,7 +16,7 @@ include "view-header.php";
 <div class="highlights-container">
     <h2>Last Week Highlights</h2>
     <div id="highlightSlideshow" class="slideshow">
-        <!-- Add your image elements with alt text for accessibility -->
+        <!--image elements with alt text for accessibility -->
         <img src="highlight1.jpg" alt="Highlight 1">
         <img src="highlight2.jpg" alt="Highlight 2">
         <!-- Add more images as needed -->
