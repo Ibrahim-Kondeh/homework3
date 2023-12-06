@@ -49,7 +49,9 @@ $pageTitle = "Matches";
 </style>
 
 <div class="container">
+    <!-- Updated Match Listing with confirmation modals -->
     <table class="table">
+        <!-- Table headers -->
         <thead>
             <tr>
                 <th scope="col">Competition</th>
@@ -64,8 +66,10 @@ $pageTitle = "Matches";
             <?php foreach ($matchesData as $competition => $matches) { ?>
                 <?php foreach ($matches as $match) { ?>
                     <tr>
-                        <td><?php echo $competition; ?></td>
+                        <td><?php echo $competition[$match['competition_id']]; ?></td>
+                        <!-- Display home team name -->
                         <td><?php echo $teams[$match['team1_id']]; ?></td>
+                        <!-- Display away team name -->
                         <td><?php echo $teams[$match['team2_id']]; ?></td>
                         <td><?php echo $match['match_date']; ?></td>
                         <td><?php echo $match['score_team1'] . ' - ' . $match['score_team2']; ?></td>
