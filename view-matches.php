@@ -69,8 +69,7 @@ $pageTitle = "Matches";
                         <td><?php echo $competition; ?></td>
                         <!-- Display home team name -->
                         <td><?php echo $teams[$match['team1_id']]; ?></td>
-                        <!-- Display away team name -->
-                        <td><?php echo $teams[$match['team2_id']]; ?></td>
+                      <td><?php echo $teams[$match['team2_id']]; ?></td>
                         <td><?php echo $match['match_date']; ?></td>
                         <td><?php echo $match['score_team1'] . ' - ' . $match['score_team2']; ?></td>
                         <td>
