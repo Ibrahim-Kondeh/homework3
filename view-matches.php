@@ -67,12 +67,11 @@ $pageTitle = "Matches";
                 <?php foreach ($matches as $match) { ?>
                     <tr>
                         <td><?php echo $competition; ?></td>
-                        <!-- Display home team name -->
-                        <td><?php echo $teams[$match['team1_id']]; ?></td>
-                      <td><?php echo $teams[$match['team2_id']]; ?></td>
-                        <td><?php echo $match['match_date']; ?></td>
-                        <td><?php echo $match['score_team1'] . ' - ' . $match['score_team2']; ?></td>
-                        <td>
+                        <td><?php echo htmlspecialchars($match['team1_name']); ?></td>
+                            <td><?php echo htmlspecialchars($match['team2_name']); ?></td>
+                            <td><?php echo htmlspecialchars($match['match_date']); ?></td>
+                            <td><?php echo htmlspecialchars($match['score_team1']) . " : " . htmlspecialchars($match['score_team2']); ?></td>
+                            <td>
                             <!-- Edit Button -->
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editMatchModal<?php echo $match['match_id']; ?>">
                                 Edit
