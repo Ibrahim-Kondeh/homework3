@@ -66,10 +66,10 @@ $pageTitle = "Matches";
             <?php foreach ($matchesData as $competition => $matches) { ?>
                 <?php foreach ($matches as $match) { ?>
                     <tr>
-                        <th scope="row"><?php echo $match['id']; ?></th>
-                        <td><?php echo $match['competition']; ?></td>
-                        <td><?php echo $match['home_team']; ?></td>
-                        <td><?php echo $match['away_team']; ?></td>
+                        <th scope="row"><?php echo $match['match_id']; ?></th>
+                        <td><?php echo $match['competition_id']; ?></td>
+                        <td><?php echo $match['team_id']; ?></td>
+                        <td><?php echo $match['team2_id']; ?></td>
                         <td><?php echo $match['match_date']; ?></td>
                         <td><?php echo $match['score_team1'] . ' - ' . $match['score_team2']; ?></td>
                         <td>
