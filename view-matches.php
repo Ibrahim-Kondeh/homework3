@@ -52,8 +52,9 @@ $pageTitle = "Matches";
 
 <div class="container">
     <!-- Add Match Button at the top -->
-    <button class="btn btn-primary add-match-button" data-bs-toggle="modal" data-bs-target="#addMatchModal" style="margin-bottom: 20px;">Add Match</button>
-
+    <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addMatchModal">
+        <i class="bi bi-plus"></i> Add Match
+    </button>
     <?php foreach ($matchesData as $competition => $matches) { ?>
         <div class="table-container">
             <h2><?php echo htmlspecialchars($competition); ?></h2>
@@ -88,6 +89,7 @@ $pageTitle = "Matches";
     
 
   
+   
     <!-- Confirmation Messages -->
     <?php if (isset($_SESSION['success_message'])) { ?>
         <div class="alert alert-success" role="alert">
@@ -100,6 +102,7 @@ $pageTitle = "Matches";
         </div>
     <?php } ?>
 </div>
+
 
 <!-- JavaScript for confirmation modals -->
 <script>
