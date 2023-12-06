@@ -48,18 +48,19 @@ $pageTitle = "Matches";
     }
 </style>
 
+
 <div class="container">
     <?php foreach ($matchesData as $competition => $matches) { ?>
         <div class="table-container">
-            <h2><?php echo $competition; ?></h2>
+            <h2><?php echo htmlspecialchars($competition); ?></h2>
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">Home Team</th>
-                        <th scope="col">Away Team</th>
-                        <th scope="col">Match Date</th>
-                        <th scope="col">Score</th>
-                        <th scope="col">Actions</th>
+                        <th>Home Team</th>
+                        <th>Away Team</th>
+                        <th>Date</th>
+                        <th>Score</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -96,7 +97,9 @@ $pageTitle = "Matches";
         </tbody>
     </table>
 
-     <!-- Confirmation Messages -->
+   </div>
+    <?php } ?>
+    <!-- Confirmation Messages -->
     <?php if (isset($_SESSION['success_message'])) { ?>
         <div class="alert alert-success" role="alert">
             <?php echo $_SESSION['success_message']; ?>
