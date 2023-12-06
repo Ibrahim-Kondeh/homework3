@@ -67,9 +67,9 @@ $pageTitle = "Matches";
                 <?php foreach ($matches as $match) { ?>
                     <tr>
                         
-                        <td><?php echo $match['competition_id']; ?></td>
-                        <td><?php echo $match['team_id']; ?></td>
-                        <td><?php echo $match['team2_id']; ?></td>
+                       <td><?php echo $competitions[$match['competition_id']]; ?></td>
+                      <td><?php echo $teams[$match['team1_id']]; ?></td>
+                      <td><?php echo $teams[$match['team2_id']]; ?></td>
                         <td><?php echo $match['match_date']; ?></td>
                         <td><?php echo $match['score_team1'] . ' - ' . $match['score_team2']; ?></td>
                         <td>
