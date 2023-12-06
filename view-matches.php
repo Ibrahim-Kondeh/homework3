@@ -71,33 +71,15 @@ $pageTitle = "Matches";
                             <td><?php echo htmlspecialchars($match['match_date']); ?></td>
                             <td><?php echo htmlspecialchars($match['score_team1']) . " : " . htmlspecialchars($match['score_team2']); ?></td>
                             <td>
-                            <!-- Edit Button -->
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editMatchModal<?php echo $match['match_id']; ?>">
-                                Edit
-                            </button>
-
-                            <!-- Edit Match Modal -->
-                            <div class="modal fade" id="editMatchModal<?php echo $match['match_id']; ?>" tabindex="-1" aria-labelledby="editMatchModalLabel<?php echo $match['match_id']; ?>" aria-hidden="true">
-                                <!-- Modal content goes here -->
-                            </div>
-
-                            <!-- Delete Button -->
-                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteMatchModal<?php echo $match['match_id']; ?>">
-                                Delete
-                            </button>
-
-                            <!-- Delete Match Confirmation Modal -->
-                            <div class="modal fade" id="deleteMatchModal<?php echo $match['match_id']; ?>" tabindex="-1" aria-labelledby="deleteMatchModalLabel<?php echo $match['match_id']; ?>" aria-hidden="true">
-                                <!-- Modal content goes here -->
-                            </div>
-                        </td>
-                    </tr>
-                <?php } ?>
-            <?php } ?>
-        </tbody>
-    </table>
-
-   </div>
+                                <!-- Edit and Delete buttons -->
+                                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editMatchModal<?php echo $match['match_id']; ?>">Edit</button>
+                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteMatchModal<?php echo $match['match_id']; ?>">Delete</button>
+                            </td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div>
     <?php } ?>
     <!-- Confirmation Messages -->
     <?php if (isset($_SESSION['success_message'])) { ?>
