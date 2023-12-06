@@ -66,7 +66,7 @@ $pageTitle = "Matches";
             <?php foreach ($matchesData as $competition => $matches) { ?>
                 <?php foreach ($matches as $match) { ?>
                     <tr>
-                        <td><?php echo $competition[$match['competition_id']]; ?></td>
+                        <td><?php echo $competition; ?></td>
                         <!-- Display home team name -->
                         <td><?php echo $teams[$match['team1_id']]; ?></td>
                         <!-- Display away team name -->
