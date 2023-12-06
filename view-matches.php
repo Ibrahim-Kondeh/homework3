@@ -53,7 +53,7 @@ $pageTitle = "Matches";
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">ID</th>
+                
                 <th scope="col">Competition</th>
                 <th scope="col">Home Team</th>
                 <th scope="col">Away Team</th>
@@ -66,7 +66,7 @@ $pageTitle = "Matches";
             <?php foreach ($matchesData as $competition => $matches) { ?>
                 <?php foreach ($matches as $match) { ?>
                     <tr>
-                        <th scope="row"><?php echo $match['match_id']; ?></th>
+                        
                         <td><?php echo $match['competition_id']; ?></td>
                         <td><?php echo $match['team_id']; ?></td>
                         <td><?php echo $match['team2_id']; ?></td>
