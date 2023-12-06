@@ -54,6 +54,7 @@ $pageTitle = "Matches";
         <div class="table-container">
             <h2><?php echo htmlspecialchars($competition); ?></h2>
             <table class="table">
+                <!-- Table headers -->
                 <thead>
                     <tr>
                         <th>Home Team</th>
@@ -65,6 +66,7 @@ $pageTitle = "Matches";
                 </thead>
                 <tbody>
                     <?php foreach ($matches as $match) { ?>
+                        <!-- Rows with match data -->
                         <tr>
                             <td><?php echo htmlspecialchars($match['team1_name']); ?></td>
                             <td><?php echo htmlspecialchars($match['team2_name']); ?></td>
@@ -81,6 +83,12 @@ $pageTitle = "Matches";
             </table>
         </div>
     <?php } ?>
+    
+    <!-- Add Competition Button -->
+    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addCompetitionModal">Add Competition</button>
+    <!-- Add Match Button -->
+    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addMatchModal">Add Match</button>
+
     <!-- Confirmation Messages -->
     <?php if (isset($_SESSION['success_message'])) { ?>
         <div class="alert alert-success" role="alert">
@@ -98,5 +106,16 @@ $pageTitle = "Matches";
 <script>
     // Your JavaScript code remains unchanged
 </script>
+
+<!-- Modals for adding competitions and matches -->
+<!-- Add Competition Modal -->
+<div class="modal fade" id="addCompetitionModal" tabindex="-1" aria-labelledby="addCompetitionModalLabel" aria-hidden="true">
+    <!-- Modal content for adding competition goes here -->
+</div>
+
+<!-- Add Match Modal -->
+<div class="modal fade" id="addMatchModal" tabindex="-1" aria-labelledby="addMatchModalLabel" aria-hidden="true">
+    <!-- Modal content for adding match goes here -->
+</div>
 
 <?php include "view-footer.php"; ?>
