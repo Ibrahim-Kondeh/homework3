@@ -49,11 +49,9 @@ $pageTitle = "Matches";
 </style>
 
 <div class="container">
-    <!-- Updated Match Listing with confirmation modals -->
     <table class="table">
         <thead>
             <tr>
-                
                 <th scope="col">Competition</th>
                 <th scope="col">Home Team</th>
                 <th scope="col">Away Team</th>
@@ -66,10 +64,9 @@ $pageTitle = "Matches";
             <?php foreach ($matchesData as $competition => $matches) { ?>
                 <?php foreach ($matches as $match) { ?>
                     <tr>
-                        
-                       <td><?php echo $competition[$match['competition_id']]; ?></td>
-                      <td><?php echo $teams[$match['team1_id']]; ?></td>
-                      <td><?php echo $teams[$match['team2_id']]; ?></td>
+                        <td><?php echo $competition; ?></td>
+                        <td><?php echo $teams[$match['team1_id']]; ?></td>
+                        <td><?php echo $teams[$match['team2_id']]; ?></td>
                         <td><?php echo $match['match_date']; ?></td>
                         <td><?php echo $match['score_team1'] . ' - ' . $match['score_team2']; ?></td>
                         <td>
@@ -79,7 +76,7 @@ $pageTitle = "Matches";
                             </button>
 
                             <!-- Edit Match Modal -->
-                            <div class="modal fade" id="editMatchModal<?php echo $match['id']; ?>" tabindex="-1" aria-labelledby="editMatchModalLabel<?php echo $match['match_id']; ?>" aria-hidden="true">
+                            <div class="modal fade" id="editMatchModal<?php echo $match['match_id']; ?>" tabindex="-1" aria-labelledby="editMatchModalLabel<?php echo $match['match_id']; ?>" aria-hidden="true">
                                 <!-- Modal content goes here -->
                             </div>
 
@@ -89,7 +86,7 @@ $pageTitle = "Matches";
                             </button>
 
                             <!-- Delete Match Confirmation Modal -->
-                            <div class="modal fade" id="deleteMatchModal<?php echo $match['id']; ?>" tabindex="-1" aria-labelledby="deleteMatchModalLabel<?php echo $match['id']; ?>" aria-hidden="true">
+                            <div class="modal fade" id="deleteMatchModal<?php echo $match['match_id']; ?>" tabindex="-1" aria-labelledby="deleteMatchModalLabel<?php echo $match['match_id']; ?>" aria-hidden="true">
                                 <!-- Modal content goes here -->
                             </div>
                         </td>
@@ -112,7 +109,7 @@ $pageTitle = "Matches";
     <?php } ?>
 </div>
 
-<!-- JavaScript to handle confirmation modals -->
+<!-- JavaScript for confirmation modals -->
 <script>
     var deleteButtons = document.querySelectorAll('.btn-danger');
     deleteButtons.forEach(function(button) {
