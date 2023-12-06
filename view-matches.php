@@ -49,35 +49,79 @@ $pageTitle = "Matches";
 </style>
 
 <div class="container">
-    <?php
-    foreach ($matchesData as $competition => $matches) {
-    ?>
-        <div class="table-container">
-            <h2><?php echo htmlspecialchars($competition); ?></h2>
-            <table>
-                <thead>
+    <!-- Updated Match Listing with confirmation modals -->
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Competition</th>
+                <th scope="col">Home Team</th>
+                <th scope="col">Away Team</th>
+                <th scope="col">Match Date</th>
+                <th scope="col">Score</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($matchesData as $competition => $matches) { ?>
+                <?php foreach ($matches as $match) { ?>
                     <tr>
-                        <th>Home Team</th>
-                        <th>Away Team</th>
-                        <th>Date</th>
-                        <th>Score</th>
+                        <th scope="row"><?php echo $match['id']; ?></th>
+                        <td><?php echo $match['competition']; ?></td>
+                        <td><?php echo $match['home_team']; ?></td>
+                        <td><?php echo $match['away_team']; ?></td>
+                        <td><?php echo $match['match_date']; ?></td>
+                        <td><?php echo $match['score_team1'] . ' - ' . $match['score_team2']; ?></td>
+                        <td>
+                            <!-- Edit Button -->
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editMatchModal<?php echo $match['id']; ?>">
+                                Edit
+                            </button>
+
+                            <!-- Edit Match Modal -->
+                            <div class="modal fade" id="editMatchModal<?php echo $match['id']; ?>" tabindex="-1" aria-labelledby="editMatchModalLabel<?php echo $match['id']; ?>" aria-hidden="true">
+                                <!-- Modal content goes here -->
+                            </div>
+
+                            <!-- Delete Button -->
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteMatchModal<?php echo $match['id']; ?>">
+                                Delete
+                            </button>
+
+                            <!-- Delete Match Confirmation Modal -->
+                            <div class="modal fade" id="deleteMatchModal<?php echo $match['id']; ?>" tabindex="-1" aria-labelledby="deleteMatchModalLabel<?php echo $match['id']; ?>" aria-hidden="true">
+                                <!-- Modal content goes here -->
+                            </div>
+                        </td>
                     </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($matches as $match) { ?>
-                        <tr>
-                            <td><?php echo htmlspecialchars($match['team1_name']); ?></td>
-                            <td><?php echo htmlspecialchars($match['team2_name']); ?></td>
-                            <td><?php echo htmlspecialchars($match['match_date']); ?></td>
-                            <td><?php echo htmlspecialchars($match['score_team1']) . " : " . htmlspecialchars($match['score_team2']); ?></td>
-                        </tr>
-                    <?php } ?>
-                </tbody>
-            </table>
+                <?php } ?>
+            <?php } ?>
+        </tbody>
+    </table>
+
+    <!-- Confirmation Messages -->
+    <?php if (isset($_SESSION['success_message'])) { ?>
+        <div class="alert alert-success" role="alert">
+            <?php echo $_SESSION['success_message']; ?>
         </div>
-    <?php
-    }
-    ?>
+    <?php } ?>
+    <?php if (isset($_SESSION['error_message'])) { ?>
+        <div class="alert alert-danger" role="alert">
+            <?php echo $_SESSION['error_message']; ?>
+        </div>
+    <?php } ?>
 </div>
+
+<!-- JavaScript to handle confirmation modals -->
+<script>
+    var deleteButtons = document.querySelectorAll('.btn-danger');
+    deleteButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            var modalId = button.getAttribute('data-bs-target');
+            var modal = new bootstrap.Modal(document.querySelector(modalId));
+            modal.show();
+        });
+    });
+</script>
 
 <?php include "view-footer.php"; ?>
