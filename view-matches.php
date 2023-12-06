@@ -67,24 +67,24 @@ $pageTitle = "Matches";
                 <?php foreach ($matches as $match) { ?>
                     <tr>
                         
-                       <td><?php echo $competitions[$match['competition_id']]; ?></td>
+                       <td><?php echo $competition[$match['competition_id']]; ?></td>
                       <td><?php echo $teams[$match['team1_id']]; ?></td>
                       <td><?php echo $teams[$match['team2_id']]; ?></td>
                         <td><?php echo $match['match_date']; ?></td>
                         <td><?php echo $match['score_team1'] . ' - ' . $match['score_team2']; ?></td>
                         <td>
                             <!-- Edit Button -->
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editMatchModal<?php echo $match['id']; ?>">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editMatchModal<?php echo $match['match_id']; ?>">
                                 Edit
                             </button>
 
                             <!-- Edit Match Modal -->
-                            <div class="modal fade" id="editMatchModal<?php echo $match['id']; ?>" tabindex="-1" aria-labelledby="editMatchModalLabel<?php echo $match['id']; ?>" aria-hidden="true">
+                            <div class="modal fade" id="editMatchModal<?php echo $match['id']; ?>" tabindex="-1" aria-labelledby="editMatchModalLabel<?php echo $match['match_id']; ?>" aria-hidden="true">
                                 <!-- Modal content goes here -->
                             </div>
 
                             <!-- Delete Button -->
-                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteMatchModal<?php echo $match['id']; ?>">
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteMatchModal<?php echo $match['match_id']; ?>">
                                 Delete
                             </button>
 
