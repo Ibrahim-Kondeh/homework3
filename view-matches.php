@@ -51,6 +51,9 @@ $pageTitle = "Matches";
 
 
 <div class="container">
+    <!-- Add Match Button at the top -->
+    <button class="btn btn-primary add-match-button" data-bs-toggle="modal" data-bs-target="#addMatchModal" style="margin-bottom: 20px;">Add Match</button>
+
     <?php foreach ($matchesData as $competition => $matches) { ?>
         <div class="table-container">
             <h2><?php echo htmlspecialchars($competition); ?></h2>
@@ -82,13 +85,9 @@ $pageTitle = "Matches";
             </table>
         </div>
     <?php } ?>
+    
 
-    <!-- Add Match Button -->
-    <button class="btn btn-primary add-match-button" data-bs-toggle="modal" data-bs-target="#addMatchModal">Add Match</button>
-
-    <!-- Add Competition Button -->
-    <button class="btn btn-success add-competition-button" data-bs-toggle="modal" data-bs-target="#addCompetitionModal">Add Competition</button>
-
+  
     <!-- Confirmation Messages -->
     <?php if (isset($_SESSION['success_message'])) { ?>
         <div class="alert alert-success" role="alert">
@@ -107,27 +106,6 @@ $pageTitle = "Matches";
     // Your JavaScript code remains unchanged
 </script>
 
-<!-- Add Competition Modal -->
-<div class="modal fade" id="addCompetitionModal" tabindex="-1" aria-labelledby="addCompetitionModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="addCompetitionModalLabel">Add Competition</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form action="add_competition.php" method="POST">
-                    <div class="mb-3">
-                        <label for="competitionName" class="form-label">Competition Name</label>
-                        <input type="text" class="form-control" id="competitionName" name="competitionName">
-                    </div>
-                    <!-- Add more fields if needed -->
-                    <button type="submit" class="btn btn-primary">Add Competition</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
 
 <!-- Add Match Modal -->
 <div class="modal fade" id="addMatchModal" tabindex="-1" aria-labelledby="addMatchModalLabel" aria-hidden="true">
