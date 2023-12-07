@@ -6,10 +6,23 @@ include "view-header.php";
     /* Your existing styles */
     body {
         background-image: url('https://img.freepik.com/premium-photo/football-soccer-green-grass-field-conner_256301-166.jpg?w=2000');
-       
         background-size: cover;
-        COLOR: red;
-    
+        color: white; /* Changing text color to white */
+    }
+    .card-group {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .card {
+        width: calc(50% - 10px);
+        /* Adjust the card width and gap as needed */
+    }
+    .card img,
+    .card video {
+        max-width: 100%; /* Make videos and images responsive */
+        height: auto;
     }
 </style>
 
@@ -56,7 +69,7 @@ include "view-header.php";
             </div>
         </div>
 
-           <<div class="col-md-6">
+           <div class="col-md-6">
             <h2>Slideshow</h2>
             <div class="card-group">
         <div class="card">
