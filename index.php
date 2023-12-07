@@ -36,25 +36,24 @@ include "view-header.php";
                         <!-- Add video description here -->
                     </div>
                 </div>
-                <!-- Video 3 -->
+                <!-- Video 3 - Replace with embeddable link -->
                 <div class="card">
-                    <iframe width="100%" height="250" src="https://www.youtube.com/watch?v=bIk8vbbuAAw" frameborder="0" allowfullscreen></iframe>
+                    <iframe width="100%" height="250" src="https://www.youtube.com/embed/bIk8vbbuAAw" frameborder="0" allowfullscreen></iframe>
                     <div class="card-body">
-                        <h5 class="card-title">Highlight 2</h5>
+                        <h5 class="card-title">Highlight 3</h5>
                         <!-- Add video description here -->
                     </div>
                 </div>
-                <!-- Video 4 -->
-               <div class="card">
-                    <iframe width="100%" height="250" src="https://www.youtube.com/watch?v=dZUvGs4xQkA" frameborder="0" allowfullscreen></iframe>
+                <!-- Video 4 - Replace with embeddable link -->
+                <div class="card">
+                    <iframe width="100%" height="250" src="https://www.youtube.com/embed/dZUvGs4xQkA" frameborder="0" allowfullscreen></iframe>
                     <div class="card-body">
-                        <h5 class="card-title">Highlight 2</h5>
+                        <h5 class="card-title">Highlight 4</h5>
                         <!-- Add video description here -->
                     </div>
-                </div>
                 </div>
             </div>
-        
+        </div>
 
            <<div class="col-md-6">
             <h2>Slideshow</h2>
