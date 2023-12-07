@@ -8,6 +8,7 @@ include "view-header.php";
         background-image: url('https://img.freepik.com/premium-photo/football-soccer-green-grass-field-conner_256301-166.jpg?w=2000');
        
         background-size: cover;
+        COLOR: red;
     
     }
 </style>
