@@ -12,7 +12,7 @@
     <style>
 
     body {
-        background-image: url('https://img.freepik.com/premium-photo/football-soccer-green-grass-field-conner_256301-166.jpg?w=2000');
+        background-image: url('https://upload.wikimedia.org/wikipedia/commons/b/b8/Etihad_Stadium.jpg');
         background-size: cover;
         color: white; /* Changing text color to white */
     }
