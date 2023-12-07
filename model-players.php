@@ -7,7 +7,7 @@ function selectPlayers() {
 
         $stmt = $conn->prepare("
             SELECT player_id, player_name, date_of_birth, nationality, position
-            FROM players");
+            FROM player");
 
         if (!$stmt) {
             throw new Exception("Failed to prepare the query.");
