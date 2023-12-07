@@ -30,7 +30,7 @@ include "view-header.php";
                 </div>
                 <!-- Video 2 -->
                 <div class="card">
-                    <video src="https://www.youtube.com/watch?v=nq2zdQGV2g0" class="object-fit-cover" autoplay></video>
+                    <iframe width="100%" height="250" src="https://www.youtube.com/embed/nq2zdQGV2g0" frameborder="0" allowfullscreen></iframe>
                     <div class="card-body">
                         <h5 class="card-title">Highlight 2</h5>
                         <!-- Add video description here -->
