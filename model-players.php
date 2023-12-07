@@ -8,7 +8,8 @@ function selectPlayers() {
         $conn->close();
         return $result;
     } catch (Exception $e) {
-        throw $e;
+        error_log($e->getMessage()); // Log the error message
+        return false; // Return false or handle the error as needed
     }
 }
 
