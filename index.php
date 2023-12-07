@@ -13,7 +13,7 @@ include "view-header.php";
             <div class="card-group">
                 <!-- Video 1 -->
                 <div class="card">
-                    <video src="..." class="object-fit-contain" autoplay></video>
+                    <video src="https://www.youtube.com/watch?v=gFr0zD8Ofqg" class="object-fit-contain" autoplay></video>
                     <div class="card-body">
                         <h5 class="card-title">Highlight 1</h5>
                         <!-- Add video description here -->
