@@ -13,11 +13,11 @@ function selectPlayers() {
     }
 }
 
-function insertPlayer($playerName, $dob, $nationality, $position) {
+function insertPlayer($pName, $pDob, $pNationality, $pPosition) {
     try {
         $conn = get_db_connection();
         $stmt = $conn->prepare("INSERT INTO `player` (`player_name`, `date_of_birth`, `nationality`, `position`) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("ssss", $playerName, $dob, $nationality, $position);
+        $stmt->bind_param("ssss", $pName, $pDob, $pNationality, $pPosition);
         $success = $stmt->execute();
         $stmt->close();
         $conn->close();
@@ -27,11 +27,11 @@ function insertPlayer($playerName, $dob, $nationality, $position) {
     }
 }
 
-function updatePlayer($playerName, $dob, $nationality, $position, $playerId) {
+function updatePlayer($pName, $pDob, $pNationality, $pPosition, $playerId) {
     try {
         $conn = get_db_connection();
         $stmt = $conn->prepare("UPDATE `player` SET `player_name` = ?, `date_of_birth` = ?, `nationality` = ?, `position` = ? WHERE `player_id` = ?");
-        $stmt->bind_param("ssssi", $playerName, $dob, $nationality, $position, $playerId);
+        $stmt->bind_param("ssssi", $pName, $pDob, $pNationality, $pPosition, $playerId);
         $success = $stmt->execute();
         $stmt->close();
         $conn->close();
