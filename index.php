@@ -2,6 +2,15 @@
 $pageTitle = "Home";
 include "view-header.php";
 ?>
+<style>
+    /* Your existing styles */
+    body {
+        background-image: url('https://img.freepik.com/premium-photo/football-soccer-green-grass-field-conner_256301-166.jpg?w=2000');
+       
+        background-size: cover;
+    
+    }
+</style>
 
 <h1>RAISE THE GAME</h1>
 
@@ -13,7 +22,7 @@ include "view-header.php";
             <div class="card-group">
                 <!-- Video 1 -->
                 <div class="card">
-                    <video src="https://www.youtube.com/watch?v=gFr0zD8Ofqg" class="object-fit-contain" autoplay></video>
+                    <iframe width="100%" height="250" src="https://www.youtube.com/embed/gFr0zD8Ofqg" frameborder="0" allowfullscreen></iframe>
                     <div class="card-body">
                         <h5 class="card-title">Highlight 1</h5>
                         <!-- Add video description here -->
