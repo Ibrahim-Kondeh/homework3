@@ -38,7 +38,7 @@ include "view-header.php";
                 </div>
                 <!-- Video 3 -->
                 <div class="card">
-                    <iframe width="100%" height="250" src="https://www.youtube.com/watch?v=OVXXtT2dAXI&t=26s" frameborder="0" allowfullscreen></iframe>
+                    <iframe width="100%" height="250" src="https://www.youtube.com/watch?v=bIk8vbbuAAw" frameborder="0" allowfullscreen></iframe>
                     <div class="card-body">
                         <h5 class="card-title">Highlight 2</h5>
                         <!-- Add video description here -->
