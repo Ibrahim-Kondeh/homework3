@@ -38,27 +38,20 @@ include "view-header.php";
                 </div>
                 <!-- Video 3 -->
                 <div class="card">
-                    <video src="..." class="object-fit-fill" autoplay></video>
+                    <iframe width="100%" height="250" src="https://www.youtube.com/watch?v=OVXXtT2dAXI&t=26s" frameborder="0" allowfullscreen></iframe>
                     <div class="card-body">
-                        <h5 class="card-title">Highlight 3</h5>
+                        <h5 class="card-title">Highlight 2</h5>
                         <!-- Add video description here -->
                     </div>
                 </div>
                 <!-- Video 4 -->
-                <div class="card">
-                    <video src="..." class="object-fit-scale" autoplay></video>
+               <div class="card">
+                    <iframe width="100%" height="250" src="https://www.youtube.com/watch?v=dZUvGs4xQkA" frameborder="0" allowfullscreen></iframe>
                     <div class="card-body">
-                        <h5 class="card-title">Highlight 4</h5>
+                        <h5 class="card-title">Highlight 2</h5>
                         <!-- Add video description here -->
                     </div>
                 </div>
-                <!-- Video 5 -->
-                <div class="card">
-                    <video src="..." class="object-fit-none" autoplay></video>
-                    <div class="card-body">
-                        <h5 class="card-title">Highlight 5</h5>
-                        <!-- Add video description here -->
-                    </div>
                 </div>
             </div>
         </div>
