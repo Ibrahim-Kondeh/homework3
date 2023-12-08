@@ -32,8 +32,12 @@
                         <input type="text" class="form-control" id="pNationality" name="pNationality">
                     </div>
                    <div class="mb-3">
-                        <label for="position" class="form-label">Position</label>
+                        <label for="pPosition" class="form-label">Position</label>
                         <input type="text" class="form-control" id="position" name="position">
+                    </div>
+                      <div class="mb-3">
+                        <label for="teamId" class="form-label">Team</label>
+                        <input type="text" class="form-control" id="position" name="teamId">
                     </div>
                       <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
