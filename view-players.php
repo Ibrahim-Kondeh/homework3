@@ -23,7 +23,7 @@
             </thead>
             <tbody>
                 <?php
-                while ($player = $player->fetch_assoc(team_id)) {
+                while ($player = $players->fetch_assoc(team_id)) {
                 ?>
                     <tr class="highlight-row">
                         <td><?php echo $player['player_name']; ?></td>
