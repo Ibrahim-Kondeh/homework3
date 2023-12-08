@@ -5,7 +5,7 @@ require_once("model-matches.php");
 $pageTitle = "Matches";
 include "view-header.php";
 
-$matchesData = getAllMatchesGroupedByCompetition();
+$matchesData = getAllMatchesGroupedByCompetition($_Get['id]);
 include "view-matches.php";
 
 include "view-footer.php";
