@@ -12,7 +12,7 @@ $successMessage = "";
 if (isset($_POST['actionType'])) {
     switch ($_POST['actionType']) {
         case "Add":
-            if (insertPlayer($_POST['pName'], $_POST['pDob'], $_POST['pNationality'], $_POST['pPosition'], $_POST['teamId'])) {
+            if (insertPlayer($_POST['pName'], $_POST['pDob'], $_POST['pNationality'], $_POST['position'], $_POST['teamId'])) {
                 $successMessage = "Player added successfully! 😊";
             } else {
                 $successMessage = "Failed to add Player. Please try again.";
