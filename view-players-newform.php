@@ -17,7 +17,7 @@
             </div>
             <div class="modal-body">
                 
-              <form method="post" action="">
+              <form method="post" action="players.php">
                       <div class="mb-3">
                         <label for="pName" class="form-label">Player Name</label>
                         <input type="text" class="form-control" id="pName" name="pName">
@@ -39,9 +39,22 @@
                         <label for="teamId" class="form-label">Team</label>
                         <input type="text" class="form-control" id="position" name="teamId">
                     </div>
-                      <input type="hidden" name="actionType" value ="Add">
-                      <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
+                      <!-- Team selection dropdown -->
+                    <div class="mb-3">
+                        <label for="teamName" class="form-label">Team</label>
+                        <select class="form-select" id="teamName" name="teamName">
+                            <?php
+                            $teams = selectTeams();
+                            foreach ($teams as $team) {
+                                echo "<option value='" . $team['team_name'] . "'>" . $team['team_name'] . "</option>";
+                            }
+                            ?>
+                        </select>
+                    </div>
+
+                    <input type="hidden" name="actionType" value="Add">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
             </div>
         </div>
     </div>
