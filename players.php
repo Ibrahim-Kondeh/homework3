@@ -44,6 +44,6 @@ if (!empty($successMessage)) {
 
 $players = selectPlayers();
 
-
+include "view-players.php";
 include "view-footer.php";
 ?>
