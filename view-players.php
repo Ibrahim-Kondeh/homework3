@@ -31,6 +31,7 @@
                         <td><?php echo $player['date_of_birth']; ?></td>
                         <td><?php echo $player['nationality']; ?></td>
                         <td><?php echo $player['position']; ?></td>
+                        <td>?phpecho $player['team_name'];?></td>
                         <td>
                             <!-- Edit button -->
                             <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editPlayerModal<?php echo $player['player_id']; ?>">
