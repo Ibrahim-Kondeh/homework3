@@ -2,7 +2,7 @@
 function selectPlayers() {
     try {
         $conn = get_db_connection();
-        $stmt = $conn->prepare("SELECT player_id, player_name, date_of_birth, nationality, position FROM player");
+        $stmt = $conn->prepare("SELECT player_name, date_of_birth, nationality, position, team_id from player");
         $stmt->execute();
         $result = $stmt->get_result();
         $conn->close();
@@ -14,11 +14,11 @@ function selectPlayers() {
 }
 
 
-function insertPlayer($pName, $pPosition, $pDob, $pNationality,) {
+function insertPlayer($pName, $pPosition, $pDob, $pNationality, $teamId) {
     try {
         $conn = get_db_connection();
-        $stmt = $conn->prepare("INSERT INTO `player` (`player_name`, `position`, `date_of_birth`, `nationality`) VALUES (?, ?, ?, ?,)");
-        $stmt->bind_param("ssss", $pName, $pPosition, $pDob, $pNationality);
+        $stmt = $conn->prepare("INSERT INTO `player` (`player_name`, `position`, `date_of_birth`, `nationality`, 'team_id') VALUES (?, ?, ?, ?,?)");
+        $stmt->bind_param("ssssi", $pName, $pPosition, $pDob, $pNationality, $teamId);
         $success = $stmt->execute();
         $conn->close();
         return $success; // Return success to indicate successful insertion
@@ -28,11 +28,11 @@ function insertPlayer($pName, $pPosition, $pDob, $pNationality,) {
     }
 }
 
-function UpdatePlayer($pName, $pPosition, $pDob, $pNationality, $playerId) {
+function UpdatePlayer($pName, $pPosition, $pDob, $pNationality, $playerId, $teamId) {
     try {
         $conn = get_db_connection();
-        $stmt = $conn->prepare("UPDATE `player` set `player_name` = ?,  `position` = ?, `date_of_birth` = ?, `nationality` = ?, WHERE `player_id` = ?");
-        $stmt->bind_param("ssssi", $pName, $pPosition, $pDob, $pNationality, $playerId);
+        $stmt = $conn->prepare("UPDATE `player` set `player_name` = ?,  `position` = ?, `date_of_birth` = ?, `nationality` = ?, 'team_id' =?, WHERE `player_id` = ?");
+        $stmt->bind_param("ssssii", $pName, $pPosition, $pDob, $pNationality, $teamId, $playerId);
         $success = $stmt->execute();
         $conn->close();
         return $success; // Return success to indicate successful insertion
