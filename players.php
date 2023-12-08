@@ -5,6 +5,8 @@ require_once("model-players.php");
 $pageTitle = "Players";
 include "view-header.php";
 
+
+
 $successMessage = "";
 
 if (isset($_POST['actionType'])) {
@@ -18,14 +20,14 @@ if (isset($_POST['actionType'])) {
             break;
         case "Edit":
             if (updatePlayer($_POST['pName'], $_POST['pDob'], $_POST['pNationality'], $_POST['pPosition'],$_POST['teamId'])) {
-                $successMessage = "Team edited successfully! 😊";
+                $successMessage = "Player edited successfully! 😊";
             } else {
                 $successMessage = "Failed to edit team. Please try again.";
             }
             break;
         case "Delete":
             if (deletePlayer($_POST['playerId'])) {
-                $successMessage = "Team deleted successfully!";
+                $successMessage = "Player deleted successfully!";
             } else {
                 $successMessage = "Failed to delete team. Please try again.";
             }
