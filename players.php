@@ -12,14 +12,14 @@ $successMessage = "";
 if (isset($_POST['actionType'])) {
     switch ($_POST['actionType']) {
         case "Add":
-            if (insertPlayer($_POST['pName'], $_POST['pDob'], $_POST['pNationality'], $_POST['position'], $_POST['teamId'])) {
+            if (insertPlayer($_POST['pName'], $_POST['pDob'], $_POST['pNationality'], $_POST['position'], $_POST['teamName'])) {
                 $successMessage = "Player added successfully! 😊";
             } else {
                 $successMessage = "Failed to add Player. Please try again.";
             }
             break;
         case "Edit":
-            if (updatePlayer($_POST['pName'], $_POST['pDob'], $_POST['pNationality'], $_POST['position'],$_POST['teamId'])) {
+            if (updatePlayer($_POST['pName'], $_POST['pDob'], $_POST['pNationality'], $_POST['position'],$_POST['teamName'])) {
                 $successMessage = "Player edited successfully! 😊";
             } else {
                 $successMessage = "Failed to edit team. Please try again.";
