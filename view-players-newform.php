@@ -39,6 +39,7 @@
                         <label for="teamId" class="form-label">Team</label>
                         <input type="text" class="form-control" id="position" name="teamId">
                     </div>
+                      <input type="hidden" name="actionType" value ="Add">
                       <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
             </div>
