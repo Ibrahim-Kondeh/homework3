@@ -1,30 +1,29 @@
 <?php
-function selectTeams() {
+function selectPlayers() {
     try {
         $conn = get_db_connection();
-        $stmt = $conn->prepare("SELECT team_id, team_name FROM `teams`");
+         $stmt = $conn->prepare("SELECT player_id, player_name, date_of_birth, nationality, position, team_id FROM `player`");
         $stmt->execute();
         $result = $stmt->get_result();
-        $teams = $result->fetch_all(MYSQLI_ASSOC);
         $conn->close();
-        return $teams;
+        return $result;
     } catch (Exception $e) {
-        $conn->close();
+         $conn->close();
         throw $e;
     }
 }
 
-// Insert player function
-function insertPlayer($pName, $pPosition, $pDob, $pNationality, $teamName) {
+
+function insertPlayer($pName, $pPosition, $pDob, $pNationality, $teamId) {
     try {
         $conn = get_db_connection();
-        $stmt = $conn->prepare("INSERT INTO `player` (`player_name`, `position`, `date_of_birth`, `nationality`, `team_id`) VALUES (?, ?, ?, ?, (SELECT team_id FROM `teams` WHERE `team_name` = ?))");
-        $stmt->bind_param("sssss", $pName, $pPosition, $pDob, $pNationality, $teamName);
+       $stmt = $conn->prepare("INSERT INTO `player` (`player_name`, `position`, `date_of_birth`, `nationality`, `team_id`) VALUES (?, ?, ?, ?, ?)");
+        $stmt->bind_param("ssssi", $pName, $pPosition, $pDob, $pNationality, $teamId);
         $success = $stmt->execute();
         $conn->close();
         return $success; // Return success to indicate successful insertion
     } catch (Exception $e) {
-        $conn->close();
+         $conn->close();
         throw $e;
     }
 }
@@ -56,7 +55,3 @@ function deletePlayer($playerId) {
         throw $e;
     }
 }
-
-?>
-
-
