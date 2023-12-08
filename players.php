@@ -42,7 +42,7 @@ if (!empty($successMessage)) {
 
 
 
-$players = selectPlayer();
+$players = selectPlayers();
 
 include "view-players.php";
 include "view-footer.php";
