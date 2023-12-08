@@ -17,7 +17,7 @@
             </div>
             <div class="modal-body">
                 
-              <form method="post" action="players.php">
+              <form method="post" action="">
                       <div class="mb-3">
                         <label for="pName" class="form-label">Player Name</label>
                         <input type="text" class="form-control" id="pName" name="pName">
