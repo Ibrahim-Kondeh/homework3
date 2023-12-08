@@ -2,10 +2,7 @@
 function selectPlayers() {
     try {
         $conn = get_db_connection();
-        $stmt = $conn->prepare("SELECT p.player_name, p.date_of_birth, p.nationality, p.position, t.team_name
-                                FROM player AS p
-                                JOIN teams AS t ON p.team_id = t.team_id
-                                WHERE t.team_id = ?");
+        $stmt = $conn->prepare("SELECT player_id, player_name, date_of_birth, nationality, position, team_id FROM `player`");
         $stmt->execute();
         $result = $stmt->get_result();
         $conn->close();
@@ -48,7 +45,7 @@ function UpdatePlayer($pName, $pPosition, $pDob, $pNationality, $playerId, $team
 function deletePlayer($playerId) {
     try {
         $conn = get_db_connection();
-        $stmt = $conn->prepare("delete from player where course_id=? ");
+        $stmt = $conn->prepare("delete from player where player_id =? ");
         $stmt->bind_param("i", $playerId);
         $success = $stmt->execute();
         $conn->close();
