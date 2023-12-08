@@ -23,14 +23,14 @@
             </thead>
             <tbody>
                 <?php
-                while ($players = $player->fetch_assoc()) {
+                while ($player = $player->fetch_assoc(team_id)) {
                 ?>
                     <tr class="highlight-row">
-                        <td><?php echo $players['player_name']; ?></td>
-                        <td><?php echo $players['date_of_birth']; ?></td>
-                        <td><?php echo $players['nationality']; ?></td>
-                        <td><?php echo $players['position']; ?></td>
-                        <td>?phpecho $players['team_name']; ?></td>
+                        <td><?php echo $player['player_name']; ?></td>
+                        <td><?php echo $player['date_of_birth']; ?></td>
+                        <td><?php echo $player['nationality']; ?></td>
+                        <td><?php echo $player['position']; ?></td>
+                        <td>?phpecho $player['team_name']; ?></td>
                         <td>
                             <!-- Edit button -->
                             <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editPlayerModal<?php echo $player['player_id']; ?>">
