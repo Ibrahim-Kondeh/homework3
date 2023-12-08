@@ -20,7 +20,7 @@ function selectPlayers() {
 function insertPlayer($pName, $pPosition, $pDob, $pNationality, $teamId) {
     try {
         $conn = get_db_connection();
-        $stmt = $conn->prepare("INSERT INTO `player` (`player_name`, `position`, `date_of_birth`, `nationality`, 'team_id') VALUES (?, ?, ?, ?,?)");
+       $stmt = $conn->prepare("INSERT INTO `player` (`player_name`, `position`, `date_of_birth`, `nationality`, `team_id`) VALUES (?, ?, ?, ?, ?)");
         $stmt->bind_param("ssssi", $pName, $pPosition, $pDob, $pNationality, $teamId);
         $success = $stmt->execute();
         $conn->close();
@@ -34,7 +34,7 @@ function insertPlayer($pName, $pPosition, $pDob, $pNationality, $teamId) {
 function UpdatePlayer($pName, $pPosition, $pDob, $pNationality, $playerId, $teamId) {
     try {
         $conn = get_db_connection();
-        $stmt = $conn->prepare("UPDATE `player` set `player_name` = ?,  `position` = ?, `date_of_birth` = ?, `nationality` = ?, 'team_id' =?, WHERE `player_id` = ?");
+    $stmt = $conn->prepare("UPDATE `player` SET `player_name` = ?,  `position` = ?, `date_of_birth` = ?, `nationality` = ?, `team_id` = ? WHERE `player_id` = ?");
         $stmt->bind_param("ssssii", $pName, $pPosition, $pDob, $pNationality, $teamId, $playerId);
         $success = $stmt->execute();
         $conn->close();
