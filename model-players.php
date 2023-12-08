@@ -17,13 +17,13 @@ function selectPlayers() {
 function insertPlayer($pName, $pPosition, $pDob, $pNationality, $teamId) {
     try {
         $conn = get_db_connection();
-       $stmt = $conn->prepare("INSERT INTO `player` (`player_name`, `position`, `date_of_birth`, `nationality`, `team_id`) VALUES (?, ?, ?, ?, ?)");
+        $stmt = $conn->prepare("INSERT INTO `player` (`player_name`, `position`, `date_of_birth`, `nationality`, `team_id`) VALUES (?, ?, ?, ?, ?)");
         $stmt->bind_param("ssssi", $pName, $pPosition, $pDob, $pNationality, $teamId);
         $success = $stmt->execute();
         $conn->close();
         return $success; // Return success to indicate successful insertion
     } catch (Exception $e) {
-         $conn->close();
+        $conn->close();
         throw $e;
     }
 }
