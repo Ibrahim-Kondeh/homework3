@@ -18,7 +18,7 @@
                     <th>Date of Birth</th>
                     <th>Nationality</th>
                     <th>Position</th>
-                    <th></th>
+                    <th>Team</th>
                 </tr>
             </thead>
             <tbody>
