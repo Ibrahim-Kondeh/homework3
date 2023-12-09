@@ -6,7 +6,7 @@ while ($teamItem = $teams->fetch_assoc()) {
     $selText = " selected";
   }
 ?>
-  <option value="<?php echo $teamItem['team_id']; ?>"<?=$selText?>><?php echo $teamItem['teamName']; ?></option>
+  <option value="<?php echo $teamItem['team_id']; ?>"<?=$selText?>><?php echo $teamItem['teamId']; ?></option>
 <?php
 }
 ?>
