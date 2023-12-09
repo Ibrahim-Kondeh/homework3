@@ -70,3 +70,4 @@ function deletePlayer($playerId) {
         throw $e;
     }
 }
+?>
