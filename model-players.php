@@ -47,7 +47,7 @@ function UpdatePlayer($pName, $pDob, $pNationality, $pPosition) {
     try {
         $conn = get_db_connection();
     $stmt = $conn->prepare("UPDATE `player` SET `player_name` = ?,  `position` = ?, `date_of_birth` = ?, `nationality` = ? WHERE `player_id` = ?");
-        $stmt->bind_param("ssssii", $pName, $pPosition, $pDob, $pNationality, $teamId, $playerId);
+        $stmt->bind_param("ssss", $pName, $pPosition, $pDob, $pNationality);
         $success = $stmt->execute();
         $conn->close();
         return $success; // Return success to indicate successful insertion
