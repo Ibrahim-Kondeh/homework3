@@ -46,12 +46,12 @@
                     <div class="mb-3">
                         <label for="teamName" class="form-label">Team</label>
                         <select class="form-select" id="teamName" name="teamName">
-                            <?php
-                            $teams = selectTeamsForInput();
-                            $selectedTeam = 0;
-                              include "team-input-list.php";
-                          
-                            ?>
+                           <?php
+                                $teams = selectTeamsForInput();
+                                foreach ($teams as $team) {
+                                    echo "<option value='" . $team['team_id'] . "'>" . $team['team_name'] . "</option>";
+                                }
+                                ?>
                         </select>
                     </div>
                     <input type="hidden" name="actionType" value="Add">
