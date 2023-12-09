@@ -48,8 +48,8 @@
                         <select class="form-select" id="teamName" name="teamName">
                             <?php
                             $teams = selectTeamsForInput();
-                            foreach ($teams as $team) {
-                                echo "<option value='" . $team['team_id'] . "'>" . $team['team_name'] . "</option>";
+                            $selectedTeam = 0;
+                              include "team-input-list.php";
                             }
                             ?>
                         </select>
