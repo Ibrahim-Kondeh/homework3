@@ -33,7 +33,6 @@
                         <?php
 $teams= selectTeamsForInput();
 $selectedTeam = $player['team_id'];
-include "teams.php";
 ?>
                     </div>
                     <input type="hidden" name="playerId" value="<?php echo $player['player_id'];?>">
