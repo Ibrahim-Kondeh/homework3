@@ -55,7 +55,7 @@
                             </button>
                           </form>
                         </td>
-                    <td><a href="player.php?id=<?php echo $player['player_id']; ?>">Team</a></td>
+                 
                       </tr>
                       <?php
                       }
