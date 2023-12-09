@@ -31,9 +31,7 @@
                         <label for="pPosition<?php echo $player['player_id'];?>" class="form-label">Position</label>
                         <input type="text" class="form-control" id="pPosition<?php echo $player['player_id'];?>" name="pPosition" value="<?php echo $player['position'];?>">
                         <?php
-$teams= selectTeamsForInput();
-$selectedTeam = $player['team_id'];
-?>
+
                     </div>
                     <input type="hidden" name="playerId" value="<?php echo $player['player_id'];?>">
                     <input type="hidden" name="actionType" value="Edit">
