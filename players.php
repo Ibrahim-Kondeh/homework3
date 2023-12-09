@@ -26,7 +26,7 @@ if (isset($_POST['actionType'])) {
             }
             break;
         case "Delete":
-            if (deletePlayer($_POST['playerId'])) {
+            if (deletePlayer($_POST['player_id'])) {
                 $successMessage = "Player deleted successfully!";
             } else {
                 $successMessage = "Failed to delete team. Please try again.";
