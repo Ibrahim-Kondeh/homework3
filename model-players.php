@@ -43,7 +43,7 @@ function insertPlayer($pName, $pPosition, $pDob, $pNationality, $teamId) {
     }
 }
 
-function UpdatePlayer($pName, $pPosition, $pDob, $pNationality, $playerId) {
+function UpdatePlayer($pName, $pDob, $pNationality, $pPosition, $teamId, $playerId) {
     try {
         $conn = get_db_connection();
     $stmt = $conn->prepare("UPDATE `player` SET `player_name` = ?,  `position` = ?, `date_of_birth` = ?, `nationality` = ?, `team_id` = ? WHERE `player_id` = ?");
