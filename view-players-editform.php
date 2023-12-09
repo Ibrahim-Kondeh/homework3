@@ -30,7 +30,7 @@
                     <div class="mb-3">
                         <label for="pPosition<?php echo $player['player_id'];?>" class="form-label">Position</label>
                         <input type="text" class="form-control" id="pPosition<?php echo $player['player_id'];?>" name="pPosition" value="<?php echo $player['position'];?>">
-                        <?php
+                    
 
                     </div>
                     <input type="hidden" name="playerId" value="<?php echo $player['player_id'];?>">
