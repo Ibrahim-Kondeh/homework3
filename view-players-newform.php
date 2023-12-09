@@ -50,7 +50,7 @@
                             $teams = selectTeamsForInput();
                             $selectedTeam = 0;
                               include "team-input-list.php";
-                            }
+                          
                             ?>
                         </select>
                     </div>
