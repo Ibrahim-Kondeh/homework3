@@ -30,9 +30,21 @@
                     <div class="mb-3">
                         <label for="pPosition<?php echo $player['player_id'];?>" class="form-label">Position</label>
                         <input type="text" class="form-control" id="pPosition<?php echo $player['player_id'];?>" name="pPosition" value="<?php echo $player['position'];?>">
-                    
-
+            
                     </div>
+                                <div class="mb-3">
+    <label for="teamName<?php echo $player['player_id'];?>" class="form-label">Team</label>
+    <select class="form-select" id="teamName<?php echo $player['player_id'];?>" name="teamName">
+        <?php
+        $teams = selectTeamsForInput();
+        while ($team = $teams->fetch_assoc()) {
+            $selected = ($team['team_id'] == $player['team_id']) ? 'selected' : '';
+            echo '<option value="' . $team['team_id'] . '" ' . $selected . '>' . $team['team_name'] . '</option>';
+        }
+        ?>
+    </select>
+</div>
+ 
                     <input type="hidden" name="playerId" value="<?php echo $player['player_id'];?>">
                     <input type="hidden" name="actionType" value="Edit">
                     <button type="submit" class="btn btn-primary">Save</button>
