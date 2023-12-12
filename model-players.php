@@ -33,7 +33,7 @@ function insertPlayer($pName, $pDob, $pNationality, $pPosition,  $teamId) {
     try {
         $conn = get_db_connection();
         $stmt = $conn->prepare("INSERT INTO `player` (`player_name`,  `date_of_birth`, `nationality`, `position`, `team_id`) VALUES (?, ?, ?, ?, ?)");
-        $stmt->bind_param("ssssi", ($pName, $pDob, $pNationality, $pPosition,  $teamId);
+        $stmt->bind_param("ssssi", $pName, $pDob, $pNationality, $pPosition,  $teamId);
         $success = $stmt->execute();
         $conn->close();
         return $success; // Return success to indicate successful insertion
