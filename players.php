@@ -18,14 +18,14 @@ if (isset($_POST['actionType'])) {
                 $successMessage = "Failed to add Player. Please try again.";
             }
             break;
-       case "Edit":
-    if updatePlayer($_POST['pName'], $_POST['pPosition'], $_POST['pDob'], $_POST['pNationality'], $_POST['teamName'], $_POST['player_id'])
- {
+      case "Edit":
+    if (updatePlayer($_POST['pName'], $_POST['pPosition'], $_POST['pDob'], $_POST['pNationality'], $_POST['teamName'], $_POST['player_id'])) {
         $successMessage = "Player edited successfully! 😊";
     } else {
-        $successMessage = "Failed to edit team. Please try again.";
+        $successMessage = "Failed to edit player. Please try again.";
     }
     break;
+
         case "Delete":
             if (deletePlayer($_POST['player_id'])) {
                 $successMessage = "Player deleted successfully!";
