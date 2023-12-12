@@ -7,8 +7,16 @@
 </head>
 
 <body>
-    <h1>Competitions</h1>
-    <div class="table-responsive">
+    <div class="row">
+  <div class="col">
+<h1>Competitions</h1>
+  </div>
+  <div class="col-auto">
+<?php
+include "view-competition-newform.php";
+?>
+  </div>
+</div>
         <table class="competition-table table">
             <thead>
                 <tr>
