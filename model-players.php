@@ -43,19 +43,20 @@ function insertPlayer($pName, $pPosition, $pDob, $pNationality, $teamId) {
     }
 }
 
-function updatePlayer($pName, $pPosition, $pDob, $pNationality, $playerId) {
+function updatePlayer($pName, $pPosition, $pDob, $pNationality, $teamId, $playerId) {
     try {
         $conn = get_db_connection();
-    $stmt = $conn->prepare("UPDATE `player` SET `player_name` = ?, `position` = ?, `date_of_birth` = ?, `nationality` = ? WHERE `player_id` = ?");
-        $stmt->bind_param("ssssi", $pName, $pPosition, $pDob, $pNationality, $playerId);
+        $stmt = $conn->prepare("UPDATE `player` SET `player_name` = ?, `position` = ?, `date_of_birth` = ?, `nationality` = ?, `team_id` = ? WHERE `player_id` = ?");
+        $stmt->bind_param("ssssii", $pName, $pPosition, $pDob, $pNationality, $teamId, $playerId);
         $success = $stmt->execute();
         $conn->close();
-        return $success; // Return success to indicate successful insertion
+        return $success;
     } catch (Exception $e) {
-         $conn->close();
+        $conn->close();
         throw $e;
     }
 }
+
 
 function deletePlayer($playerId) {
     try {
