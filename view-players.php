@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <style>
         /* Your CSS styles for the page */
-        body {
+       body {
             background-color: #333;
             color: white;
             font-family: Arial, sans-serif;
@@ -16,11 +16,10 @@
         }
 
         .container {
-            width: 100%;
+            width: 90%; /* Adjust the width of the container */
+            max-width: 1200px; /* Set a maximum width if needed */
+            margin: auto; /* Center align the container */
             padding: 20px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
         }
 
         .table-container {
@@ -47,8 +46,8 @@
             background-color: #444;
         }
 
-        .table-container tr:hover {
-            background-color: rgba(255, 255, 255, 0.1);
+        .table-container tbody tr:hover {
+            background-color: green; /* Change the hover color to green */
         }
     </style>
 </head>
