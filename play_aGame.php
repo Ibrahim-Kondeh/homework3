@@ -1,44 +1,27 @@
 <?php
-// Get team names from user input
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    // Get team names from user input
     $teamAName = $_POST["teamA"];
     $teamBName = $_POST["teamB"];
-} else {
-    $teamAName = "Team A"; // Default names
-    $teamBName = "Team B";
-}
 
-// Initialize scores
-$teamAScore = 0;
-$teamBScore = 0;
+    // Simulate the game
+    $teamAScore = rand(0, 5); // Random score for Team A (0 to 5 goals)
+    $teamBScore = rand(0, 5); // Random score for Team B (0 to 5 goals)
 
-// Simulate the game
-for ($i = 0; $i < 90; $i++) { // Simulate a 90-minute match
-    // Simulate events
-    $event = rand(1, 10); // Random event generator
+    // Display scores and winner
+    echo "<h2>$teamAName vs $teamBName</h2>";
+    echo "<strong>Final Score:</strong><br>";
+    echo "$teamAName: $teamAScore<br>";
+    echo "$teamBName: $teamBScore<br>";
 
-    // Increment score for team A or team B based on random events
-    if ($event % 2 === 0) {
-        $teamAScore++;
-        echo "$teamAName scores!<br>";
+    // Determine the winner or if it's a draw
+    if ($teamAScore > $teamBScore) {
+        echo "<strong>$teamAName wins!</strong>";
+    } elseif ($teamBScore > $teamAScore) {
+        echo "<strong>$teamBName wins!</strong>";
     } else {
-        $teamBScore++;
-        echo "$teamBName scores!<br>";
+        echo "<strong>It's a draw!</strong>";
     }
-}
-
-// Display final score
-echo "<strong>Final Score:</strong><br>";
-echo "$teamAName: $teamAScore<br>";
-echo "$teamBName: $teamBScore<br>";
-
-// Determine the winner or if it's a draw
-if ($teamAScore > $teamBScore) {
-    echo "$teamAName wins!";
-} elseif ($teamBScore > $teamAScore) {
-    echo "$teamBName wins!";
-} else {
-    echo "It's a draw!";
 }
 ?>
 
