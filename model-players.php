@@ -58,6 +58,7 @@ function updatePlayer($pName, $pPosition, $pDob, $pNationality, $teamId, $player
 }
 
 
+
 function deletePlayer($playerId) {
     try {
         $conn = get_db_connection();
