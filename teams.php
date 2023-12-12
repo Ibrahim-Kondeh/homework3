@@ -17,12 +17,13 @@ if (isset($_POST['actionType'])) {
             }
             break;
         case "Edit":
-            if (updateTeams($_POST['tName'], $_POST['tcName'], $_POST['tFyear'], $_POST['tStadium'], $_POST['teamId'])) {
-                $successMessage = "Team edited successfully! 😊";
-            else {
-                $successMessage = "Failed to edit team. Please try again.";
-            }
-            break;
+    if (updatePlayer($_POST['pName'], $_POST['pPosition'], $_POST['pDob'], $_POST['pNationality'], $_POST['teamName'], $_POST['player_id'])) {
+        $successMessage = "Player edited successfully! 😊";
+    } else {
+        $successMessage = "Failed to edit player. Please try again.";
+    }
+    break;
+
         case "Delete":
             if (deleteTeams($_POST['teamId'])) {
                 $successMessage = "Team deleted successfully!";
