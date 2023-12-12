@@ -32,7 +32,7 @@ function insertCompetition($cName, $cStartDate, $cEndDate) {
 function updateCompetition($cName, $cStartDate, $cEndDate, $cid) {
     try {
         $conn = get_db_connection();
-        $stmt = $conn->prepare("update `competitions` set `competition_name` = ?, `start_date` = ?, `end_date` = ? where competition_id = ?");
+        $stmt = $conn->prepare("update `competition` set `competition_name` = ?, `start_date` = ?, `end_date` = ? where competition_id = ?");
         $stmt->bind_param("sssi", $cName, $cStartDate, $cEndDate, $cid);
         $success = $stmt->execute();
         $conn->close();
