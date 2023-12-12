@@ -43,14 +43,9 @@ function insertPlayer($pName, $pPosition, $pDob, $pNationality, $teamId) {
     }
 }
 
-function UpdatePlayer() {
+function UpdatePlayer($pName, $pPosition, $pDob, $pNationality, $playerId) {
     try {
         $conn = get_db_connection();
-        $playerId = $_POST['player_id'];
-        $pName = $_POST['player_name'];
-        $pDob = $_POST['date_of_birth'];
-        $pNationality = $_POST['nationality'];
-        $pPosition = $_POST['position'];
     $stmt = $conn->prepare("UPDATE `player` SET `player_name` = ?, `position` = ?, `date_of_birth` = ?, `nationality` = ? WHERE `player_id` = ?");
         $stmt->bind_param("ssssi", $pName, $pPosition, $pDob, $pNationality, $playerId);
         $success = $stmt->execute();
