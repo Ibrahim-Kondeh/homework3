@@ -19,7 +19,8 @@ if (isset($_POST['actionType'])) {
             }
             break;
        case "Edit":
-    if (updatePlayer($_POST['pName'], $_POST['pDob'], $_POST['pNationality'], $_POST['pPosition'])) {
+    if updatePlayer($_POST['pName'], $_POST['pPosition'], $_POST['pDob'], $_POST['pNationality'], $_POST['teamName'], $_POST['player_id'])
+ {
         $successMessage = "Player edited successfully! 😊";
     } else {
         $successMessage = "Failed to edit team. Please try again.";
