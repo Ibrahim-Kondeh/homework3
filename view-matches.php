@@ -124,7 +124,7 @@ $pageTitle = "Matches";
                         <label for="homeTeam" class="form-label">Home Team</label>
                         <select class="form-select" id="homeTeam" name="homeTeam">
                             <?php
-                           foreach ($teams as $team) {
+                           foreach ($team as $teams) {
                                 echo "<option value='{$team['id']}'>{$team['name']}</option>";
                             }
                             ?>
@@ -134,7 +134,7 @@ $pageTitle = "Matches";
                         <label for="awayTeam" class="form-label">Away Team</label>
                         <select class="form-select" id="awayTeam" name="awayTeam">
                             <?php
-                            foreach ($teams as $team) {
+                            foreach ($team as $teams) {
                                 echo "<option value='{$team['id']}'>{$team['name']}</option>";
                             }
                             ?>
