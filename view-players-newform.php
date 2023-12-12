@@ -39,8 +39,8 @@
                         <input type="text" class="form-control" id="pNationality" name="pNationality">
                     </div>
                     <div class="mb-3">
-                        <label for="position" class="form-label">Position</label>
-                        <input type="text" class="form-control" id="position" name="position">
+                        <label for="pPosition" class="form-label">Position</label>
+                        <input type="text" class="form-control" id="pPosition" name="pPosition">
                     </div>
                     <!-- Team selection dropdown -->
                     <div class="mb-3">
