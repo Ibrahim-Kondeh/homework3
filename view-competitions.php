@@ -15,6 +15,8 @@
                     <th>Competition Name</th>
                     <th>Start Date</th>
                     <th>End Date</th>
+                    <th></th>
+                     <th></th>
                     <th>Action</th>
                 </tr>
             </thead>
