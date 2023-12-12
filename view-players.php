@@ -7,6 +7,50 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   </head>
   <body>
+    <style>
+    body {
+        background-color: #333; /* Set the background color */
+        color: white;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        width: 100%;
+        padding: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .table-container {
+        background-color: rgba(0, 0, 0, 0.7);
+        margin: 20px;
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    .table-container table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+    }
+
+    .table-container th, .table-container td {
+        padding: 10px;
+        text-align: center;
+        border: 1px solid #ddd;
+    }
+
+    .table-container th {
+        background-color: #444;
+    }
+
+    .table-container tr:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+</style>
 
         <div class = "col">
             <h1>Players</h1>
