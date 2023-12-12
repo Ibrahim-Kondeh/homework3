@@ -22,7 +22,7 @@
           </div>
           <div class="mb-3">
             <label for="cStartDate<?php echo $competition['competition_id']; ?>" class="form-label">Start Date</label>
-            <input type="text" class="form-control" id="cStartDate<?php echo $competition['competition_id']; ?>" name="cStartDate" value="<?php echo $competition['start_date']; ?>">
+            <input type="text" class="form-control" id="cStartDate<?php echo $competition['competition_id']; ?>" name="cStartDate" value="<?php echo $competition['satart_date']; ?>">
           </div>
           <div class="mb-3">
             <label for="cEndDate<?php echo $competition['competition_id']; ?>" class="form-label">End Date</label>
