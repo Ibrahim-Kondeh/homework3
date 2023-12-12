@@ -26,7 +26,7 @@
           </div>
           <div class="mb-3">
             <label for="cEndDate<?php echo $competition['competition_id']; ?>" class="form-label">End Date</label>
-            <input type="text" class="form-control" id="cDesc<?php echo $competition['competition_id']; ?>" name="cEndDate" value="<?php echo $competition['end_date']; ?>">
+            <input type="text" class="form-control" id="cEndDate<?php echo $competition['competition_id']; ?>" name="cEndDate" value="<?php echo $competition['end_date']; ?>">
           </div>
             <input type="hidden" name="cid" value="<?php echo $competition['competition_id']; ?>">
             <input type="hidden" name="actionType" value="Edit">
