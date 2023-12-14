@@ -59,6 +59,7 @@
         <a href="competitions.php">Competitions</a>
           <a href="players-stats.php">Players Stats</a>
          <a href = "play_aGame.php"> Play FootBall Game</a>
+         <a href = "matches-by-competitions.php"> Matches by Competitions</a>
         
     </div>
 </body>
