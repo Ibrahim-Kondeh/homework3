@@ -69,108 +69,32 @@ $pageTitle = "Matches";
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($matches as $match) { ?>
+                    <?php
+                        foreach ($matches as $match) { ?>
                         <tr>
                             <td><?php echo htmlspecialchars($match['team1_name']); ?></td>
                             <td><?php echo htmlspecialchars($match['team2_name']); ?></td>
                             <td><?php echo htmlspecialchars($match['match_date']); ?></td>
                             <td><?php echo htmlspecialchars($match['score_team1']) . " : " . htmlspecialchars($match['score_team2']); ?></td>
+                             <td><?php include "view matches-editform.php";?></td>
                             <td>
-                                <!-- Edit and Delete buttons -->
-                                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editMatchModal<?php echo $match['match_id']; ?>">Edit</button>
-                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteMatchModal<?php echo $match['match_id']; ?>">Delete</button>
-                            </td>
-                        </tr>
-                    <?php } ?>
-                </tbody>
-            </table>
-        </div>
-    <?php } ?>
-    
-
-  
-   
-    <!-- Confirmation Messages -->
-    <?php if (isset($_SESSION['success_message'])) { ?>
-        <div class="alert alert-success" role="alert">
-            <?php echo $_SESSION['success_message']; ?>
-        </div>
-    <?php } ?>
-    <?php if (isset($_SESSION['error_message'])) { ?>
-        <div class="alert alert-danger" role="alert">
-            <?php echo $_SESSION['error_message']; ?>
-        </div>
-    <?php } ?>
+        <form method="post" action="">
+        <input type="hidden" name="Mid" value="<?php echo $match['match_id']; ?>">
+        <input type="hidden" name="actionType" value="Delete">
+        <button type="submit" class="btn btn-primary" onclick="return confirm('Are you sure?');">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
+            <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
+          </svg>
+        </button>
+      </form>
+    </td>
+      </tr>
+      <?php
+      }
+      ?>
+    </tbody>
+  </table>
 </div>
-
-
-<!-- JavaScript for confirmation modals -->
-<script>
-    // Your JavaScript code remains unchanged
-</script>
-
-
-<!-- Add Match Modal -->
-<div class="modal fade" id="addMatchModal" tabindex="-1" aria-labelledby="addMatchModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="addMatchModalLabel">Add Match</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form action="add_match.php" method="POST">
-                    <div class="mb-3">
-                        <label for="homeTeam" class="form-label">Home Team</label>
-                        <select class="form-select" id="homeTeam" name="homeTeam">
-                            <?php
-                           foreach ($team as $teams) {
-                                echo "<option value='{$team['id']}'>{$team['name']}</option>";
-                            }
-                            ?>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="awayTeam" class="form-label">Away Team</label>
-                        <select class="form-select" id="awayTeam" name="awayTeam">
-                            <?php
-                            foreach ($team as $teams) {
-                                echo "<option value='{$team['id']}'>{$team['name']}</option>";
-                            }
-                            ?>
-                        </select>
-                    </div>
-                    <!-- Add more fields like match date, scores, etc., as needed -->
-                    <button type="submit" class="btn btn-primary">Add Match</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modals for editing and deleting matches -->
-<?php foreach ($matchesData as $competition => $matches) {
-    foreach ($matches as $match) { ?>
-        <!-- Edit Match Modal for Match ID <?php echo $match['match_id']; ?> -->
-        <div class="modal fade" id="editMatchModal<?php echo $match['match_id']; ?>" tabindex="-1" aria-labelledby="editMatchModalLabel<?php echo $match['match_id']; ?>" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <!-- Edit Match Modal Content Goes Here -->
-                    <!-- Form for editing match details -->
-                </div>
-            </div>
-        </div>
-
-        <!-- Delete Match Modal for Match ID <?php echo $match['match_id']; ?> -->
-        <div class="modal fade" id="deleteMatchModal<?php echo $match['match_id']; ?>" tabindex="-1" aria-labelledby="deleteMatchModalLabel<?php echo $match['match_id']; ?>" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <!-- Delete Match Modal Content Goes Here -->
-                    <!-- Form for confirmation of match deletion -->
-                </div>
-            </div>
-        </div>
-    <?php }
-} ?>
-
-<?php include "view-footer.php"; ?>
+  </body>
+</html>
