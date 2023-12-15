@@ -68,16 +68,16 @@
     </select>    
        </div>
           <div class="mb-3">
-                        <label for="matchDate<?php echo $player['player_id'];?>" class="form-label">Match Date</label>
+                        <label for="matchDate<?php echo $match['match_id'];?>" class="form-label">Match Date</label>
                         <input type="date" class="form-control" id="matchDate<?php echo $match['match_id'];?>" name="matchDate" value = "<?php echo $match['match_date'];?>">
                     </div>
-          <div class="mb-3">
-            <label for="score1" class="form-label">Score Team 1</label>
-            <input type="number" class="form-control" id="score_team1" name="score_team1" required>
+           <div class="mb-3">
+            <label for="score1<?php echo $match['match_id']; ?>" class="form-label">Home Team Score</label>
+            <input type="text" class="form-control" id="score1<?php echo $match['match_id']; ?>" name="score1" value="<?php echo $match['score_team1']; ?>">
           </div>
           <div class="mb-3">
-            <label for="scoreTeam2" class="form-label">Score Team 2</label>
-            <input type="number" class="form-control" id="score_team2" name="score_team2" required>
+            <label for="score2<?php echo $match['match_id']; ?>" class="form-label">Away Team Score</label>
+            <input type="text" class="form-control" id="score2<?php echo $match['match_id']; ?>" name="score2" value="<?php echo $match['score_team2']; ?>">
           </div>
           <input type="hidden" name="actionType" value="Edit">
           <button type="submit" class="btn btn-primary">Update Match</button>
