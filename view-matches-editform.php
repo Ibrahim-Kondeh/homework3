@@ -41,33 +41,31 @@ while ($competition = $competitions->fetch_assoc()) {
 ?>
       </select>
               </div>
-          <div class="mb-3">
-    <label for="team1Id<?php echo $match['match_id'];?>" class="form-label">Home Team</label>
-    <select class="form-select" id="team1Id<?php echo $match['match_id'];?>" name="team1Id">
-      <?php
-$teams = selectTeamsForInput();
-while ($team = $teams->fetch_assoc()) {
-    $selected = ($team['team_id'] == $singleMatch['team1_id']) ? 'selected' : '';
-    echo '<option value="' . $team['team_id'] . '" ' . $selected . '>' . $team['team_name'] . '</option>';
-}
-?>
-
-    </select>
-            
-       </div>
-           <div class="mb-3">
-    <label for="team2Id<?php echo $match['match_id'];?>" class="form-label">Away Team</label>
-    <select class="form-select" id="team2Id<?php echo $match['match_id'];?>" name="team2Id">
-    <?php
-$teams = selectTeamsForInput();
-while ($team = $teams->fetch_assoc()) {
-    $selected = ($team['team_id'] == $singleMatch['team2_id']) ? 'selected' : '';
-    echo '<option value="' . $team['team_id'] . '" ' . $selected . '>' . $team['team_name'] . '</option>';
-}
-?>
-
-    </select>    
-       </div>
+        <form method="post" action="">
+    <div class="mb-3">
+        <label for="team1Id<?php echo $match['match_id']; ?>" class="form-label">Home Team</label>
+        <select class="form-select" id="team1Id<?php echo $match['match_id']; ?>" name="team1Id">
+            <?php
+            $teams = selectTeamsForInput();
+            while ($team = $teams->fetch_assoc()) {
+                $selected = ($team['team_id'] == $match['team1_id']) ? 'selected' : '';
+                echo '<option value="' . $team['team_id'] . '" ' . $selected . '>' . $team['team_name'] . '</option>';
+            }
+            ?>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="team2Id<?php echo $match['match_id']; ?>" class="form-label">Away Team</label>
+        <select class="form-select" id="team2Id<?php echo $match['match_id']; ?>" name="team2Id">
+            <?php
+            $teams = selectTeamsForInput();
+            while ($team = $teams->fetch_assoc()) {
+                $selected = ($team['team_id'] == $match['team2_id']) ? 'selected' : '';
+                echo '<option value="' . $team['team_id'] . '" ' . $selected . '>' . $team['team_name'] . '</option>';
+            }
+            ?>
+        </select>
+    </div>
           <div class="mb-3">
                         <label for="matchDate<?php echo $match['match_id'];?>" class="form-label">Match Date</label>
                         <input type="date" class="form-control" id="matchDate<?php echo $match['match_id'];?>" name="matchDate" value = "<?php echo $match['match_date'];?>">
