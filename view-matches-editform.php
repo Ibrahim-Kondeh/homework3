@@ -76,7 +76,7 @@
             <input type="number" class="form-control" id="score_team2" name="score_team2" value="<?php echo $match['score_team2']; ?>" required>
           </div>
           <input type="hidden" name="actionType" value="Edit">
-          <input type="hidden" name="matchId" value="<?php echo $matchId; ?>">
+          <input type="hidden" name="match_id" value="<?php echo $match['match_id']; ?>">
           <button type="submit" class="btn btn-primary">Update Match</button>
         </form>
       </div>
