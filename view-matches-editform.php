@@ -71,14 +71,14 @@ while ($competition = $competitions->fetch_assoc()) {
                         <label for="matchDate<?php echo $match['match_id'];?>" class="form-label">Match Date</label>
                         <input type="date" class="form-control" id="matchDate<?php echo $match['match_id'];?>" name="matchDate" value = "<?php echo $match['match_date'];?>">
                     </div>
-          <div class="mb-3">
- <label for="score1<?php echo $match['match_id']; ?>" class="form-label">Home Team Score</label>
- <input type="text" class="form-control" id="score1<?php echo $match['match_id']; ?>" name="score1" value="<?php echo strval($match['score_team1']); ?>">
+      <div class="mb-3">
+    <label for="score1<?php echo $match['match_id']; ?>" class="form-label">Home Team Score</label>
+    <input type="number" class="form-control" id="score1<?php echo $match['match_id']; ?>" name="score1" value="<?php echo $match['score_team1']; ?>" min="0">
 </div>
           <div class="mb-3">
-            <label for="score2<?php echo $match['match_id']; ?>" class="form-label">Away Team Score</label>
-            <input type="text" class="form-control" id="score2<?php echo $match['match_id']; ?>" name="score2" value="<?php echo $match['score_team2']; ?>">
-          </div>
+    <label for="score2<?php echo $match['match_id']; ?>" class="form-label">Away Team Score</label>
+    <input type="number" class="form-control" id="score2<?php echo $match['match_id']; ?>" name="score2" value="<?php echo $match['score_team2']; ?>" min="0">
+</div>
           <input type="hidden" name="actionType" value="Edit">
           <button type="submit" class="btn btn-primary">Update Match</button>
         </form>
