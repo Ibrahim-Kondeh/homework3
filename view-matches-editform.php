@@ -58,13 +58,13 @@ while ($competition = $competitions->fetch_assoc()) {
            <div class="mb-3">
     <label for="team2Id<?php echo $match['match_id'];?>" class="form-label">Away Team</label>
     <select class="form-select" id="team2Id<?php echo $match['match_id'];?>" name="team2Id">
-        <?php
-        $matches = selectTeamsForInput();
-        while ($match = $matches->fetch_assoc()) {
-            $selected = ($match['match_id'] == $match['match_id']) ? 'selected' : '';
-            echo '<option value="' . $match['match_id'] . '" ' . $selected . '>' . $match['team_name'] . '</option>';
-        }
-        ?>
+     <?php
+$teams = selectTeamsForInput();
+while ($team = $teams->fetch_assoc()) {
+    $selected = ($team['team_id'] == $match['team2_id']) ? 'selected' : '';
+    echo '<option value="' . $team['team_id'] . '" ' . $selected . '>' . $team['team_name'] . '</option>';
+}
+?>
     </select>    
        </div>
           <div class="mb-3">
