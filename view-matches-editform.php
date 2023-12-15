@@ -33,7 +33,7 @@
             <label for="competition<?php echo $match['match_id'];?>" class="form-label">Match</label>
              <select class="form-select" id="teamName<?php echo $player['match_id'];?>" name="teamName">
         <?php
-        $teams = selectTeamsForInput();
+        $teams = getAllCompetitions();
         while ($team = $teams->fetch_assoc()) {
             $selected = ($match['match_id'] == $match['match_id']) ? 'selected' : '';
             echo '<option value="' . $match['match_id'] . '" ' . $selected . '>' . $match['competition_name'] . '</option>';
