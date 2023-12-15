@@ -30,12 +30,17 @@
           <div class="mb-3">
 
 
-            <label for="competition" class="form-label">Competition</label>
-            <select class="form-select" id="competition_id" name="competition_id" required>
-              <!-- Populate this dropdown with competition names -->
-              <!-- Example: <option value="1">Premier League</option> -->
-            </select>
-          </div>
+            <label for="competition<?php echo $match['match_id'];?>" class="form-label">Match</label>
+             <select class="form-select" id="teamName<?php echo $player['match_id'];?>" name="teamName">
+        <?php
+        $teams = selectTeamsForInput();
+        while ($team = $teams->fetch_assoc()) {
+            $selected = ($match['match_id'] == $match['match_id']) ? 'selected' : '';
+            echo '<option value="' . $match['match_id'] . '" ' . $selected . '>' . $match['competition_name'] . '</option>';
+        }
+        ?>
+      </select>
+       </div>
           <div class="mb-3">
             <label for="homeTeam" class="form-label">Home Team</label>
             <select class="form-select" id="team1_id" name="team1_id" required>
