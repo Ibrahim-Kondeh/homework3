@@ -24,59 +24,40 @@
       </div>
       <div class="modal-body">
         <form method="post" action="">
-    <div class="mb-3">
-        <label for="matchId<?php echo $match['match_id']; ?>" class="form-label">Competition</label>
-        <select class="form-select" id="matchId<?php echo $match['match_id']; ?>" name="matchId">
-            <?php
-            $competitions = getAllCompetitions();
-            while ($competition = $competitions->fetch_assoc()) {
-                $selected = ($competition['competition_id'] == $match['competition_id']) ? 'selected' : '';
-                echo '<option value="' . $competition['competition_id'] . '" ' . $selected . '>' . $competition['competition_name'] . '</option>';
-            }
-            ?>
-        </select>
-    </div>
+          <div class="mb-3">
+            <label for="competition" class="form-label">Competition</label>
+            <select class="form-select" id="competition_id" name="competition_id" required>
+              <?php
+                // Fetch competitions from the database and populate the dropdown
+                $competitions = getAllCompetitions();
+                while ($competition = $competitions->fetch_assoc()) {
+                    $selected = ($competition['competition_id'] == $match['competition_id']) ? 'selected' : '';
+                    echo '<option value="' . $competition['competition_id'] . '" ' . $selected . '>' . $competition['competition_name'] . '</option>';
+                }
+              ?>
+            </select>
+          </div>
           <div class="mb-3">
             <label for="homeTeam" class="form-label">Home Team</label>
             <select class="form-select" id="team1_id" name="team1_id" required>
-              <?php
-                // Fetch home teams from the database and populate the dropdown
-                $homeTeams = selectTeamsForInput();
-                while ($homeTeam = $homeTeams->fetch_assoc()) {
-                    $selected = ($homeTeam['team_id'] == $match['team1_id']) ? 'selected' : '';
-                    echo '<option value="' . $homeTeam['team_id'] . '" ' . $selected . '>' . $homeTeam['team_name'] . '</option>';
-                }
-              ?>
+@@ -64,21 +63,22 @@
             </select>
           </div>
           <div class="mb-3">
-            <label for="awayTeam" class="form-label">Away Team</label>
-            <select class="form-select" id="team2_id" name="team2_id" required>
-              <?php
-                // Fetch away teams from the database and populate the dropdown
-                $awayTeams = selectTeamsForInput();
-                while ($awayTeam = $awayTeams->fetch_assoc()) {
-                    $selected = ($awayTeam['team_id'] == $match['team2_id']) ? 'selected' : '';
-                    echo '<option value="' . $awayTeam['team_id'] . '" ' . $selected . '>' . $awayTeam['team_name'] . '</option>';
-                }
-              ?>
-            </select>
+            <label for="matchDate" class="form-label">Match Date</label>
+            <input type="date" class="form-control" id="match_date" name="match_date" value="<?php echo $match['match_date']; ?>" required>
           </div>
           <div class="mb-3">
-        <label for="matchDate<?php echo $match['match_id']; ?>" class="form-label">Match Date</label>
-        <input type="date" class="form-control" id="matchDate<?php echo $match['match_id']; ?>" name="matchDate" value="<?php echo $match['match_date']; ?>" required>
-    </div>
-    <div class="mb-3">
-        <label for="score1<?php echo $match['match_id']; ?>" class="form-label">Home Team Score</label>
-        <input type="number" class="form-control" id="score1<?php echo $match['match_id']; ?>" name="score1" value="<?php echo $match['score_team1']; ?>" min="0">
-    </div>
-    <div class="mb-3">
-        <label for="score2<?php echo $match['match_id']; ?>" class="form-label">Away Team Score</label>
-        <input type="number" class="form-control" id="score2<?php echo $match['match_id']; ?>" name="score2" value="<?php echo $match['score_team2']; ?>" min="0">
-    </div>
+            <label for="scoreTeam1" class="form-label">Score Team 1</label>
+            <input type="number" class="form-control" id="score_team1" name="score_team1" value="<?php echo $match['score_team1']; ?>" required>
+          </div>
+          <div class="mb-3">
+            <label for="scoreTeam2" class="form-label">Score Team 2</label>
+            <input type="number" class="form-control" id="score_team2" name="score_team2" value="<?php echo $match['score_team2']; ?>" required>
+          </div>
           <input type="hidden" name="actionType" value="Edit">
-         <input type="hidden" name="match_id" value="<?php echo $match['match_id']; ?>">
-          <button type="submit" class="btn btn-primary">Update Match</button>
+           <input type="hidden" name="match_id" value="<?php echo $match['match_id']; ?>">
+           <button type="submit" class="btn btn-primary">Update Match</button>
 </form>
      
       </div>
