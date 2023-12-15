@@ -7,21 +7,21 @@ include "view-header.php";
 if (isset($_POST['actionType'])) {
   switch ($_POST['actionType']) {
     case "Add":
-      if (insertMatches($_POST['competitionId'],$_POST['team1Id'], $_POST['team2Id'], $_POST['matchDate'],  $_POST['score1'],  $_POST['score2'] )) {
+      if (insertMatches($_POST['competition_id'], $_POST['team1_id'], $_POST['team2_id'], $_POST['match_date'], $_POST['score_team1'], $_POST['score_team2'])) {
         echo '<div class="alert alert-success" role="alert">Match added.</div>';
       } else {
         echo '<div class="alert alert-danger" role="alert">Error.</div>';
       }
       break;
     case "Edit":
-      if (updateMatches($_POST['matchId'], $_POST['team1Id'], $_POST['team2Id'], $_POST['matchDate'], $_POST['score1'], $_POST['score2'])) {
+      if (updateMatches($_POST['match_id'], $_POST['team1_id'], $_POST['team2_id'], $_POST['match_date'], $_POST['score_team1'], $_POST['score_team2'])) {
         echo '<div class="alert alert-success" role="alert">Match edited.</div>';
       } else {
         echo '<div class="alert alert-danger" role="alert">Error.</div>';
       }
       break;
     case "Delete":
-      if (deleteMatches($_POST['matchId'])) {
+      if (deleteMatches($_POST['match_id'])) {
         echo '<div class="alert alert-success" role="alert">Match deleted.</div>';
       } else {
         echo '<div class="alert alert-danger" role="alert">Error.</div>';
@@ -29,6 +29,7 @@ if (isset($_POST['actionType'])) {
       break;
   }
 }
+
 
 $matchesData = getAllMatchesGroupedByCompetition();
 include "view-matches.php";
