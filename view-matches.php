@@ -78,7 +78,7 @@ include "view-matches-newform.php"
 
                             <td>
                                 <form method="post" action="">
-                                    <input type="hidden" name="Mid" value="<?php echo $match['match_id']; ?>">
+                                    <input type="hidden" name="matchId" value="<?php echo $match['match_id']; ?>">
                                     <input type="hidden" name="actionType" value="Delete">
                                     <button type="submit" class="btn btn-primary" onclick="return confirm('Are you sure?');">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
