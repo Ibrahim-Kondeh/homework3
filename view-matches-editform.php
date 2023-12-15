@@ -15,7 +15,7 @@
     </svg>
 </button>
 <!-- Modal -->
-<div class="modal fade" id="editMatchModal<?php echo $matchId; ?>" tabindex="-1" aria-labelledby="editMatchModalLabel<?php echo $matchId; ?>" aria-hidden="true">
+<div class="modal fade" id="editMatchModal<?php echo $match['match_id']; ?>" tabindex="-1" aria-labelledby="editMatchModalLabel<?php echo $match['match_id']; ?>" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
