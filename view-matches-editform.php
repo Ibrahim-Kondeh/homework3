@@ -41,7 +41,18 @@
         ?>
       </select>
               </div>
+          <div class="mb-3">
+    <label for="homeTeam<?php echo $match['match_id'];?>" class="form-label">Home Team</label>
+    <select class="form-select" id="homeTeam<?php echo $match['match_id'];?>" name="homeTeam">
+        <?php
+        $matches = selectTeamsForInput();
+        while ($match = $matches->fetch_assoc()) {
+            $selected = ($match['match_id'] == $match['match_id']) ? 'selected' : '';
+            echo '<option value="' . $match['match_id'] . '" ' . $selected . '>' . $match['team_name'] . '</option>';
+        }
+        ?>
 
+    </select>
             
        </div>
           <div class="mb-3">
