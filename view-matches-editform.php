@@ -40,7 +40,27 @@
           <div class="mb-3">
             <label for="homeTeam" class="form-label">Home Team</label>
             <select class="form-select" id="team1_id" name="team1_id" required>
-@@ -64,21 +63,22 @@
+              <?php
+                // Fetch home teams from the database and populate the dropdown
+                $homeTeams = selectTeamsForInput();
+                while ($homeTeam = $homeTeams->fetch_assoc()) {
+                    $selected = ($homeTeam['team_id'] == $match['team1_id']) ? 'selected' : '';
+                    echo '<option value="' . $homeTeam['team_id'] . '" ' . $selected . '>' . $homeTeam['team_name'] . '</option>';
+                }
+              ?>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="awayTeam" class="form-label">Away Team</label>
+            <select class="form-select" id="team2_id" name="team2_id" required>
+              <?php
+                // Fetch away teams from the database and populate the dropdown
+                $awayTeams = selectTeamsForInput();
+                while ($awayTeam = $awayTeams->fetch_assoc()) {
+                    $selected = ($awayTeam['team_id'] == $match['team2_id']) ? 'selected' : '';
+                    echo '<option value="' . $awayTeam['team_id'] . '" ' . $selected . '>' . $awayTeam['team_name'] . '</option>';
+                }
+              ?>
             </select>
           </div>
           <div class="mb-3">
@@ -56,10 +76,9 @@
             <input type="number" class="form-control" id="score_team2" name="score_team2" value="<?php echo $match['score_team2']; ?>" required>
           </div>
           <input type="hidden" name="actionType" value="Edit">
-           <input type="hidden" name="match_id" value="<?php echo $match['match_id']; ?>">
-           <button type="submit" class="btn btn-primary">Update Match</button>
-</form>
-     
+          <input type="hidden" name="match_id" value="<?php echo $match['match_id']; ?>">
+          <button type="submit" class="btn btn-primary">Update Match</button>
+        </form>
       </div>
     </div>
   </div>
