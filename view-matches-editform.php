@@ -26,22 +26,19 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form method="post" action="">
-          <div class="mb-3">
-
-
-            <label for="matchId<?php echo $match['match_id'];?>" class="form-label">Competition</label>
-             <select class="form-select" id="matchId<?php echo $match['match_id'];?>" name="matchId">
-       <?php
-$competitions = getAllCompetitions();
-while ($competition = $competitions->fetch_assoc()) {
-    $selected = ($competition['competition_id'] == $match['competition_id']) ? 'selected' : '';
-    echo '<option value="' . $competition['competition_id'] . '" ' . $selected . '>' . $competition['competition_name'] . '</option>';
-}
-?>
-      </select>
-              </div>
-        <form method="post" action="">
+    <form method="post" action="">
+    <div class="mb-3">
+        <label for="matchId<?php echo $match['match_id'];?>" class="form-label">Competition</label>
+        <select class="form-select" id="matchId<?php echo $match['match_id'];?>" name="matchId">
+            <?php
+            $competitions = getAllCompetitions();
+            while ($competition = $competitions->fetch_assoc()) {
+                $selected = ($competition['competition_id'] == $match['competition_id']) ? 'selected' : '';
+                echo '<option value="' . $competition['competition_id'] . '" ' . $selected . '>' . $competition['competition_name'] . '</option>';
+            }
+            ?>
+        </select>
+    </div>
     <div class="mb-3">
         <label for="team1Id<?php echo $match['match_id']; ?>" class="form-label">Home Team</label>
         <select class="form-select" id="team1Id<?php echo $match['match_id']; ?>" name="team1Id">
@@ -66,21 +63,21 @@ while ($competition = $competitions->fetch_assoc()) {
             ?>
         </select>
     </div>
-          <div class="mb-3">
-                        <label for="matchDate<?php echo $match['match_id'];?>" class="form-label">Match Date</label>
-                        <input type="date" class="form-control" id="matchDate<?php echo $match['match_id'];?>" name="matchDate" value = "<?php echo $match['match_date'];?>">
-                    </div>
-      <div class="mb-3">
-    <label for="score1<?php echo $match['match_id']; ?>" class="form-label">Home Team Score</label>
-    <input type="number" class="form-control" id="score1<?php echo $match['match_id']; ?>" name="score1" value="<?php echo $match['score_team1']; ?>" min="0">
-</div>
-          <div class="mb-3">
-    <label for="score2<?php echo $match['match_id']; ?>" class="form-label">Away Team Score</label>
-    <input type="number" class="form-control" id="score2<?php echo $match['match_id']; ?>" name="score2" value="<?php echo $match['score_team2']; ?>" min="0">
-</div>
-          <input type="hidden" name="actionType" value="Edit">
-          <button type="submit" class="btn btn-primary">Update Match</button>
-        </form>
+    <div class="mb-3">
+        <label for="matchDate<?php echo $match['match_id'];?>" class="form-label">Match Date</label>
+        <input type="date" class="form-control" id="matchDate<?php echo $match['match_id'];?>" name="matchDate" value="<?php echo $match['match_date'];?>">
+    </div>
+    <div class="mb-3">
+        <label for="score1<?php echo $match['match_id']; ?>" class="form-label">Home Team Score</label>
+        <input type="number" class="form-control" id="score1<?php echo $match['match_id']; ?>" name="score1" value="<?php echo $match['score_team1']; ?>" min="0">
+    </div>
+    <div class="mb-3">
+        <label for="score2<?php echo $match['match_id']; ?>" class="form-label">Away Team Score</label>
+        <input type="number" class="form-control" id="score2<?php echo $match['match_id']; ?>" name="score2" value="<?php echo $match['score_team2']; ?>" min="0">
+    </div>
+    <input type="hidden" name="actionType" value="Edit">
+    <button type="submit" class="btn btn-primary">Update Match</button>
+</form>
       </div>
     </div>
   </div>
