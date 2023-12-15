@@ -18,22 +18,37 @@
           <div class="mb-3">
             <label for="competition" class="form-label">Competition</label>
             <select class="form-select" id="competition_id" name="competition_id" required>
-              <!-- Populate this dropdown with competition names -->
-              <!-- Example: <option value="1">Premier League</option> -->
+              <?php
+                // Fetch competitions from the database and populate the dropdown
+                $competitions = getAllCompetitions();
+                while ($competition = $competitions->fetch_assoc()) {
+                    echo '<option value="' . $competition['competition_id'] . '">' . $competition['competition_name'] . '</option>';
+                }
+              ?>
             </select>
           </div>
           <div class="mb-3">
             <label for="homeTeam" class="form-label">Home Team</label>
             <select class="form-select" id="team1_id" name="team1_id" required>
-              <!-- Populate this dropdown with team names -->
-              <!-- Example: <option value="1">Team A</option> -->
+              <?php
+                // Fetch home teams from the database and populate the dropdown
+                $homeTeams = selectTeamsForInput();
+                while ($homeTeam = $homeTeams->fetch_assoc()) {
+                    echo '<option value="' . $homeTeam['team_id'] . '">' . $homeTeam['team_name'] . '</option>';
+                }
+              ?>
             </select>
           </div>
           <div class="mb-3">
             <label for="awayTeam" class="form-label">Away Team</label>
             <select class="form-select" id="team2_id" name="team2_id" required>
-              <!-- Populate this dropdown with team names -->
-              <!-- Example: <option value="2">Team B</option> -->
+              <?php
+                // Fetch away teams from the database and populate the dropdown
+                $awayTeams = selectTeamsForInput();
+                while ($awayTeam = $awayTeams->fetch_assoc()) {
+                    echo '<option value="' . $awayTeam['team_id'] . '">' . $awayTeam['team_name'] . '</option>';
+                }
+              ?>
             </select>
           </div>
           <div class="mb-3">
