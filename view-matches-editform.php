@@ -32,13 +32,13 @@
 
             <label for="matchId<?php echo $match['match_id'];?>" class="form-label">Competition</label>
              <select class="form-select" id="matchId<?php echo $match['match_id'];?>" name="matchId">
-        <?php
-        $matches = getAllCompetitions();
-        while ($match = $matches->fetch_assoc()) {
-            $selected = ($match['match_id'] == $match['match_id']) ? 'selected' : '';
-            echo '<option value="' . $match['match_id'] . '" ' . $selected . '>' . $match['competition_name'] . '</option>';
-        }
-        ?>
+       <?php
+$competitions = getAllCompetitions();
+while ($competition = $competitions->fetch_assoc()) {
+    $selected = ($competition['competition_id'] == $match['competition_id']) ? 'selected' : '';
+    echo '<option value="' . $competition['competition_id'] . '" ' . $selected . '>' . $competition['competition_name'] . '</option>';
+}
+?>
       </select>
               </div>
           <div class="mb-3">
