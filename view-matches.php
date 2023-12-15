@@ -1,9 +1,13 @@
 <?php
 $pageTitle = "Matches";
-
+include "view-matches-newform.php"
 ?>
-
-<style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><?php echo $pageTitle; ?></title>
+    <style>
     body {
         background-color: #333; /* Set the background color */
         color: white;
@@ -33,8 +37,7 @@ $pageTitle = "Matches";
         margin-top: 10px;
     }
 
-    .table-container th,
-    .table-container td {
+    .table-container th, .table-container td {
         padding: 10px;
         text-align: center;
         border: 1px solid #ddd;
@@ -47,18 +50,11 @@ $pageTitle = "Matches";
     .table-container tr:hover {
         background-color: rgba(255, 255, 255, 0.1);
     }
-
-    .add-match-button {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-    }
 </style>
-
+</head>
+<body>
 <div class="container">
-    <?php
-    foreach ($matchesData as $competition => $matches) {
-    ?>
+    <?php foreach ($matchesData as $competition => $matches) { ?>
         <div class="table-container">
             <h2><?php echo htmlspecialchars($competition); ?></h2>
             <table class="table">
@@ -78,56 +74,26 @@ $pageTitle = "Matches";
                             <td><?php echo htmlspecialchars($match['team2_name']); ?></td>
                             <td><?php echo htmlspecialchars($match['match_date']); ?></td>
                             <td><?php echo htmlspecialchars($match['score_team1']) . " : " . htmlspecialchars($match['score_team2']); ?></td>
-                            <td>
-                                <!-- Edit Match Icon with Dropdown for Competitions -->
-                                <button class="btn btn-secondary btn-sm edit-match-icon" data-bs-toggle="modal" data-bs-target="#editMatchModal<?php echo $match['match_id']; ?>">Edit</button>
+                           <td><?php include "view-matches-editform.php";?></td>
 
-                                <!-- Delete Match Icon with Dropdown for Competitions -->
-                                <button class="btn btn-danger btn-sm delete-match-icon" data-bs-toggle="modal" data-bs-target="#deleteMatchModal<?php echo $match['match_id']; ?>">Delete</button>
+                            <td>
+                                <form method="post" action="">
+                                    <input type="hidden" name="matchId" value="<?php echo $match['match_id']; ?>">
+                                    <input type="hidden" name="actionType" value="Delete">
+                                    <button type="submit" class="btn btn-primary" onclick="return confirm('Are you sure?');">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
+                                            <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
+                                        </svg>
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                     <?php } ?>
                 </tbody>
             </table>
         </div>
-    <?php
-    }
-    ?>
-    <!-- Add Match Button with Dropdown for Competitions -->
-    <button class="btn btn-primary add-match-button" data-bs-toggle="modal" data-bs-target="#addMatchModal">Add Match</button>
+    <?php } ?>
 </div>
-
-<!-- Modals for Add, Edit, and Delete Matches -->
-<!-- Add Match Modal -->
-<div class="modal fade" id="addMatchModal" tabindex="-1" aria-labelledby="addMatchModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <!-- Add Match Modal Content Goes Here -->
-        </div>
-    </div>
-</div>
-
-<!-- Edit and Delete Match Modals for Each Match -->
-<?php foreach ($matchesData as $competition => $matches) {
-    foreach ($matches as $match) { ?>
-        <!-- Edit Match Modal for Match ID <?php echo $match['match_id']; ?> -->
-        <div class="modal fade" id="editMatchModal<?php echo $match['match_id']; ?>" tabindex="-1" aria-labelledby="editMatchModalLabel<?php echo $match['match_id']; ?>" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <!-- Edit Match Modal Content Goes Here -->
-                </div>
-            </div>
-        </div>
-
-        <!-- Delete Match Modal for Match ID <?php echo $match['match_id']; ?> -->
-        <div class="modal fade" id="deleteMatchModal<?php echo $match['match_id']; ?>" tabindex="-1" aria-labelledby="deleteMatchModalLabel<?php echo $match['match_id']; ?>" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <!-- Delete Match Modal Content Goes Here -->
-                </div>
-            </div>
-        </div>
-    <?php }
-} ?>
-
-<?php include "view-footer.php"; ?>
+</body>
+</html>
