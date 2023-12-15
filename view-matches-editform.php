@@ -30,7 +30,7 @@
           <div class="mb-3">
 
 
-            <label for="competition<?php echo $match['match_id'];?>" class="form-label">Match</label>
+            <label for="competition<?php echo $match['match_id'];?>" class="form-label">Competition</label>
              <select class="form-select" id="teamName<?php echo $player['match_id'];?>" name="teamName">
         <?php
         $teams = getAllCompetitions();
