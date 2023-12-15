@@ -55,20 +55,18 @@
     </select>
             
        </div>
-          <div class="mb-3">
-            <label for="homeTeam" class="form-label">Home Team</label>
-            <select class="form-select" id="team1_id" name="team1_id" required>
-              <!-- Populate this dropdown with team names -->
-              <!-- Example: <option value="1">Team A</option> -->
-            </select>
-          </div>
-          <div class="mb-3">
-            <label for="awayTeam" class="form-label">Away Team</label>
-            <select class="form-select" id="team2_id" name="team2_id" required>
-              <!-- Populate this dropdown with team names -->
-              <!-- Example: <option value="2">Team B</option> -->
-            </select>
-          </div>
+           <div class="mb-3">
+    <label for="awayTeam<?php echo $match['match_id'];?>" class="form-label">Away Team</label>
+    <select class="form-select" id="homeTeam<?php echo $match['match_id'];?>" name="awayTeam">
+        <?php
+        $matches = selectTeamsForInput();
+        while ($match = $matches->fetch_assoc()) {
+            $selected = ($match['match_id'] == $match['match_id']) ? 'selected' : '';
+            echo '<option value="' . $match['match_id'] . '" ' . $selected . '>' . $match['team_name'] . '</option>';
+        }
+        ?>
+    </select>    
+       </div>
           <div class="mb-3">
             <label for="matchDate" class="form-label">Match Date</label>
             <input type="date" class="form-control" id="match_date" name="match_date" required>
