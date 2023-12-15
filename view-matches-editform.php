@@ -30,8 +30,8 @@
           <div class="mb-3">
 
 
-            <label for="competition<?php echo $match['match_id'];?>" class="form-label">Competition</label>
-             <select class="form-select" id="competition<?php echo $match['match_id'];?>" name="teamName">
+            <label for="matchId<?php echo $match['match_id'];?>" class="form-label">Competition</label>
+             <select class="form-select" id="matchId<?php echo $match['match_id'];?>" name="matchId">
         <?php
         $matches = getAllCompetitions();
         while ($match = $matches->fetch_assoc()) {
@@ -42,8 +42,8 @@
       </select>
               </div>
           <div class="mb-3">
-    <label for="homeTeam<?php echo $match['match_id'];?>" class="form-label">Home Team</label>
-    <select class="form-select" id="homeTeam<?php echo $match['match_id'];?>" name="homeTeam">
+    <label for="team1Id<?php echo $match['match_id'];?>" class="form-label">Home Team</label>
+    <select class="form-select" id="team1Id<?php echo $match['match_id'];?>" name="team1Id">
         <?php
         $matches = selectTeamsForInput();
         while ($match = $matches->fetch_assoc()) {
@@ -56,8 +56,8 @@
             
        </div>
            <div class="mb-3">
-    <label for="awayTeam<?php echo $match['match_id'];?>" class="form-label">Away Team</label>
-    <select class="form-select" id="homeTeam<?php echo $match['match_id'];?>" name="awayTeam">
+    <label for="team2Id<?php echo $match['match_id'];?>" class="form-label">Away Team</label>
+    <select class="form-select" id="team2Id<?php echo $match['match_id'];?>" name="team2Id">
         <?php
         $matches = selectTeamsForInput();
         while ($match = $matches->fetch_assoc()) {
@@ -68,11 +68,11 @@
     </select>    
        </div>
           <div class="mb-3">
-            <label for="matchDate" class="form-label">Match Date</label>
-            <input type="date" class="form-control" id="match_date" name="match_date" required>
-          </div>
+                        <label for="matchDate<?php echo $player['player_id'];?>" class="form-label">Match Date</label>
+                        <input type="date" class="form-control" id="matchDate<?php echo $match['match_id'];?>" name="matchDate" value = "<?php echo $match['match_date'];?>">
+                    </div>
           <div class="mb-3">
-            <label for="scoreTeam1" class="form-label">Score Team 1</label>
+            <label for="score1" class="form-label">Score Team 1</label>
             <input type="number" class="form-control" id="score_team1" name="score_team1" required>
           </div>
           <div class="mb-3">
