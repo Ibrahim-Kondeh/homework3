@@ -28,16 +28,16 @@
       <div class="modal-body">
     <form method="post" action="">
     <div class="mb-3">
-        <label for="matchId<?php echo $match['match_id'];?>" class="form-label">Competition</label>
-        <select class="form-select" id="matchId<?php echo $match['match_id'];?>" name="matchId">
-            <?php
-            $competitions = getAllCompetitions();
-            while ($competition = $competitions->fetch_assoc()) {
-                $selected = ($competition['competition_id'] == $match['competition_id']) ? 'selected' : '';
-                echo '<option value="' . $competition['competition_id'] . '" ' . $selected . '>' . $competition['competition_name'] . '</option>';
-            }
-            ?>
-        </select>
+       <label for="matchId<?php echo $match['match_id'];?>" class="form-label">Competition</label>
+<select class="form-select" id="matchId<?php echo $match['match_id'];?>" name="matchId">
+    <?php
+    $competitions = getAllCompetitions();
+    while ($competition = $competitions->fetch_assoc()) {
+        $selected = ($competition['competition_id'] == $match['competition_id']) ? 'selected' : '';
+        echo '<option value="' . $competition['competition_id'] . '" ' . $selected . '>' . $competition['competition_name'] . '</option>';
+    }
+    ?>
+</select>
     </div>
     <div class="mb-3">
         <label for="team1Id<?php echo $match['match_id']; ?>" class="form-label">Home Team</label>
