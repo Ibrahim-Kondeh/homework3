@@ -38,6 +38,7 @@
     }
     ?>
 </select>
+
     </div>
     <div class="mb-3">
         <label for="team1Id<?php echo $match['match_id']; ?>" class="form-label">Home Team</label>
