@@ -14,7 +14,7 @@
     body {
         background-image: url('https://upload.wikimedia.org/wikipedia/commons/b/b8/Etihad_Stadium.jpg');
         background-size: cover;
-        color: white; /* Changing text color to white */
+        color: blue; /* Changing text color to white */
     }
         .team-table {
             width: 100%;
