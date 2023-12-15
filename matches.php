@@ -21,7 +21,7 @@ if (isset($_POST['actionType'])) {
       }
       break;
     case "Delete":
-      if (deleteMatches($_POST['match_id'])) {
+      if (deleteMatches($_POST['matchId'])) {
         echo '<div class="alert alert-success" role="alert">Match deleted.</div>';
       } else {
         echo '<div class="alert alert-danger" role="alert">Error.</div>';
