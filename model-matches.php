@@ -68,7 +68,7 @@ function insertMatches($competitionId, $team1Id, $team2Id, $matchDate, $score1, 
         throw $e;
     }
 }
-function updateMatches($matchId, $team1Id, $team2Id, $matchDate, $score1, $score2) {
+function updateMatches($team1Id, $team2Id, $matchDate, $score1, $score2) {
     try {
         $conn = get_db_connection();
         // Implement the database update logic here
