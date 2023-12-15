@@ -68,12 +68,14 @@ function insertMatches($competitionId, $team1Id, $team2Id, $matchDate, $score1, 
         throw $e;
     }
 }
-function updateMatches($team1Id, $team2Id, $matchDate, $score1, $score2) {
+function updateMatches($matchId, $team1Id, $team2Id, $matchDate, $score1, $score2) {
+
     try {
         $conn = get_db_connection();
         // Implement the database update logic here
         $stmt = $conn->prepare("UPDATE matches SET team1_id=?, team2_id=?, match_date=?, score_team1=?, score_team2=? WHERE match_id=?");
-        $stmt->bind_param("iissii", $team1Id, $team2Id, $matchDate, $score1, $score2, $matchId);
+      $stmt->bind_param("iiissii", $team1Id, $team2Id, $matchDate, $score1, $score2, $matchId);
+
         $success = $stmt->execute();
         $stmt->close();
         $conn->close();
