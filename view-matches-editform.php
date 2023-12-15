@@ -35,6 +35,7 @@
     }
     ?>
 </select>
+
     </div>
     <div class="mb-3">
         <label for="team1Id<?php echo $match['match_id']; ?>" class="form-label">Home Team</label>
@@ -44,7 +45,11 @@
             while ($team = $teams->fetch_assoc()) {
                 $selected = ($team['team_id'] == $match['team1_id']) ? 'selected' : '';
                 echo '<option value="' . $team['team_id'] . '" ' . $selected . '>' . $team['team_name'] . '</option>';
-@@ -55,7 +55,7 @@
+            }
+            ?>
+        </select>
+    </div>
+    <div class="mb-3">
         <label for="team2Id<?php echo $match['match_id']; ?>" class="form-label">Away Team</label>
         <select class="form-select" id="team2Id<?php echo $match['match_id']; ?>" name="team2Id">
             <?php
